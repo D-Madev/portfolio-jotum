@@ -1,9 +1,10 @@
-import './styles/App.css'
+import Navbar from './components/navbar.jsx'
 
 function App() {
   return (
     <>
-      <p>Hello World! React ☺</p>
+      <Navbar />
+      <p>Hello friend! ☺</p>
     </>
   )
 }

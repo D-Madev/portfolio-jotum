@@ -1,0 +1,19 @@
+.navbar {
+  background-color: var(--balck-color);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 60px;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+.navbar img {
+  height: 60px;
+}
