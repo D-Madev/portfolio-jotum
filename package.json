@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage":"https://d-malex.github.io/portfolio-jotum/dist/",
   "scripts": {
     "dev": "vite",
     "dev-h": "vite --host",
