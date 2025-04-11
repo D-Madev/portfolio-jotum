@@ -14,6 +14,30 @@
   list-style: none;
 }
 
+.navbar a {
+  position: relative;
+  text-decoration: none;
+  color: white;
+  padding: 0rem 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.navbar a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -25px;
+  width: 0%;
+  height: 6px;
+  background-color: var(--main-color);
+  transition: width 0.3s ease;
+  margin-bottom: 2px;
+}
+
+.navbar a.active::after {
+  width: 100%;
+}
+
 .navbar img {
   height: 60px;
 }
@@ -33,6 +57,11 @@
   .hamburger {
     display: block;
     padding: 10px;
+    color: white;
+  }
+
+  .hamburger.active {
+    color: var(--main-color);
   }
 
   .navbar ul {
@@ -52,7 +81,7 @@
 
   .navbar ul.open {
     display: flex;
-    max-height: 500px;
+    max-height: 600px;
     opacity: 1;
   }
 

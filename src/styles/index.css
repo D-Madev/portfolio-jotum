@@ -16,6 +16,10 @@
   font-family: var(--font);
 }
 
+body {
+  background-color: white;
+}
+
 a {
   color: inherit;
   text-decoration: none;
