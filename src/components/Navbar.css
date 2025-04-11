@@ -5,7 +5,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 60px;
-  position: relative;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
 
 .navbar ul {
@@ -93,4 +96,5 @@
   .navbar a {
     font-size: 140%;
   }
+
 }
