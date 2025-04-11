@@ -11,3 +11,9 @@
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
+
+<script>
+  const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const favicon = document.querySelector("link[rel='icon']");
+  favicon.href = isDark ? './src/assets/logo-jotum-st.png' : './src/assets/logo-jotum-st-blue.png';
+</script>
