@@ -1,11 +1,11 @@
 .navbar {
-  background-color: var(--balck-color);
+  background-color: var(--black-color);
   color: white;
-  padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 60px;
+  position: relative;
 }
 
 .navbar ul {
@@ -16,4 +16,41 @@
 
 .navbar img {
   height: 60px;
+}
+
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem ;
+  }
+  
+  .hamburger {
+    display: block;
+  }
+
+  .navbar ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    flex-direction: column;
+    background-color: var(--black-color);
+    width: 100%;
+    padding: 1rem;
+    z-index: 1000;
+  }
+
+  .navbar ul.open {
+    display: flex;
+  }
+
+  .navbar li {
+    margin: 0.5rem 0;
+  }
 }
