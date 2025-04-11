@@ -8,7 +8,7 @@ function Navbar() {
 
   return(
     <nav className="navbar">
-      <a href="/Inicio"><img src={logo} alt="logo-jotum"/></a>
+      <a href="/portfolio-jotum/Inicio"><img src={logo} alt="logo-jotum"/></a>
 
       <span className={`hamburger ${menuOpen ? 'active' : ''}`}  onClick={() => setMenuOpen(!menuOpen)}>
         ☰
@@ -17,28 +17,28 @@ function Navbar() {
       <ul className={menuOpen ? 'open' : ''}>
         <li>
           <NavLink 
-            to="/Inicio" 
+            to="/portfolio-jotum/Inicio" 
             className={({ isActive }) => isActive ? 'active' : ''}>Inicio
           </NavLink>
         </li>
         
         <li>
           <NavLink 
-            to="/Servicios"
+            to="/portfolio-jotum/Servicios"
             className={({ isActive }) => isActive ? 'active' : ''}>Servicios
           </NavLink>
         </li>
         
         <li>
           <NavLink 
-            to="/Nosotros"
+            to="/portfolio-jotum/Nosotros"
             cclassName={({ isActive }) => isActive ? 'active' : ''}>Nosotros
           </NavLink>
         </li>
 
         <li>
           <NavLink 
-            to="/Contacto"
+            to="/portfolio-jotum/Contacto"
             className={({ isActive }) => isActive ? 'active' : ''}>Contacto
           </NavLink>
         </li>
