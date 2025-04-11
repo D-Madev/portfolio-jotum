@@ -29,28 +29,39 @@
   .navbar {
     padding: 1rem ;
   }
-  
+
   .hamburger {
     display: block;
+    padding: 10px;
   }
 
   .navbar ul {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
     flex-direction: column;
     background-color: var(--black-color);
     width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
     padding: 1rem;
     z-index: 1000;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
   }
 
   .navbar ul.open {
     display: flex;
+    max-height: 500px;
+    opacity: 1;
   }
 
   .navbar li {
     margin: 0.5rem 0;
+    text-align: center;
+  }
+
+  .navbar a {
+    font-size: 140%;
   }
 }

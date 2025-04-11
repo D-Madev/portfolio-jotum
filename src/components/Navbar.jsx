@@ -7,7 +7,7 @@ function Navbar() {
 
   return(
     <nav className="navbar">
-      <img src={logo} alt="logo-jotum"/>
+      <a href="/Inicio"><img src={logo} alt="logo-jotum"/></a>
 
       <div className='hamburger' onClick={() => setMenuOpen(!menuOpen)}>
         ☰
