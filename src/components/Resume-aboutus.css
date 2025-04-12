@@ -1,0 +1,94 @@
+.resume-aboutus {
+  background-color: var(--submain-color);
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.resume-aboutus-images {
+  width: 60%;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+  padding: 2rem 1rem 2rem 2rem;
+  box-sizing: border-box;
+}
+
+.img-main {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.img-sub {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  border-radius: 4px;
+}
+
+.img-add {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  
+  border-radius: 4px;
+}
+
+.resume-aboutus-text {
+  width: 40%;
+  box-sizing: border-box;
+  padding: 2rem 2rem 2rem 1rem; 
+}
+
+.resume-aboutus-text h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 1200px) {
+  .img-main {
+    grid-column: 1 / 4;
+    grid-row: 1 / 4;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  .img-sub {
+    display: none;
+  }
+  
+  .img-add {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .resume-aboutus {
+    flex-direction: column;
+  }
+
+  .resume-aboutus-images {
+    width: 100%;
+    display: grid;
+    padding: 1rem;
+    gap: 1rem 0rem;
+    grid-template-columns: 1fr;      
+    grid-auto-rows: auto;
+    grid-template-rows: auto;
+  }
+
+  .resume-aboutus-text {
+    width: 100%;
+    padding: 1rem;
+  }
+}
