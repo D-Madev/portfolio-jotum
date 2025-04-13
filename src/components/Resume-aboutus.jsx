@@ -22,7 +22,7 @@ function ResumeAboutUs() {
           nuestros clientes en el hogar de sus sueños, donde funcionalidad y
           estética se unen para ofrecer una experiencia de vida excepcional.
         </p>
-        <p>“Less is more” (Menos es mas) - Ludwig Mies van der Rohe</p>
+        <p className='resume-aboutus-quote'>“Less is more” (Menos es mas) - Ludwig Mies van der Rohe</p>
       </section>
     </article>
   );
