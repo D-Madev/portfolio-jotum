@@ -25,17 +25,44 @@
 }
 
 .proyect-title {
-  font-size: 2.5vw;
+  font-size: 2rem;
+  padding-right: 2rem;
 }
 
 .proyect-state {
   color: var(--secondary-color);
-  font-size: 1.2vw;
+  font-size: 1rem;
+  padding-right: 2rem;
 }
 
 .proyect-description {
   margin-top: 2rem;
   color: var(--secondary-color);
   padding-right: 2rem;
-  font-size: 1.2vw;
+  font-size: 1rem;
+}
+
+
+@media (max-width: 800px) {
+  .proyect {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .proyect img {
+    max-width: 90%;
+    width: auto;
+    height: auto;
+    box-sizing: border-box;
+    margin-right: 2rem;
+  }
+
+  .proyect-state {
+    font-size: 1.1rem;
+  }
+
+  .proyect-description {
+    font-size: 1.3rem;    
+  }
 }
