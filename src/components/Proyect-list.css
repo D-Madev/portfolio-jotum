@@ -1,0 +1,14 @@
+.proyect-list {
+  color: var(--text-color);
+  background-color: white;
+  padding-left: 4rem;
+}
+
+.proyect-list-h1 {
+  font-size: 3vw;
+  padding: 3rem 0rem 1.5rem 0rem;
+}
+
+.proyect-list section {
+  padding: 1.5rem 0rem;
+}

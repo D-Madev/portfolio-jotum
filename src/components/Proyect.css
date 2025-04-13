@@ -1,0 +1,41 @@
+.proyect {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.proyect img {
+  flex-shrink: 0;
+  max-width: 37vw;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.proyect-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.proyect-header {            
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.proyect-title {
+  font-size: 2.5vw;
+}
+
+.proyect-state {
+  color: var(--secondary-color);
+  font-size: 1.2vw;
+}
+
+.proyect-description {
+  margin-top: 2rem;
+  color: var(--secondary-color);
+  padding-right: 2rem;
+  font-size: 1.2vw;
+}
