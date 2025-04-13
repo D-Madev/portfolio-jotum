@@ -1,0 +1,10 @@
+.benefit-card {
+  height: 30vw;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--black-color);
+}
+
+
