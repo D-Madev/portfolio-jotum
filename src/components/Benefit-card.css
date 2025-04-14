@@ -60,10 +60,12 @@
     height: auto;
     padding: 1rem;
   }
+
   .benefit-img-wrapper {
     width: 15vw;
     height: 15vw;
   }
+  
   .benefit-title {
     font-size: 1.1rem;
     height: auto;
@@ -75,8 +77,6 @@
   .benefit-card {
     width: 80vw;
     height: auto;
-    margin: 1rem 0;
-    padding: 1rem;
   }
 
   .benefit-img-wrapper {
@@ -98,6 +98,5 @@
 
   .benefit-description {
     font-size: 1rem;
-    padding: 0 1rem;
   }
 }
