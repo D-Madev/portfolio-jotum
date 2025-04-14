@@ -18,9 +18,10 @@
   content: "";
   position: absolute;
   top: 0rem;
-  bottom: 0rem;
+  bottom: 1rem;
   left: 2rem;
   width: 15px;
+  border-radius: 0 0 20rem 20rem;
   background-color: var(--main-color);
 }
 
