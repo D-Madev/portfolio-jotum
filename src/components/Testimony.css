@@ -1,0 +1,8 @@
+.testimony {
+  flex: 0 0 auto;
+  width: 300px;
+  margin: 0 1rem;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+}

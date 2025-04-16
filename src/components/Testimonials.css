@@ -1,0 +1,29 @@
+.testimonials {
+  margin-top: 3rem; 
+  height: 360px;
+}
+
+.testimonials-divider {
+  display: flex;
+  align-items: center;
+}
+
+.testimonials-divider h1 {
+  font-size: 2rem;
+  color: var(--black-color);
+  margin: 0 2rem;
+  white-space: nowrap;
+} 
+
+.testimonials-divider::before,
+.testimonials-divider::after {
+  content: '';
+  flex: 1;
+  height: 4px;
+  background-color: var(--black-color);
+}
+
+.testimonials-divider::before {
+  width: 5rem;
+  flex: none;
+}
