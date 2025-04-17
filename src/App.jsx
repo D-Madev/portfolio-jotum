@@ -8,6 +8,7 @@ import Benefits from './components/Benefits.jsx'
 import Testimonials from './components/Testimonials.jsx'
 import SubFooter from './components/Sub-footer.jsx'
 import Footer from './components/Footer.jsx'
+import Author from './components/Author.jsx'
 // IMPORT IMAGES
 import logo from './assets/logo-jotum-solotexto.png'
 import videoBackground from './assets/parck.mp4'
@@ -31,6 +32,7 @@ function App() {
       <Testimonials />
       <SubFooter />
       <Footer />
+      <Author /> 
     </>
   )
 }
