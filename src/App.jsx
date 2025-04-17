@@ -9,6 +9,7 @@ import Testimonials from './components/Testimonials.jsx'
 import SubFooter from './components/Sub-footer.jsx'
 import Footer from './components/Footer.jsx'
 import Author from './components/Author.jsx'
+import WhatsAppButton from './components/WhatsApp-buton.jsx'
 // IMPORT IMAGES
 import logo from './assets/logo-jotum-solotexto.png'
 import videoBackground from './assets/parck.mp4'
@@ -17,6 +18,7 @@ function App() {
   return (
     <>
       <Navbar />
+      <WhatsAppButton />
       <WelcomeBanner 
         backgroundType="video"
         backgroundSrc={videoBackground}

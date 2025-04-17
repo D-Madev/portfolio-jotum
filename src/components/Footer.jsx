@@ -34,6 +34,11 @@ function Footer() {
               </a>
             </li>
             <li>
+              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-instagram"></i>
+              </a>
+            </li>
+            <li>
               <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-linkedin"></i>
               </a>
