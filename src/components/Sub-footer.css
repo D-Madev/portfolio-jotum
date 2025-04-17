@@ -1,0 +1,64 @@
+.sub-footer {
+  margin-top: 6rem;
+  position: relative;
+  overflow: hidden;
+  height: 400px;
+  color: white;
+}
+
+.sub-footer-background {
+  position: absolute;
+  inset: 0;
+  background: url("../assets/Sub-footer.png") no-repeat center/cover;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.sub-footer-background::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  filter: blur(5px) brightness(50%);
+  margin: -5px;
+  background: inherit;
+  z-index: 0;
+}
+
+.sub-footer-title {
+  font-size: 2.5rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,.7);
+}
+
+.sub-footer-text {
+  font-size: 1.1rem;
+  max-width: 600px;
+  line-height: 1.4;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  margin: 3rem 0;
+}
+
+.sub-footer-button {
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  transition: background-color 0.2s ease;
+}
+
+.sub-footer-button:hover {
+  background-color: var(--submain-color);
+}
+
+.sub-footer-background > * {
+  position: relative;
+  z-index: 1;
+}

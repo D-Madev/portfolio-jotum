@@ -6,6 +6,7 @@ import ResumeAboutUs from './components/Resume-aboutus.jsx'
 import ProyectList from './components/Proyect-list.jsx'
 import Benefits from './components/Benefits.jsx'
 import Testimonials from './components/Testimonials.jsx'
+import SubFooter from './components/Sub-footer.jsx'
 // IMPORT IMAGES
 import logo from './assets/logo-jotum-solotexto.png'
 import videoBackground from './assets/parck.mp4'
@@ -27,6 +28,7 @@ function App() {
       <ProyectList />
       <Benefits />
       <Testimonials />
+      <SubFooter />
       <p >Hello friend! ☺</p>
     </>
   )
