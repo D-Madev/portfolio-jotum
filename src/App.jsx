@@ -7,6 +7,7 @@ import ProyectList from './components/Proyect-list.jsx'
 import Benefits from './components/Benefits.jsx'
 import Testimonials from './components/Testimonials.jsx'
 import SubFooter from './components/Sub-footer.jsx'
+import Footer from './components/Footer.jsx'
 // IMPORT IMAGES
 import logo from './assets/logo-jotum-solotexto.png'
 import videoBackground from './assets/parck.mp4'
@@ -29,7 +30,7 @@ function App() {
       <Benefits />
       <Testimonials />
       <SubFooter />
-      <p >Hello friend! ☺</p>
+      <Footer />
     </>
   )
 }
