@@ -1,26 +1,26 @@
 import './Testimonials-list.css'
 import Testimony from './Testimony.jsx'
 
-function TestimonialsList({ testimonialsList }) {
+function TestimonialsList({ testimonialsData }) {
   return (
     <div className="testimonials-list">
       <div className="testimonials-track">
-        {testimonialsList.map((testimony, index) => (
+        {testimonialsData.map((testimony, index) => (
           <Testimony
             key={index}
-            image=""
+            image={testimony.image}
             author={testimony.author}
             rate={testimony.rate}
-            content={testimonial.content}
+            content={testimony.content}
           />
         ))}
-        {testimonialsList.map((testimony, index) => (
+        {testimonialsData.map((testimony, index) => (
           <Testimony
             key={index}
-            image=""
+            image={testimony.image}
             author={testimony.author}
             rate={testimony.rate}
-            content={testimonial.content}
+            content={testimony.content}
           />
         ))}
       </div>

@@ -1,6 +1,5 @@
 .testimonials {
   margin-top: 3rem; 
-  height: 360px;
 }
 
 .testimonials-divider {
@@ -26,4 +25,20 @@
 .testimonials-divider::before {
   width: 5rem;
   flex: none;
+}
+
+@media (max-width: 768px) {
+  .testimonials {
+    margin-top: 1rem; 
+  }
+  .testimonials-divider h1 {
+    font-size: 1.5rem;
+    justify-content: center;
+    white-space: normal;
+  }
+
+  .testimonials-divider::after,
+  .testimonials-divider::before {
+    width: 1rem;
+  }
 }

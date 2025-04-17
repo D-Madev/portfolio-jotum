@@ -8,10 +8,9 @@
 
 .testimonials-track {
   display: flex;
+  width: max-content;
   animation: scroll 20s linear infinite;
 }
-
-
 
 @keyframes scroll {
   0% {
@@ -20,4 +19,12 @@
   100% {
     transform: translateX(-50%);
   }
+}
+
+@media (max-width: 768px) {
+  .testimonials-track {
+    width: max-content;
+    animation: scroll 10s linear infinite;
+  }
+  
 }

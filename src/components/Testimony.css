@@ -1,8 +1,11 @@
 .testimony {
   flex: 0 0 auto;
   width: 300px;
-  margin: 0 1rem;
-  background-color: #f9f9f9;
+  margin: 2rem 1rem;
+  background-color: #98b5f5;
+  border: #4f6596 3px solid;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: #1a2231;
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: 1rem;
 }
