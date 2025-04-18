@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import logo from '../assets/logo-jotum-sf.png';
 import './navbar.css';
 
@@ -8,9 +8,9 @@ function Navbar() {
 
   return(
     <nav className="navbar">
-      <NavLink to="/inicio">
+      <Link to="/inicio">
           <img src={logo} alt="logo-jotum"/>
-      </NavLink>
+      </Link>
 
       <span className={`hamburger ${menuOpen ? 'active' : ''}`}  onClick={() => setMenuOpen(!menuOpen)}>
         ☰
