@@ -1,6 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { HashRouter as Router } from 'react-router-dom';
+
+//** Modificar al desplegar en hosting oficial (UTIL MIENTRAS SIGA EN GH-PAGES) ** 
+// Replace HashRouter -> BrowserRouter // 
+import { HashRouter as Router } from 'react-router-dom'; 
 import App from './App.jsx'
 import './styles/index.css';
 
