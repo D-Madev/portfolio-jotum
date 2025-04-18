@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import './navbar.css';
 import logo from '../assets/logo-jotum-sf.png';
+import './navbar.css';
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return(
     <nav className="navbar">
-      <a href="/portfolio-jotum/Inicio"><img src={logo} alt="logo-jotum"/></a>
+      <NavLink to="/inicio">
+          <img src={logo} alt="logo-jotum"/>
+      </NavLink>
 
       <span className={`hamburger ${menuOpen ? 'active' : ''}`}  onClick={() => setMenuOpen(!menuOpen)}>
         ☰
@@ -17,28 +19,28 @@ function Navbar() {
       <ul className={menuOpen ? 'open' : ''}>
         <li>
           <NavLink 
-            to="/portfolio-jotum/Inicio" 
+            to="/inicio" 
             className={({ isActive }) => isActive ? 'active' : ''}>Inicio
           </NavLink>
         </li>
         
         <li>
           <NavLink 
-            to="/portfolio-jotum/Servicios"
+            to="/servicios"
             className={({ isActive }) => isActive ? 'active' : ''}>Servicios
           </NavLink>
         </li>
         
         <li>
           <NavLink 
-            to="/portfolio-jotum/Nosotros"
-            cclassName={({ isActive }) => isActive ? 'active' : ''}>Nosotros
+            to="/nosotros"
+            className={({ isActive }) => isActive ? 'active' : ''}>Nosotros
           </NavLink>
         </li>
 
         <li>
           <NavLink 
-            to="/portfolio-jotum/Contacto"
+            to="/contacto"
             className={({ isActive }) => isActive ? 'active' : ''}>Contacto
           </NavLink>
         </li>
