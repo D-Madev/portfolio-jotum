@@ -1,6 +1,21 @@
 import './Footer.css'
 import jotumLogo from '../assets/logo-jotum-sf.png'
 
+// EMAIL
+const email = "jotumproyectos@gmail.com"
+const asunto = encodeURIComponent("Asunto del correo")
+const body = encodeURIComponent("Texto del mensaje")
+
+// PHONE
+const phoneNumberView = "+54 9 11 2174-7565"
+const message = encodeURIComponent('Hola, estoy interesado en el servicio de Jötum.');
+
+
+/**/
+const phone = phoneNumberView.replaceAll(' ','').replaceAll('+','').replaceAll('-','');
+const whatsappLink = `https://api.whatsapp.com/send?phone=${phone}&text=${message}`;
+const emailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${asunto}&body=${body}`
+
 function Footer() {
   return(
     <footer className="footer-section">
@@ -13,8 +28,16 @@ function Footer() {
         <div className="footer-center">
           <div className="footer-contact">
             <h2>Contactanos</h2>
-            <p><a href="mailto:jotumproyectos@gmail.com">jotumproyectos@gmail.com</a></p>
-            <p>+54 11 2174-7565</p>
+            <p>
+              <a href={emailLink} target="_blank">
+                {email}
+              </a>
+            </p>
+            <p>
+              <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                {phoneNumberView}
+              </a>
+            </p>
           </div>
           <div className="footer-place">
             <h2>Donde trabajamos</h2>

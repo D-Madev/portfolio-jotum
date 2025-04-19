@@ -2,7 +2,7 @@ import './WhatsApp-buton.css';
 import whatsappIcon from '../assets/whatsapp-icon.png'
 
 const phoneNumber = '5491121747565';
-const message = 'Hola, estoy interesado en el servicio de Jotum.';
+const message = 'Hola, estoy interesado en el servicio de Jötum.';
 const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
 
 function WhatsAppButon() {
