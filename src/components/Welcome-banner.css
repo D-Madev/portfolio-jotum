@@ -62,11 +62,11 @@
   }
 
   .banner-text {
-    font-size: 1.5rem;
+    display: none;
   }
 
   .banner-logo {
-    max-width: 200px;
+    max-width: 300px;
     max-height: 150px;
   }
 }
