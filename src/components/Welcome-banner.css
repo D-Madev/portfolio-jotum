@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  background-color: var(--main-color);
+  background-image: url("../assets/fallback.png"); 
 }
 
 .banner-video {
