@@ -48,6 +48,26 @@
   font-size: 5rem;
   position: absolute;
   top: 10px;
-  left: 0px;
+  left: -25px;
   z-index: -1;
+}
+
+
+@media (max-width: 768px) {
+  .parallax-section {
+    height: auto;
+  }
+
+  .justify-right,
+  .justify-left {
+    justify-content: center;
+  }
+  
+  .parallax-text {
+    padding: 1rem 0rem 1rem 2rem;
+  }
+
+  .parallax-text h1 {
+    top: 0px;
+  }
 }

@@ -18,3 +18,13 @@
 .paragraph-generic-content p {
   margin: 0 2rem;
 }
+
+@media (max-width: 768px) {
+  .paragraph-generic-content {
+    flex-direction: column;
+  }
+
+  .paragraph-generic-content p {
+    margin: 1rem 2rem;
+  }
+}
