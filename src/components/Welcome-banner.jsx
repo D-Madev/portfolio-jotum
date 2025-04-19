@@ -16,7 +16,7 @@ function WelcomeBanner({ backgroundType = 'image', backgroundSrc, showText = fal
 
       <div className="banner-overlay">
         {logo && <img src={logo} alt="Logo" className="banner-logo" />}
-        {showText && <h1 className="banner-text">{text}</h1>}
+        {showText && <p className="banner-text">{text}</p>}
         {children}
       </div>
     </section>

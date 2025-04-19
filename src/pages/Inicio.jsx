@@ -12,7 +12,7 @@ import Author from '../components/Author.jsx'
 import WhatsAppButton from '../components/WhatsApp-buton.jsx'
 // IMPORT IMAGES
 import logo from '../assets/logo-jotum-solotexto.png'
-import videoBackground from '../assets/parck.mp4'
+import videoBackground from '../assets/Background-welcome-banner.mp4'
 
 function Inicio() {
   return (
