@@ -1,0 +1,20 @@
+.paragraph-generic {
+  color: var(--text-color);
+}
+
+.paragraph-generic-title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.paragraph-generic-content {
+  display: flex;
+  align-items: center;
+  white-space: pre-line;
+}
+
+.paragraph-generic-content p {
+  margin: 0 2rem;
+}
