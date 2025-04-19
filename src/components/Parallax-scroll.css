@@ -1,0 +1,53 @@
+.parallax-wrapper {
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.parallax-section {
+  position: relative;
+  height: 60vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.justify-left {
+  justify-content: flex-start;
+}
+
+.justify-right {
+  justify-content: flex-end;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 1;
+}
+
+.parallax-text {
+  color: black;
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 2rem 3rem;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+  margin: 0 2rem;
+}
+
+.parallax-text h1 {
+  font-size: 5rem;
+  position: absolute;
+  top: 10px;
+  left: 0px;
+  z-index: -1;
+}
