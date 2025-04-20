@@ -9,8 +9,13 @@ function WhatsAppButon() {
   return(
     <div className="whatsapp-button">
       <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-        <img src={whatsappIcon} alt={whatsappIcon} className="whatsapp-icon" />
+        <img 
+          src={whatsappIcon} 
+          alt={whatsappIcon} 
+          className="whatsapp-icon" 
+        />
       </a>
+      <span className="whatsapp-text">Contáctanos</span>
     </div>
   )
 }
