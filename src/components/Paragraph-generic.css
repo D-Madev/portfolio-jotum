@@ -1,5 +1,8 @@
 .paragraph-generic {
   color: var(--text-color);
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 5rem 0;
 }
 
 .paragraph-generic-title {
