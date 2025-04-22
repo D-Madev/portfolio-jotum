@@ -1,6 +1,6 @@
 .leyend {
   background-color: var(--main-color);
-  padding: 0.7rem 0rem;
+  padding: 0.7rem 0rem 0rem 0rem;
   min-height: 20vh;
   width: 100%;
 }
@@ -17,6 +17,7 @@
   padding: 3.5rem 0rem;
 }
 
+/* CAMBIO DE ESTILOS -> PETICION DEL CLIENTE
 .leyend-divider {
   display: flex;
   align-items: center;
@@ -38,6 +39,7 @@
   background-color: white;
   margin-left: 2rem;
 }
+*/
 
 @media (max-width: 768px) {
   .leyend {
