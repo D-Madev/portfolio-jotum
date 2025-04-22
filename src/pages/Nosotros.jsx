@@ -7,7 +7,7 @@ import ParagraphGeneric from "../components/Paragraph-generic.jsx";
 import ParallaxScroll from "../components/Parallax-scroll.jsx"
 
 import wbImage from '../assets/Welcome-banner-example-edited.png'
-import logo from '../assets/logo-jotum-solotexto.png'
+
 
 function Nostros() {
   return (
@@ -17,8 +17,8 @@ function Nostros() {
         backgroundType="image"
         backgroundSrc={wbImage}
         showText={true}
-        text="Elegir Jötum es garantizar una construccion de calidad, con eficiencia, precision y un diseño cuidadosamente adaptado a cada cliente, creando un hogar solido, moderno y a la altura de sus espectativas."
-        logo={logo}
+        text={`“El verdadero valor está en lo que perdura. Jötum construye con excelencia para ese tipo de cliente.”`}
+        logo=""
         children={<></>}
       />
       <ParagraphGeneric 
