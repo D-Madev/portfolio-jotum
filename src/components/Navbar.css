@@ -32,15 +32,19 @@
   position: absolute;
   left: 0;
   bottom: -25px;
-  width: 0%;
+  width: 0;
   height: 6px;
   background-color: var(--main-color);
   transition: width 0.3s ease;
   margin-bottom: 2px;
 }
 
-.navbar a.active::after {
+.navbar a:hover::after {
   width: 100%;
+}
+
+.navbar a.active::after {
+  animation: underline-slide 0.3s ease forwards;
 }
 
 .navbar img {
@@ -52,6 +56,11 @@
   font-size: 2rem;
   cursor: pointer;
   color: white;
+}
+
+@keyframes underline-slide { 
+  from { width: 0; }
+  to { width: 100%; }
 }
 
 @media (max-width: 768px) {
