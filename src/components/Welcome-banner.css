@@ -24,6 +24,7 @@
 }
 
 .banner-overlay {
+  max-width: 750px;
   position: relative;
   z-index: 1;
   text-align: center;
@@ -47,7 +48,6 @@
 
 .banner-text {
   color: white;
-  max-width: 750px;
   font-size: 2rem;
   pointer-events: none;
   text-align: center;
@@ -56,9 +56,18 @@
   margin-right: auto;
 }
 
+.welcome-banner h1 {
+  font-size: 2rem;
+  text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+}
+
 @media (max-width: 768px) {
   .welcome-banner {
     height: 100vh;
+  }
+
+  .welcome-banner h1 {
+    font-size: 1.5rem;
   }
 
   .banner-text {
@@ -72,7 +81,11 @@
 }
 
 @media (min-width: 1500px) {
-  .banner-text {
+  .banner-overlay {
+    max-width: 900px;
+  }
+
+  .welcome-banner h1 {
     font-size: 3.5rem;
   }
 }

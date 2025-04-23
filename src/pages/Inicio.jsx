@@ -24,8 +24,8 @@ function Inicio() {
         backgroundSrc={videoBackground}
         showText={false}
         text=""
-        logo={logo}
-        children={<p></p>}
+        logo=""
+        children={<h1>Jötum construye con un estándar de excelencia que el mercado reconoce y premia.</h1>}
       />
       <Leyend />
       <ResumeAboutUs />

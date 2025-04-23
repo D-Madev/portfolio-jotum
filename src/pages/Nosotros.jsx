@@ -16,10 +16,10 @@ function Nostros() {
       <WelcomeBanner 
         backgroundType="image"
         backgroundSrc={wbImage}
-        showText={true}
-        text={`“El verdadero valor está en lo que perdura. Jötum construye con excelencia para ese tipo de cliente.”`}
+        showText={false}
+        text=""
         logo=""
-        children={<></>}
+        children={<h1>El verdadero valor está en lo que perdura. Jötum construye con excelencia para ese tipo de cliente.</h1>}
       />
       <ParagraphGeneric 
         title="VISION"
