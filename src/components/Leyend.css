@@ -43,12 +43,12 @@
 
 @media (max-width: 768px) {
   .leyend {
-    padding: 0.5rem 0rem;
+    padding: 0.5rem 0rem 0rem 0rem;
     min-height: 10vh;
   }
 
   .leyend-container {
-    padding: 2rem 0rem;
+    padding: 2rem;
   }
   
   .leyend-container h2 {
