@@ -5,11 +5,13 @@ import { createRoot } from 'react-dom/client'
 // Replace HashRouter -> BrowserRouter // 
 import { HashRouter as Router } from 'react-router-dom'; 
 import App from './App.jsx'
+import Navbar from './components/Navbar.jsx'
 import './styles/index.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Router>
+      <Navbar />
       <App />
     </Router>
   </StrictMode>,

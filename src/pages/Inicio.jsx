@@ -17,7 +17,7 @@ import videoBackground from '../assets/Background-welcome-banner.mp4'
 function Inicio() {
   return (
     <>
-      <Navbar />
+      
       <WhatsAppButton />
       <WelcomeBanner 
         backgroundType="video"

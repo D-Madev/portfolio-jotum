@@ -12,7 +12,7 @@ import wbImage from '../assets/Welcome-banner-example-edited.png'
 function Nostros() {
   return (
     <>
-      <NavBar />
+
       <WelcomeBanner 
         backgroundType="image"
         backgroundSrc={wbImage}
