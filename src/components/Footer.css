@@ -73,6 +73,11 @@
   color: #1a2231;
 }
 
+.footer-contact a:hover {
+  color: #1a2231;
+  font-weight: bold;
+}
+
 @media (max-width: 768px) {
   .footer-section {
     padding: 4rem 0;
