@@ -19,7 +19,7 @@
   list-style: none;
 }
 
-.navbar a {
+.navbar ul a {
   position: relative;
   text-decoration: none;
   color: white;
@@ -27,7 +27,7 @@
   transition: color 0.3s ease;
 }
 
-.navbar a::after {
+.navbar ul a::after {
   content: '';
   position: absolute;
   left: 0;
@@ -39,11 +39,11 @@
   margin-bottom: 2px;
 }
 
-.navbar a:hover::after {
+.navbar ul a:hover::after {
   width: 100%;
 }
 
-.navbar a.active::after {
+.navbar ul a.active::after {
   animation: underline-slide 0.3s ease forwards;
 }
 
