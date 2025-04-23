@@ -58,6 +58,15 @@
   color: white;
 }
 
+.backdrop {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: transparent;
+  z-index: 999;
+}
+
+
 @keyframes underline-slide { 
   from { width: 0; }
   to { width: 100%; }
@@ -96,7 +105,8 @@
   .navbar ul.open {
     display: flex;
     max-height: 600px;
-    opacity: 1;
+    opacity: 1000;
+
   }
 
   .navbar li {

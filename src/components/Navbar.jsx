@@ -12,9 +12,20 @@ function Navbar() {
           <img src={logo} alt="logo-jotum"/>
       </Link>
 
-      <span className={`hamburger ${menuOpen ? 'active' : ''}`}  onClick={() => setMenuOpen(!menuOpen)}>
+      <span 
+        className={`hamburger ${menuOpen ? 'active' : ''}`}  
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
         ☰
       </span>
+
+      {/* Component to close hamburger menu */
+      menuOpen && (
+        <div
+          className="backdrop"
+          onClick={() => setMenuOpen(false)}
+        />
+      )}
 
       <ul className={menuOpen ? 'open' : ''}>
         <li>
