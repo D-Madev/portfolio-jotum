@@ -55,22 +55,71 @@
   white-space: pre-line;  
 }
 
+@media (max-width: 930px) {
+  .parallax-content {
+    padding: 3rem;
+  }
+}
 
 @media (max-width: 768px) {
   .parallax-section {
     flex-direction: column;
   }
+
   .parallax-image,
   .parallax-content {
-    width: 100%;
-    height: 50vh;
+    flex: unset;
+  }
+
+  .parallax-image {
+    height: 25vh;
   }
 
   .parallax-section.reverse {
     flex-direction: column;
   }
 
+  .section-number {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: -9.5rem;
+    color: white;
+    text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .section-title {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 1rem 0;
+    position: relative;
+    top: -8rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  .section-text {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    font-size: 1rem;
+    top: -7rem;
+    margin: 4rem;
+  }
+
   .parallax-content {
-    padding: 1rem;
+    padding: 0rem 1rem 1rem 1rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .section-text {
+    margin: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .section-text {
+    margin: 0rem;
   }
 }

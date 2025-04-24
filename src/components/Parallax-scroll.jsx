@@ -14,63 +14,34 @@ export default function ParallaxScroll() {
     {
       image: image1,
       title: "Entrevista Inicial y Análisis del Terreno",
-      text: `Todo proyecto comienza con una instancia de encuentro y
-              escucha. Realizamos una reunión personalizada con el cliente
-              para conocer sus ideas, necesidades, expectativas y cualquier
-              inquietud que tenga. Esta conversación nos permite entender el
-              propósito del proyecto y establecer una base de confianza y
-              colaboración.
-              A partir de ese primer intercambio, realizamos un relevamiento
-              detallado del terreno o espacio existente, registrando tanto sus
-              características físicas como su entorno inmediato. Analizamos
-              también las regulaciones locales, códigos de edificación y otros
-              condicionantes técnicos o legales que puedan influir en el
-              diseño.
+      text: `Todo proyecto comienza con una instancia de encuentro y escucha. Realizamos una reunión personalizada con el cliente para conocer sus ideas, necesidades, expectativas y cualquier inquietud que tenga. Esta conversación nos permite entender el propósito del proyecto y establecer una base de confianza y colaboración.
+              A partir de ese primer intercambio, realizamos un relevamiento detallado del terreno o espacio existente, registrando tanto sus características físicas como su entorno inmediato. Analizamos también las regulaciones locales, códigos de edificación y otros condicionantes técnicos o legales que puedan influir en el diseño.
               Esta etapa nos permite detectar oportunidades, anticipar desafíos y sentar las bases técnicas y conceptuales sobre las que trabajaremos en las fases siguientes. Es un proceso analítico, pero también sensible al contexto y a las intenciones del cliente.`
     },
     {
       image: image2,
       title: "Exploración Conceptual",
-      text: `En esta etapa comenzamos a transformar las ideas en
-              propuestas concretas. A partir del diálogo con el cliente,
-              desarrollamos bocetos iniciales, esquemas arquitectónicos y
-              estudios de espacialidad que exploran distintas formas de
-              abordar el proyecto.
-              El objetivo es construir una base conceptual sólida. Proponemos
-              alternativas de organización, escalas, recorridos, materialidades
-              y vínculos con el entorno. Usamos herramientas como croquis,
-              collages, maquetas rápidas o referencias para visualizar las
-              ideas y abrir el juego creativo.
-              El intercambio constante con el cliente nos permite ajustar,
-              combinar y refinar las propuestas. Esta fase no busca
-              respuestas definitivas, sino definir el carácter y la lógica del
-              proyecto, integrando aspectos funcionales, contextuales y
-              simbólicos.
-              Es un momento clave del proceso, donde se empieza a delinear
-              una dirección clara, coherente y con identidad.`
+      text: `En esta etapa comenzamos a transformar las ideas en propuestas concretas. A partir del diálogo con el cliente, desarrollamos bocetos iniciales, esquemas arquitectónicos y estudios de espacialidad que exploran distintas formas de abordar el proyecto.
+      El objetivo es construir una base conceptual sólida. Proponemos alternativas de organización, escalas, recorridos, materialidades y vínculos con el entorno. Usamos herramientas como croquis, collages, maquetas rápidas o referencias para visualizar las ideas y abrir el juego creativo.
+      El intercambio constante con el cliente nos permite ajustar, combinar y refinar las propuestas. Esta fase no busca respuestas definitivas, sino definir el carácter y la lógica del proyecto, integrando aspectos funcionales, contextuales y simbólicos. Es un momento clave del proceso, donde se empieza a delinear una dirección clara, coherente y con identidad.`
     },
     {
       image: image3,
       title: "Desarrollo Técnico Preliminar",
-      text: `Aprobado el concepto, avanzamos con un desarrollo técnico
-              más profundo. Elaboramos planos preliminares, estudios de
-              volumetría, análisis estructurales básicos y primeras
-              estimaciones de costos. Esta etapa permite evaluar la viabilidad
-              económica y constructiva, proponiendo soluciones eficientes,
-              materiales adecuados y estrategias sustentables.`
+      text: `Aprobado el concepto, avanzamos con un desarrollo técnico más profundo. Elaboramos planos preliminares, estudios de volumetría, análisis estructurales básicos y primeras estimaciones de costos. Esta etapa permite evaluar la viabilidad económica y constructiva, proponiendo soluciones eficientes, materiales adecuados y estrategias sustentables.`
     },
     {
       image: image4,
       title: "Proyecto Ejecutivo",
       text: `En esta última fase se define todo el proyecto en detalle.
-            Refinamos cada aspecto del diseño y generamos la documentación técnica completa, que incluye:
-            • Planos ejecutivos
-            • Planos de estructura, electricidad, sanitarios y gas
-            • Detalles constructivos
-            • Planillas de cómputo y presupuesto
-            • Memorias descriptivas
-            • Especificaciones técnicas de materiales, acabados y sistemas constructivos
-            Esta documentación garantiza una ejecución clara y precisa en obra.`
+      Refinamos cada aspecto del diseño y generamos la documentación técnica completa, que incluye:
+      • Planos ejecutivos
+      • Planos de estructura, electricidad, sanitarios y gas
+      • Detalles constructivos
+      • Planillas de cómputo y presupuesto
+      • Memorias descriptivas
+      • Especificaciones técnicas de materiales, acabados y sistemas constructivos
+      Esta documentación garantiza una ejecución clara y precisa en obra.`
     },
     {
       image: image5,
@@ -83,55 +54,23 @@ export default function ParallaxScroll() {
     {
       image: image6,
       title: "Inicio y Puesta en Marcha",
-      text: `Una vez aprobado el proyecto y completada la documentación
-              técnica, comienza la etapa de organización de la obra. En este
-              momento se ajustan los cronogramas, se definen los tiempos de
-              ejecución y se coordinan los distintos equipos y gremios
-              involucrados. También se realiza el replanteo en el terreno,
-              donde se traslada el proyecto al espacio físico real y se marcan
-              las primeras referencias constructivas.
-              Es una etapa clave para asegurar un buen arranque. Se revisan
-              materiales, se afina la planificación económica y logística, y se
-              resuelven los últimos detalles técnicos antes de iniciar la
-              construcción. Esta preparación minuciosa permite minimizar
-              imprevistos y garantizar una ejecución más fluida.`
+      text: `Una vez aprobado el proyecto y completada la documentación técnica, comienza la etapa de organización de la obra. En este momento se ajustan los cronogramas, se definen los tiempos de ejecución y se coordinan los distintos equipos y gremios involucrados. También se realiza el replanteo en el terreno, donde se traslada el proyecto al espacio físico real y se marcan las primeras referencias constructivas.
+      Es una etapa clave para asegurar un buen arranque. Se revisan materiales, se afina la planificación económica y logística, y se resuelven los últimos detalles técnicos antes de iniciar la construcción. Esta preparación minuciosa permite minimizar imprevistos y garantizar una ejecución más fluida.`
     },
     {
       image: image7,
       title: "Ejecución y Supervisión",
-      text: `• Durante la obra, nuestro rol es acompañar y supervisar cada
-              etapa constructiva. Coordinamos los distintos equipos,
-              resolvemos dudas e imprevistos que puedan surgir y
-              verificamos que lo construido respete fielmente el proyecto
-              aprobado. Este seguimiento constante es fundamental para
-              asegurar la calidad del resultado final.
+      text: `• Durante la obra, nuestro rol es acompañar y supervisar cada etapa constructiva. Coordinamos los distintos equipos, resolvemos dudas e imprevistos que puedan surgir y verificamos que lo construido respete fielmente el proyecto aprobado. Este seguimiento constante es fundamental para asegurar la calidad del resultado final.
 
-              • Realizamos visitas periódicas al sitio, gestionamos avances y
-              mantenemos una comunicación fluida con el cliente,
-              informando sobre el progreso, posibles ajustes y próximos
-              pasos. También cuidamos que se cumplan los tiempos y el
-              presupuesto, sin perder de vista los detalles que hacen a la
-              identidad del proyecto.
+              • Realizamos visitas periódicas al sitio, gestionamos avances y mantenemos una comunicación fluida con el cliente, informando sobre el progreso, posibles ajustes y próximos pasos. También cuidamos que se cumplan los tiempos y el presupuesto, sin perder de vista los detalles que hacen a la identidad del proyecto.
 
-              • Esta fase no es solo ejecución: es también toma de
-              decisiones en tiempo real, atención al detalle y compromiso
-              con que cada elección se materialice como fue pensada.`
+              • Esta fase no es solo ejecución: es también toma de decisiones en tiempo real, atención al detalle y compromiso con que cada elección se materialice como fue pensada.`
     },
     {
       image: image8,
       title: "Cierre y Entrega",
-      text: `• Con la obra finalizada, comenzamos una etapa de revisión y
-              ajustes finales. Se recorren los espacios construidos, se
-              verifican terminaciones, instalaciones y funcionamiento
-              general. En caso de detectar detalles pendientes o
-              correcciones necesarias, se realiza lo que comúnmente se
-              conoce como punch list.
-              • También entregamos toda la documentación final del
-              proyecto y nos aseguramos de que el cliente se sienta
-              acompañado en esta transición hacia el uso pleno del
-              espacio. Esta fase es tan importante como el resto:
-              buscamos que la entrega sea clara, ordenada y que el cliente
-              reciba lo que imaginamos juntos, con la calidad que merece.`
+      text: `• Con la obra finalizada, comenzamos una etapa de revisión y ajustes finales. Se recorren los espacios construidos, se verifican terminaciones, instalaciones y funcionamiento general. En caso de detectar detalles pendientes o correcciones necesarias, se realiza lo que comúnmente se conoce como punch list.
+      • También entregamos toda la documentación final del proyecto y nos aseguramos de que el cliente se sienta acompañado en esta transición hacia el uso pleno del espacio. Esta fase es tan importante como el resto: buscamos que la entrega sea clara, ordenada y que el cliente reciba lo que imaginamos juntos, con la calidad que merece.`
     }
   ];
 
