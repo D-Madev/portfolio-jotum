@@ -27,6 +27,7 @@
 @media (max-width: 700px) {
   .resume-aboutus {
     flex-direction: column;
+    padding: 0rem 1rem;
   }
 
   .resume-aboutus-text {
