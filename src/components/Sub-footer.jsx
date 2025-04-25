@@ -1,13 +1,19 @@
 import './sub-footer.css'
 
+const text = `Cada proyecto que emprendemos es una oportunidad para crear algo único y significativo. 
+          Nuestro enfoque combina escucha, análisis riguroso, diseño con identidad y una ejecución cuidada de principio a fin.
+          Si estás listo para dar vida a tus ideas, nos encantaría acompañarte en ese camino.
+          Hablemos.`
+
 function SubFooter() {
     return (
       <section className="sub-footer">
         <div className='sub-footer-background'>
-          <h1 className='sub-footer-title'>Hoy das el primer paso</h1>
-          <p className='sub-footer-text'>Tu consulta no nos molesta, al contrario: nos importa.
-          Porque construir con Jotum es construir con confianza.</p>
-          <button className='sub-footer-button'><a href="mailto:jotumproyectos@gmail.com">Contactanos!</a></button>
+          <h1 className='sub-footer-title'></h1>
+          <p className='sub-footer-text'>
+            {text}
+          </p>
+          <button className='sub-footer-button'><a href="#/contacto" >Contactanos!</a></button>
         </div>
       </section>
     )
