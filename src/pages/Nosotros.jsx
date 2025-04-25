@@ -6,7 +6,7 @@ import Author from "../components/Author.jsx";
 import ParagraphGeneric from "../components/Paragraph-generic.jsx";
 import ParallaxScroll from "../components/Parallax-scroll.jsx"
 
-import wbImage from '../assets/Welcome-banner-example-edited.png'
+import wbUsVideo from '../assets/wb-nosotros.mp4'
 
 
 function Nostros() {
@@ -14,8 +14,8 @@ function Nostros() {
     <>
 
       <WelcomeBanner 
-        backgroundType="image"
-        backgroundSrc={wbImage}
+        backgroundType="video"
+        backgroundSrc={wbUsVideo}
         showText={false}
         text=""
         logo=""
