@@ -1,0 +1,23 @@
+.mini-stat-card {
+  background-color: transparent;
+  text-align: left;
+  max-width: 13em;
+  height: 7em;
+  color: white;
+}
+
+.mini-stat-label {
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.mini-stat-number {
+  font-size: 3rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.mini-stat-suffix {
+  color: var(--main-color);
+  display: inline;
+}

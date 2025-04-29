@@ -1,6 +1,14 @@
 import './Resume-aboutus.css'
+import MiniStatCard from './Mini-stats-card.jsx';
 
-function ResumeAboutUs() {
+export default function ResumeAboutUs() {
+  const stats = [
+    { label: 'Presencia en provincias', value: 5, suffix: ''},
+    { label: 'Espacios pensados desde cero para cada cliente', value: 20, suffix: '+'},
+    { label: 'Desarrollos ejecutados con estándares de diseño Jötum', value: 15, suffix: '+'},
+    { label: 'Seguimos sumando gracias a clientes como vos que se interesan en la excelencia', value: '∞', suffix: '+'},
+  ];
+
   return (
     <article className="resume-aboutus">
       <section className='resume-aboutus-text'>
@@ -11,9 +19,17 @@ function ResumeAboutUs() {
         <p className='resume-aboutus-quote'>"La forma sigue a la función." - Walter Gropius</p>
       </section>
       <section className='resume-aboutus-stats'>
+        {stats.map((stat, idx) => {
+          return(
+            <MiniStatCard 
+              key={idx}
+              label={stat.label}
+              value={stat.value}
+              suffix={stat.suffix}
+            />
+          )
+        })}
       </section>
     </article>
   );
 }
-
-export default ResumeAboutUs;
