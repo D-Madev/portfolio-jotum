@@ -1,8 +1,8 @@
 // IMPORT COMPONENTS
-import Navbar from '../components/Navbar.jsx'
 import WelcomeBanner from '../components/Welcome-banner.jsx'
 import Leyend from '../components/Leyend.jsx'
 import ResumeAboutUs from '../components/Resume-aboutus.jsx'
+import VisitUs from '../components/Visit-us.jsx'
 import ProyectList from '../components/Proyect-list.jsx'
 import Benefits from '../components/Benefits.jsx'
 import Testimonials from '../components/Testimonials.jsx'
@@ -29,6 +29,7 @@ function Inicio() {
       />
       <Leyend />
       <ResumeAboutUs />
+      <VisitUs/>
       <ProyectList />
       <Benefits />
       <Testimonials />
