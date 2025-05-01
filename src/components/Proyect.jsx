@@ -6,7 +6,7 @@ function Proyect({img, title, location, m2, state, description}) {
       <img src={img} alt="Imagen de proyecto" />
       <div className="proyect-content">
         <div className="proyect-header">
-          <p className="proyect-title"><b>{title}</b> - {location} - {m2}m²</p>
+          <p className="proyect-title"><b>{title}</b> {location}</p>
           <p className="proyect-state">{state}</p>
         </div>
         <p className="proyect-description">{description}</p>
