@@ -9,10 +9,11 @@
 .mini-stat-label {
   font-size: 0.9rem;
   margin-bottom: 0.25rem;
+  height: 4em;
 }
 
 .mini-stat-number {
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: bold;
   line-height: 1.2;
 }
@@ -20,4 +21,9 @@
 .mini-stat-suffix {
   color: var(--main-color);
   display: inline;
+  font-size: 3.5rem;
+  font-weight: bold;
+  line-height: 1.2;
+  position: absolute;
+  margin-left: .2em;
 }
