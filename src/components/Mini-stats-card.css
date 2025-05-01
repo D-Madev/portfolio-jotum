@@ -46,3 +46,14 @@
 .mini-stat-number-infinity.animate {
   animation: bounce .8s ease-out both;
 }
+
+@media (max-width: 768px) {
+  .mini-stat-card {
+    height: auto;
+  }
+
+  .mini-stat-label {
+    margin-bottom: 2.5rem;
+    font-size: 1rem;
+  }
+}
