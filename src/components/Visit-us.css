@@ -8,7 +8,7 @@
 }
 
 .visit-us-side-content {
-  width: 30%;
+  width: 25em;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -34,4 +34,24 @@
 .visit-us-button:hover {
   background-color: var(--main-color);
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .visit-us {
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .visit-us-side-content {
+    width: 100%;
+    height: auto;
+    padding: 2rem;
+    align-items: center;
+  }
+
+  .visit-us-paragraph {
+    text-align: center;
+  }
 }
