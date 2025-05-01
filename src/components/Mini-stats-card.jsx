@@ -13,32 +13,42 @@ export default function MiniStatCard({ label, value, suffix = '' }) {
   const odometerRef = useRef(null);
   const containerRef = useRef(null);
   const odRef = useRef(null);
+  const infiniteRef     = useRef(null);
 
+  
   useEffect(() => {
-    // 1) Configuramos Intersection Observer
+    
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // 2) Si la instancia no existe, la creamos
-          if (!odRef.current) {
-            odRef.current = new Odometer({
-              el: odometerRef.current,
-              value: 0,
-              duration: 2000,       // tiempo total de la animación (ms)
-              format: 'd',     // formato con separador de miles
-              theme: 'default',         // coincide con el CSS importado
-              auto: false           // desactiva la actualización automática al añadir el script
-            });
+          if (Number.isFinite(value)) {
+            if (!odRef.current) {
+              odRef.current = new Odometer({
+                el: odometerRef.current,
+                value: 0,
+                duration: 2000,
+                format: '(,ddd)',
+                theme: 'default',
+                auto: false
+              });
+            }
+            odometerRef.current.innerHTML = 0;
+            odRef.current.update(value);
+          } else {
+            // Para infinito: activa la animación CSS
+            infiniteRef.current.classList.add('animate');
           }
-          // 3) Reiniciamos el odómetro a 0 y luego animamos al nuevo valor
-          odometerRef.current.innerHTML = 0;  // reinicio de la UI :contentReference[oaicite:4]{index=4}
-          odRef.current.update(value);        // animación al valor deseado
+        } else {
+          // Cuando salga del viewport, quitamos la clase para que vuelva a animarse
+          if (infiniteRef.current) {
+            infiniteRef.current.classList.remove('animate');
+          }
         }
       },
       { threshold: 0.5 } // dispara cuando 50% de la card está visible :contentReference[oaicite:5]{index=5}
     );
     
-    if (containerRef.current) observer.observe(containerRef.current);
+    observer.observe(containerRef.current);
 
     // Clean-up
     return () => observer.disconnect();      // liberamos recursos :contentReference[oaicite:6]{index=6}
@@ -47,7 +57,15 @@ export default function MiniStatCard({ label, value, suffix = '' }) {
   return (
     <div className="mini-stat-card" ref={containerRef}>
       <div className="mini-stat-label">{label}</div>
-      <div className="mini-stat-number" ref={odometerRef}></div>
+      { !Number.isFinite(value) 
+        ? (
+          //  Símbolo infinito estático
+          <div className="mini-stat-number-infinity" ref={infiniteRef}>&infin;</div>
+        ) : (
+          //  Animación Odometer
+          <div className="mini-stat-number" ref={odometerRef}></div>
+        )
+      }
       <p className='mini-stat-suffix'> {suffix}</p>
     </div>
   );

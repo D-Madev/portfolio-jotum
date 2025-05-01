@@ -27,3 +27,22 @@
   position: absolute;
   margin-left: .2em;
 }
+
+@keyframes bounce {
+  0%   { transform: translateY(0); }
+  30%  { transform: translateY(-30%); }
+  50%  { transform: translateY(0); }
+  100% { transform: translateY(0); }
+}
+
+
+.mini-stat-number-infinity {
+  font-size: 5.7rem;
+  font-weight: bold;
+  display: inline-block;
+  line-height: .7;
+}
+
+.mini-stat-number-infinity.animate {
+  animation: bounce .8s ease-out both;
+}
