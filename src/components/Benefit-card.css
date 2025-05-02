@@ -81,8 +81,8 @@
   }
 
   .benefit-img-wrapper {
-    width: 40vw;
-    height: 40vw;
+    width: 25vw;
+    height: 25vw;
     margin-bottom: 1rem;
   }
 
@@ -93,7 +93,7 @@
   }
 
   .card-decor-line {
-    width: 60%;
+    width: 25%;
     margin: 1rem auto;
   }
 

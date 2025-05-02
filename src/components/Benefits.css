@@ -35,4 +35,8 @@
     flex-direction: column;
     align-items: center;
   }
+
+  .benefits-list {
+    gap: 3rem;
+  }
 }

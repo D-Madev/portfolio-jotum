@@ -15,7 +15,7 @@ function Benefits() {
       <div className='benefits-list'>
         <BenefitCard 
           img={BenefitMoney}
-          title="RELACION CALIDA/PRECIO"
+          title="RELACION CALIDAD/PRECIO"
           description="Optimizamos materiales, diseño estructural y logística de obra para lograr la mejor ecuación costo-beneficio."
           className="benefit-card-1"
         /> 
@@ -27,7 +27,7 @@ function Benefits() {
         />
         <BenefitCard 
           img={BenefitLeaf}
-          title="FUNCIONALIDAD Y DISEÑOEFICIENCIA ENERGETICA Y SUSTENTABILIDAD"
+          title="FUNCIONALIDAD Y DISEÑO EFICIENCIA ENERGETICA Y SUSTENTABILIDAD"
           description="Diseñamos con criterios de eficiencia energética: ahorrás en servicios y cuidás el entorno desde el primer día."
           className="benefit-card-3"
         />
