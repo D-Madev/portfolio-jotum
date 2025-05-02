@@ -30,7 +30,6 @@
 .proyect-state {
   color: var(--secondary-color);
   font-size: 1rem;
-  padding-right: 2rem;
 }
 
 .proyect-resume-bar {
@@ -49,7 +48,6 @@
 .proyect-description {
   margin-top: 2rem;
   color: var(--secondary-color);
-  padding-right: 2rem;
   font-size: .97rem;
 }
 
@@ -66,10 +64,14 @@
     width: auto;
     height: auto;
     box-sizing: border-box;
-    margin-right: 2rem;
+  }
+
+  .proyect-title {
+    text-align: center;
   }
 
   .proyect-state {
+    text-align: center;
     font-size: 1.1rem;
   }
 
