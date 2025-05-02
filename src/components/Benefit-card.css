@@ -11,14 +11,16 @@
 
 .benefit-title {
   font-size: 1rem;
-  padding-bottom: 2rem;
   height: 5rem;
   color: var(--black-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .benefit-img-wrapper {
-  width: 10vw;
-  height: 10vw;
+  width: 8vw;
+  height: 8vw;
   border: 4px solid var(--main-color);
   border-radius: 50%;
   overflow: hidden;
@@ -41,11 +43,11 @@
 }*/
   
 .card-decor-line {
-  width: 80%;
+  width: 25%;
   height: 3px;
   align-self: center;
   background-color: var(--black-color);
-  margin: 1rem 0;
+  margin: .5rem 0;
 }
 
 .benefit-description {
