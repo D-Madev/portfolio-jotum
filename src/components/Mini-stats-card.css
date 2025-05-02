@@ -4,6 +4,7 @@
   max-width: 13em;
   height: 7em;
   color: white;
+  position: relative;
 }
 
 .mini-stat-label {
@@ -15,12 +16,13 @@
 .mini-stat-number {
   font-size: 3.5rem;
   font-weight: bold;
-  line-height: 1.2;
+  line-height: 1.2; 
+  display: inline-block;
 }
 
 .mini-stat-suffix {
   color: var(--main-color);
-  display: inline;
+  display: inline-block;
   font-size: 3.5rem;
   font-weight: bold;
   line-height: 1.2;
