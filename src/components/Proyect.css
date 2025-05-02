@@ -35,8 +35,7 @@
 
 .proyect-resume-bar {
   font-size: 1.2rem;
-  color: white;
-  background-color: black;
+  color: var(--text-color);
   display: flex;
   align-items: center;
   justify-content: center;
