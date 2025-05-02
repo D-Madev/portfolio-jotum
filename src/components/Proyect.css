@@ -98,9 +98,8 @@
   }
 
   .proyect-content {
-    max-height: 0;
+    max-height: 13rem;
     overflow: hidden;
-    color: white;
     transition: max-height 0.3s ease;
   }
 
