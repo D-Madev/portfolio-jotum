@@ -47,6 +47,11 @@
     align-items: center;
   }
 
+  .visit-us-title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
   .visit-us-side-content {
     width: 100%;
     height: auto;
