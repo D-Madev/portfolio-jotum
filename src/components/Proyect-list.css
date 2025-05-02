@@ -24,6 +24,15 @@
 */
 
 @media (max-width: 768px) {
+  .proyect-list {
+    padding: 1rem;
+  }
+  
+  .proyect-list-h1 {
+    text-align: center;
+  }
+
+  /* Uncomment this if you want to keep the line on mobile devices */
  /* .proyect-list::before {
     left: 0rem;
     top: 0rem;

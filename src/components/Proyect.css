@@ -62,16 +62,23 @@
   font-size: .97rem;
 }
 
+.proyect-content {
+  max-height: none;
+  overflow: visible;
+}
+
+.show-up, .show-down {
+  display: none;
+}
 
 @media (max-width: 800px) {
   .proyect {
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
   }
 
   .proyect img {
-    max-width: 90%;
+    max-width: 100%;
     width: auto;
     height: auto;
     box-sizing: border-box;
@@ -88,5 +95,37 @@
 
   .proyect-description {
     font-size: 1.3rem;    
+  }
+
+  .proyect-content {
+    max-height: 0;
+    overflow: hidden;
+    color: white;
+    transition: max-height 0.3s ease;
+  }
+
+  .show-down {
+    display: flex;
+    color: var(--text-color);
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+
+  .proyect.open .proyect-content {
+    max-height: 1000px;
+    color: var(--text-color);
+  }
+
+  .proyect.open .show-down {
+    display: none;
+  }
+
+  .proyect.open .show-up {
+    display: flex;
+    color: var(--text-color);
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
   }
 }
