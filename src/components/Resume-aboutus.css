@@ -40,10 +40,16 @@
     padding: 1rem;
   }
 
+  .resume-aboutus-title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
   .resume-aboutus-text {
     width: 100%;
     padding: 1rem;
     height: auto;
+    text-align: center;
   }
 
   .resume-aboutus-stats {
