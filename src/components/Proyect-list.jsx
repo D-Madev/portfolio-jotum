@@ -12,7 +12,7 @@ function ProyectList() {
         img={proyect1}
         title="Casa Umlaut"
         location="Del Viso"
-        m2="179"
+        m2="30"
         state="Diseño arquitectonico y obra completa en curso."
         description="Ana y Juan nos contrataron en un principio para sentar las bases de lo que seria su hogar
           soñado, nos contaron un poco sobre su dia dia en la vivienda actual y como se desarrollaban
