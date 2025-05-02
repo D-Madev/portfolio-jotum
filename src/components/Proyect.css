@@ -1,21 +1,31 @@
 .proyect {
   display: flex;
-  align-items: flex-start;
-  gap: 2rem;
+  align-items: stretch;
+  gap: 0;
+  margin: 3rem 0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20);
+  background-color: #fbfbfb;
 }
 
-.proyect img {
-  flex-shrink: 0;
-  width: 63vw;
-  height: 63vh;
+.proyect-img-container {
+  flex: 0 0 67%;
+  overflow: hidden;
+}
+
+.proyect-img-container img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 4px;
+  display: block;
 }
 
 .proyect-content {
   flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .proyect-header {            
@@ -35,6 +45,7 @@
 .proyect-resume-bar {
   font-size: 1.2rem;
   color: var(--text-color);
+  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
