@@ -1,7 +1,7 @@
 .resume-aboutus {
   background-color: var(--black-color);
   color: white;
-  padding: 5rem;
+  padding: 7rem 0;
   pointer-events: none;
   display: flex;
   justify-content: space-around;
