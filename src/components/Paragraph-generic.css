@@ -2,7 +2,7 @@
   color: var(--text-color);
   max-width: 1300px;
   margin: 0 auto;
-  padding: 5rem 0;
+  padding: 10rem 0;
 }
 
 .paragraph-generic-title {
@@ -30,4 +30,15 @@
   .paragraph-generic-content p {
     margin: 1rem 2rem;
   }
+}
+
+@media (min-width: 1800px) {
+  .paragraph-generic-title {
+    font-size: 4rem;
+  }
+
+  .paragraph-generic-content p {
+    font-size: 1.3rem;
+  }
+
 }

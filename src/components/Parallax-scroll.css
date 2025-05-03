@@ -1,3 +1,7 @@
+.parallax-container {
+  margin-top: 15rem;
+}
+
 .parallax-section {
   position: sticky;
   top: 0;
@@ -40,19 +44,45 @@
 .section-number {
   font-size: 7rem;
   font-weight: bold;
-  color: black;
+  color: var(--text-gray-color);
 }
 
 .section-title {
-  font-weight: lighter;
   margin: 1rem 0 2rem 0;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   /*font-size: 2rem; font-weight: bold;*/
 }
 
 .section-text {
   font-size: .96rem;
   white-space: pre-line;  
+}
+
+@media(min-width: 1800px) {
+  .parallax-section {
+    height: 100vh;
+  }
+
+  .parallax-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .section-number {
+    font-size: 10rem;
+  }
+
+  .section-title {
+    font-size: 3rem;
+  }
+
+  .section-text {
+    margin-top: 3rem;
+    font-size: 1.7rem;
+    
+  }
 }
 
 @media (max-width: 930px) {
