@@ -1,4 +1,3 @@
-import NavBar from "../components/Navbar.jsx";
 import WelcomeBanner from "../components/Welcome-banner.jsx";
 import SubFooter from "../components/Sub-footer.jsx";
 import Footer from "../components/Footer.jsx";
@@ -7,9 +6,10 @@ import ParagraphGeneric from "../components/Paragraph-generic.jsx";
 import ParallaxScroll from "../components/Parallax-scroll.jsx"
 
 import wbUsVideo from '../assets/wb-nosotros.mp4'
-
+import logo from '../assets/logo-jotum-solotexto.png'
 
 function Nostros() {
+  /*<h1>El verdadero valor está en lo que perdura. Jötum construye con excelencia para ese tipo de cliente.</h1>*/
   return (
     <>
 
@@ -18,8 +18,8 @@ function Nostros() {
         backgroundSrc={wbUsVideo}
         showText={false}
         text=""
-        logo=""
-        children={<h1>El verdadero valor está en lo que perdura. Jötum construye con excelencia para ese tipo de cliente.</h1>}
+        logo={logo}
+        children={''}
       />
       <ParagraphGeneric 
         title="VISION"
