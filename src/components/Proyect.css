@@ -128,3 +128,21 @@
     transition: all 0.3s ease;
   }
 }
+
+@media (min-width: 1800px) {
+  .proyect-title {
+    font-size: 3rem;
+  }
+
+  .proyect-state {
+    font-size: 1.5rem;
+  }
+
+  .proyect-description {
+    font-size: 1.5rem;    
+  }
+
+  .proyect-resume-bar {
+    font-size: 2rem;
+  }
+}
