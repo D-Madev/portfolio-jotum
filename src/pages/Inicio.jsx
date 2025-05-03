@@ -13,7 +13,7 @@ import WhatsAppButton from '../components/WhatsApp-buton.jsx'
 // IMPORT IMAGES
 import logo from '../assets/logo-jotum-solotexto.png'
 import videoBackground from '../assets/Background-welcome-banner.mp4'
-import subFooterImage from '../assets/Sub-footer.png'
+import subFooterImage from '../assets/sub-footer-inicio.png'
 
 function Inicio() {
   return (

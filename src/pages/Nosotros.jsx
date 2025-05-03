@@ -6,6 +6,7 @@ import ParagraphGeneric from "../components/Paragraph-generic.jsx";
 import ParallaxScroll from "../components/Parallax-scroll.jsx"
 
 import wbUsVideo from '../assets/wb-nosotros.mp4'
+import wbUsImage from '../assets/wb-nosotros.png'
 import logo from '../assets/logo-jotum-solotexto.png'
 
 function Nostros() {
@@ -14,8 +15,8 @@ function Nostros() {
     <>
 
       <WelcomeBanner 
-        backgroundType="video"
-        backgroundSrc={wbUsVideo}
+        backgroundType="image"
+        backgroundSrc={wbUsImage}
         showText={false}
         text=""
         logo={logo}
