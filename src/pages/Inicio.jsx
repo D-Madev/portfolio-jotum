@@ -13,6 +13,7 @@ import WhatsAppButton from '../components/WhatsApp-buton.jsx'
 // IMPORT IMAGES
 import logo from '../assets/logo-jotum-solotexto.png'
 import videoBackground from '../assets/Background-welcome-banner.mp4'
+import subFooterImage from '../assets/Sub-footer.png'
 
 function Inicio() {
   return (
@@ -33,7 +34,10 @@ function Inicio() {
       <ProyectList />
       <Benefits />
       <Testimonials />
-      <SubFooter />
+      <SubFooter 
+        text = "Cada proyecto que emprendemos es una oportunidad para crear algo único y significativo. Nuestro enfoque combina escucha, análisis riguroso, diseño con identidad y una ejecución cuidada de principio a fin. Si estás listo para dar vida a tus ideas, nos encantaría acompañarte en ese camino. Hablemos."
+        img = {subFooterImage}
+      />
       <Footer />
       <Author /> 
     </>

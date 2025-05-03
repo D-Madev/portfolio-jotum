@@ -8,8 +8,10 @@
 
 .sub-footer-background {
   position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   inset: 0;
-  background: url("../assets/Sub-footer.png") no-repeat center/cover;
   z-index: 1;
   display: flex;
   flex-direction: column;
