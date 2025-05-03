@@ -17,8 +17,15 @@ function Proyect({img, title, location, m2, state, description}) {
         tabIndex={0}
       >
         <img src={img} alt="Imagen de proyecto" />
+      </div> 
 
-      <article className="proyect-content">
+      <article 
+        className="proyect-content" 
+        onClick={handleImageClick}
+        role="button"
+        aria-expanded={isOpen}
+        tabIndex={0}
+      >
         <header className="proyect-header">
           <p className="proyect-title"><b>{title}</b> {location}</p>
           <p className="proyect-state">{state}</p>
@@ -35,7 +42,6 @@ function Proyect({img, title, location, m2, state, description}) {
         <i className='fas fa-angle-down show-down'></i>
         <p className="proyect-description">{description}</p>
       </article>
-      </div> 
     </section>
   );
 }
