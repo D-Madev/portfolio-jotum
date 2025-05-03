@@ -1,14 +1,14 @@
 .resume-aboutus {
   background-color: var(--black-color);
   color: white;
-  padding: 3rem;
+  padding: 5rem;
   pointer-events: none;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
+
 .resume-aboutus-text {
-  width: 50%;
   padding: 0 2rem 2rem 2rem;  
 }
 
@@ -18,6 +18,7 @@
 
 .resume-aboutus-paragraph {
   margin: 2rem 0;
+  max-width: 700px;
 }
 
 .resume-aboutus-quote {
@@ -55,5 +56,20 @@
   .resume-aboutus-stats {
     grid-template-columns: repeat(2, 1fr);
     padding: 1rem;
+  }
+}
+
+@media (min-width: 1800px) {
+  .resume-aboutus-title {
+    font-size: 3rem;
+  }
+  
+  .resume-aboutus-paragraph {
+    margin: 2rem 0;
+    max-width: 900px;
+  }
+
+  .resume-aboutus-text {
+    font-size: 1.5rem;
   }
 }

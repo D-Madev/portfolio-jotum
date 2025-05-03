@@ -59,3 +59,26 @@
     font-size: 1rem;
   }
 }
+
+
+@media (min-width: 1800px) {
+  .mini-stat-card {
+    max-width: 18em;
+  }
+
+  .mini-stat-label {
+    font-size: 1.3rem;
+  }
+
+  .mini-stat-number {
+    font-size: 5rem;
+  }
+
+  .mini-stat-number-infinity {
+    font-size: 8.7rem;
+  }
+
+  .mini-stat-suffix {
+    font-size: 5rem;
+  }
+}
