@@ -19,7 +19,7 @@
 .benefits-list {
   display: flex;
   justify-content: center;
-  gap: 6rem;
+  gap: 4rem;
   flex-wrap: wrap;
 }
 

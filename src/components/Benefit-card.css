@@ -43,7 +43,7 @@
   
 .card-decor-line {
   width: 25%;
-  height: 3px;
+  height: 2px;
   align-self: center;
   background-color: var(--black-color);
   margin: .5rem 0;
