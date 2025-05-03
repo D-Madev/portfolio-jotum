@@ -66,6 +66,11 @@ function Footer() {
                 <i className="fab fa-linkedin"></i>
               </a>
             </li>
+            <li>
+              <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-whatsapp"></i>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
