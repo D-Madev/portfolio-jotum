@@ -7,9 +7,17 @@ import image5 from '../assets/us-image-5.png'
 import image6 from '../assets/us-image-6.png'
 import image7 from '../assets/us-image-7.png'
 import image8 from '../assets/us-image-8.png'
+import coverImage from '../assets/fallback.png'
 import './Parallax-scroll.css'
 
 export default function ParallaxScroll() {
+
+  const cover = {
+    image: coverImage,
+    title: "Bienvenidos a Jötum",
+    text: "Diseño y construcción a tu medida"
+  };
+
   const sections = [
     {
       image: image1,
@@ -90,15 +98,28 @@ export default function ParallaxScroll() {
       ); 
 
   return (
-    <div
-      className="parallax-container"
-      style={{ height: `${sections.length * 100}vh` }}
-    >
+      <div
+        className="parallax-container"
+        style={{ height: `${(sections.length + 1) * 100}vh` }}
+      >
+      <section
+        className="parallax-cover"
+        style={{ zIndex: 1 }}
+      >
+        <div className="cover-image">
+          <img src={cover.image} alt={cover.title} />
+        </div>
+        <div className="cover-content">
+          <h1>{cover.title}</h1>
+          <p>{cover.text}</p>
+        </div>
+      </section>
+
       {sections.map((section, i) => (
         <section
           key={i}
           className={`parallax-section ${i % 2 !== 1 ? 'reverse' : ''}`}
-          style={{ zIndex: sections.length + i }}
+          style={{ zIndex: 2 + i }}
         >
           <div className="parallax-image">
             <img src={section.image} alt={section.title} />
