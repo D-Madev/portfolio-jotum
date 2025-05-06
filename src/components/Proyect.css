@@ -8,7 +8,7 @@
 }
 
 .proyect-img-container {
-  flex: 0 0 67%;
+  flex: 0 0 60%;
   overflow: hidden;
 }
 
@@ -24,7 +24,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 1rem;
+  padding: 2rem;
   box-sizing: border-box;
 }
 
@@ -131,18 +131,18 @@
 
 @media (min-width: 1800px) {
   .proyect-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
   .proyect-state {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 
   .proyect-description {
-    font-size: 1.5rem;    
+    font-size: 1rem;    
   }
 
   .proyect-resume-bar {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 }
