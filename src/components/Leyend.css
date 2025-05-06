@@ -60,3 +60,13 @@
     margin: 0.5rem;
   }
 }
+
+@media (min-width: 1800px) {
+  .leyend-container h2 {
+    font-size: 2rem;
+  }
+
+  .leyend-container p {
+    font-size: 1.3rem;
+  }
+}
