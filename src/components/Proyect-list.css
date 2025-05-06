@@ -39,3 +39,9 @@
     bottom: 0rem;
   }*/
 }
+
+@media (min-width: 1800px) {
+  .proyect-list {
+    padding: 3rem 7%;
+  }  
+}

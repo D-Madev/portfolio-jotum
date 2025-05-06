@@ -60,6 +60,10 @@
 }
 
 @media (min-width: 1800px) {
+  .resume-aboutus {
+    padding: 6.5rem 3%;
+  }
+  
   .resume-aboutus-title {
     font-size: 2rem;
   }
