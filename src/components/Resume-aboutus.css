@@ -61,7 +61,7 @@
 
 @media (min-width: 1800px) {
   .resume-aboutus-title {
-    font-size: 3rem;
+    font-size: 2rem;
   }
   
   .resume-aboutus-paragraph {
@@ -70,6 +70,6 @@
   }
 
   .resume-aboutus-text {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 }

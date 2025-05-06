@@ -63,11 +63,12 @@
 
 @media (min-width: 1800px) {
   .mini-stat-card {
-    max-width: 18em;
+    max-width: 20em;
   }
 
   .mini-stat-label {
     font-size: 1.3rem;
+    height: 4rem;
   }
 
   .mini-stat-number {
