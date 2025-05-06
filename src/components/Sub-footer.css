@@ -25,7 +25,8 @@
   content: '';
   position: absolute;
   inset: 0;
-  filter: blur(5px) brightness(50%);
+  /*filter: blur(5px);*/
+  filter:  brightness(20%);
   margin: -5px;
   background: inherit;
   z-index: 0;
