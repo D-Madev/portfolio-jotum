@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #000;
+  background-color: #575757;
   color: white;
 }
 
@@ -19,13 +19,30 @@
   z-index: -1;
 }
 
-.parallax-cover .cover-content {
-  z-index: 1;                /* encima de la imagen */
+.cover-contet-paragraph {
+  max-width: 850px;
+  padding: 0 2rem;
   text-align: center;
 }
 
+.cover-title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.parallax-cover .cover-content {
+  z-index: 1;
+  text-align: center;
+}
+
+.parallax-cover i {
+  font-size: 7rem;
+}
+
 .parallax-container {
-  margin-top: 15rem;
+  margin-top: 5rem;
 }
 
 .parallax-section {
@@ -89,6 +106,10 @@
     height: 100vh;
   }
 
+  .parallax-container {
+    margin-top: 15rem;
+  }
+
   .parallax-image img {
     height: 100%;
     width: 100%;
@@ -108,6 +129,11 @@
     margin-top: 3rem;
     font-size: 1.7rem;
     
+  }
+
+  .cover-content {
+    max-width: 1300px;
+    font-size: 1.3rem;
   }
 }
 

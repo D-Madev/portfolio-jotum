@@ -2,7 +2,7 @@
   color: var(--text-color);
   max-width: 1300px;
   margin: 0 auto;
-  padding: 10rem 0;
+  padding: 3rem 0;
 }
 
 .paragraph-generic-title {
@@ -40,6 +40,10 @@
 }
 
 @media (min-width: 1800px) {
+  .paragraph-generic {
+    padding: 8rem 0;
+  }
+
   .paragraph-generic-title {
     font-size: 4rem;
   }

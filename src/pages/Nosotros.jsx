@@ -13,15 +13,15 @@ function Nostros() {
   /*<h1>El verdadero valor está en lo que perdura. Jötum construye con excelencia para ese tipo de cliente.</h1>*/
   return (
     <>
-
-      <WelcomeBanner 
-        backgroundType="image"
-        backgroundSrc={wbUsImage}
-        showText={false}
-        text=""
-        logo={logo}
-        children={''}
-      />
+        <WelcomeBanner 
+          backgroundType="image"
+          backgroundSrc={wbUsImage}
+          showText={false}
+          text=""
+          logo={logo}
+          children={''}
+          style={{ height: '630px' }}
+        />
       <ParagraphGeneric 
         title="VISION"
         text1={`En Jötum, concebimos la arquitectura como la unión perfecta entre eficiencia, diseño y precisión. Inspirados en la filosofía de la Bauhaus, creemos que cada espacio debe ser funcional sin perder su identidad estética. No construimos casas comunes, sino obras de arte habitables, diseñadas para quienes buscan más que una simple vivienda: un espacio exclusivo que refleje su estilo de vida y visión.

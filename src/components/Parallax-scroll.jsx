@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import image1 from '../assets/us-image-1.png'
 import image2 from '../assets/us-image-2.png'
 import image3 from '../assets/us-image-3.png'
@@ -7,15 +7,14 @@ import image5 from '../assets/us-image-5.png'
 import image6 from '../assets/us-image-6.png'
 import image7 from '../assets/us-image-7.png'
 import image8 from '../assets/us-image-8.png'
-import coverImage from '../assets/fallback.png'
 import './Parallax-scroll.css'
 
 export default function ParallaxScroll() {
 
   const cover = {
-    image: coverImage,
-    title: "Bienvenidos a Jötum",
-    text: "Diseño y construcción a tu medida"
+    image: '',
+    title: "ENTERATE COMO TRABAJAMOS",
+    text: "En jotum creemos en la calidad y el compromiso desde el primer día. Por eso dividimos nuestro proceso en 8 etapas bien definidas, para sepas en todo momento qué esperar y qué putno está tu proyecto."
   };
 
   const sections = [
@@ -82,20 +81,6 @@ export default function ParallaxScroll() {
     }
   ];
 
-  const renderSection = raw =>
-    raw
-      .trim()
-      .split('\n')
-      .map(l => l.replace(/^•\s*/, l.startsWith('•') ? '•' : ''))
-      .reduce(
-        (acc, l) => {
-          if (l.startsWith('•')) acc.items.push(l.slice(1).trim());
-          else if (!acc.items.length) acc.intro.push(l);
-          else acc.outro.push(l);
-          return acc;
-        },
-        { intro: [], items: [], outro: [] }
-      ); 
 
   return (
       <div
@@ -106,14 +91,30 @@ export default function ParallaxScroll() {
         className="parallax-cover"
         style={{ zIndex: 1 }}
       >
-        <div className="cover-image">
-          <img src={cover.image} alt={cover.title} />
-        </div>
+        <div className="cover-image"> <img src={cover.image} alt={cover.title} /> </div>
         <div className="cover-content">
-          <h1>{cover.title}</h1>
-          <p>{cover.text}</p>
-        </div>
-      </section>
+          <h1 className='cover-title'>{cover.title}</h1>
+          <p className="cover-contet-paragraph">{cover.text}</p>
+          <svg width="40%" style={{marginTop:'5%'}} viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polyline
+            points="6,5 12,11 18,5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <polyline
+            points="6,17 12,23 18,17"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+    </section>
 
       {sections.map((section, i) => (
         <section

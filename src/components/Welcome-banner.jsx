@@ -1,11 +1,20 @@
 import './welcome-banner.css';
 
-function WelcomeBanner({ backgroundType = 'image', backgroundSrc, showText = false, text = '', logo, children }) {
+function WelcomeBanner({ 
+  backgroundType = 'image', 
+  backgroundSrc, 
+  showText = false, 
+  text = '', 
+  logo, 
+  children,
+  style = {}
+}) {
   return (
     <section 
       className="welcome-banner"
       style={{ 
         backgroundImage: backgroundType === 'image' ? `url(${backgroundSrc})` : 'none' 
+        , ...style
       }}
     >
       {backgroundType === 'video' && (
