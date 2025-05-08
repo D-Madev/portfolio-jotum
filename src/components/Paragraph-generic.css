@@ -2,7 +2,12 @@
   color: var(--text-color);
   max-width: 1300px;
   margin: 0 auto;
-  padding: 3rem 0;
+  padding: 5rem 0;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  width: 80%;
 }
 
 .paragraph-generic-title {
@@ -41,7 +46,15 @@
 
 @media (min-width: 1800px) {
   .paragraph-generic {
-    padding: 8rem 0;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    width: 80%;
+  }
+
+  .paragraph-generic-title {
+    line-height: 50px;
   }
 
   .paragraph-generic-title {

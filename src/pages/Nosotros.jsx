@@ -5,9 +5,8 @@ import Author from "../components/Author.jsx";
 import ParagraphGeneric from "../components/Paragraph-generic.jsx";
 import ParallaxScroll from "../components/Parallax-scroll.jsx"
 
-import wbUsVideo from '../assets/wb-nosotros.mp4'
 import wbUsImage from '../assets/wb-nosotros.png'
-import logo from '../assets/logo-jotum-solotexto.png'
+import logo from '../assets/logo-jotum-sf.png'
 
 function Nostros() {
   /*<h1>El verdadero valor está en lo que perdura. Jötum construye con excelencia para ese tipo de cliente.</h1>*/
@@ -20,7 +19,7 @@ function Nostros() {
           text=""
           logo={logo}
           children={''}
-          style={{ height: '630px' }}
+          style={{ height: '535px'}}
         />
       <ParagraphGeneric 
         title="VISION"
