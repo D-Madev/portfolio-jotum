@@ -49,7 +49,7 @@
   flex: 1 1 200px;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   text-decoration: underline;
 }
 
