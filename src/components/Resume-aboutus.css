@@ -4,7 +4,6 @@
   pointer-events: none;
   display: flex;
   justify-content: space-around;
-  padding: 7rem 3%;
 }
 
 
@@ -38,7 +37,7 @@
 @media (max-width: 1960px) {
   .resume-aboutus {
     justify-content: space-between;
-    padding: 7rem 7%;
+    padding: 5rem 7%;
   }
   .resume-aboutus-text {
     padding: 0 4rem 0 0;
@@ -70,16 +69,22 @@
 }
 
 @media (min-width: 1800px) {
+  .resume-aboutus {
+    padding: 7rem 7%;
+    justify-content: space-between;
+  }
+
    .resume-aboutus-title {
     font-size: 2rem;
   }
   
   .resume-aboutus-paragraph {
     margin: 2rem 0;
-    max-width: 900px;
+    max-width: 800px;
   }
 
   .resume-aboutus-text {
     font-size: 1.3rem;
+    padding: 0;
   }
 }

@@ -7,7 +7,8 @@ import './Proyect-list.css'
 function ProyectList() {
   return(
     <article className="proyect-list">
-      <h1 className='proyect-list-h1'>Destacados con estandar Jötum</h1>
+      <h1 className='proyect-list-h1'>DESTACADOS CON ESTANDAR JÖTUM</h1>
+      <p>Una selección de nuestros proyectos que cumplen con los más altos estándares de diseño y construcción que nos representan.</p>
       <Proyect
         images={[proyect1, proyect2, proyect3]}
         title="Casa Umlaut"
