@@ -56,7 +56,8 @@
 }
 
 @media (max-width: 1100px) {
-  .benefit-card {
+.benefit-card {
+    height: 20vw;
     width: 30vw;
     height: auto;
     padding: 1rem;
@@ -99,5 +100,11 @@
 
   .benefit-description {
     font-size: 1rem;
+  }
+}
+
+@media (min-width: 1500px) {
+  .benefit-card {
+    height: 20vw;
   }
 }
