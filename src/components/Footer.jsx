@@ -20,9 +20,11 @@ function Footer() {
   return(
     <footer className="footer-section">
       <div className="footer-container">
-        <div className="footer-left">
-          <img src={jotumLogo} alt="Jötum Logo" className="footer-logo" />
-          <p>© 2025 • Todos los derechos reservados Jötum S.A.</p>
+        <div className='footer-left-container'>
+          <div className="footer-left">
+            <img src={jotumLogo} alt="Jötum Logo" className="footer-logo" />
+            <p className='footer-left-p'>© 2025 • Todos los derechos reservados Jötum S.A.</p>
+          </div>
         </div>
 
         <div className="footer-center">
