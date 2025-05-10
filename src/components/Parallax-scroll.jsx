@@ -7,12 +7,13 @@ import image5 from '../assets/us-image-5.png'
 import image6 from '../assets/us-image-6.png'
 import image7 from '../assets/us-image-7.png'
 import image8 from '../assets/us-image-8.png'
+import videoSrc from '../assets/wb-nosotros.mp4'
 import './Parallax-scroll.css'
 
 export default function ParallaxScroll() {
 
   const cover = {
-    image: '',
+    videoSrc: videoSrc,
     title: "ENTERATE COMO TRABAJAMOS",
     text: "En jotum creemos en la calidad y el compromiso desde el primer día. Por eso dividimos nuestro proceso en 8 etapas bien definidas, para sepas en todo momento qué esperar y qué putno está tu proyecto."
   };
@@ -91,7 +92,17 @@ export default function ParallaxScroll() {
         className="parallax-cover"
         style={{ zIndex: 1 }}
       >
-        <div className="cover-image"> <img src={cover.image} alt={cover.title} /> </div>
+        <div className="cover-image">
+          <video 
+            className="cover-video" 
+            src={cover.videoSrc} 
+            autoPlay 
+            muted 
+            loop 
+            playsInline 
+          />
+        </div>
+
         <div className="cover-content">
           <h1 className='cover-title'>{cover.title}</h1>
           <p className="cover-contet-paragraph">{cover.text}</p>
