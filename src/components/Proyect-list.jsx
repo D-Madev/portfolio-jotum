@@ -9,7 +9,7 @@ function ProyectList() {
     <article className="proyect-list">
       <h1 className='proyect-list-h1'>Destacados con estandar Jötum</h1>
       <Proyect
-        img={proyect1}
+        images={[proyect1, proyect2, proyect3]}
         title="Casa Umlaut"
         location="Del Viso"
         m2="30"
@@ -22,7 +22,7 @@ function ProyectList() {
           nuestro diseño que qusieron continuar trabajando con nosotros en la obra tambien."
       />
       <Proyect
-        img={proyect2}
+        images={[proyect2, proyect1, proyect3]}
         title="La Miradora"
         location="Alumine"
         m2="146"
@@ -37,7 +37,7 @@ function ProyectList() {
           cálida, simple y bien integrada al entorno."
       />
       <Proyect
-        img={proyect3}
+        images={[proyect3, proyect2, proyect1]}
         title="Casa Umlaut"
         location="Del Viso"
         m2="179"

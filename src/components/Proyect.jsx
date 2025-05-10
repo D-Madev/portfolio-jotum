@@ -1,27 +1,70 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Proyect.css'
 
-function Proyect({img, title, location, m2, state, description}) {
-  const [isOpen, setIsOpen] = useState(false);
-  const handleImageClick = () => {
-    setIsOpen(open => !open);
+function Proyect({ images = [], title, location, m2, state, description }) {
+  const [current, setCurrent] = useState(0);
+  const [prev, setPrev]       = useState(null);
+  const [isOpen, setIsOpen]   = useState(false);
+  const last = images.length - 1;
+
+  const toggleOpen = () => setIsOpen(o => !o);
+
+  const showPrev = e => {
+    e.stopPropagation();
+    const nextIndex = current === 0 ? last : current - 1;
+    setPrev(current);
+    setCurrent(nextIndex);
   };
+
+  const showNext = e => {
+    e.stopPropagation();
+    const nextIndex = current === last ? 0 : current + 1;
+    setPrev(current);
+    setCurrent(nextIndex);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      showNext({ stopPropagation: () => {} });
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [current, last]);
+
 
   return(
     <section className={`proyect ${isOpen ? 'open' : ''}`}>
-      <div
+            <div
         className="proyect-img-container"
-        onClick={handleImageClick}
+        onClick={toggleOpen}
         role="button"
         aria-expanded={isOpen}
         tabIndex={0}
       >
-        <img src={img} alt="Imagen de proyecto" />
+        {images.length > 1 && (
+          <>
+            <button className="carousel-btn prev" onClick={showPrev}>&lsaquo;</button>
+            <button className="carousel-btn next" onClick={showNext}>&rsaquo;</button>
+          </>
+        )}
+        {prev !== null && (
+          <img
+            key={`prev-${prev}`}
+            src={images[prev]}
+            alt=""
+            className="fade-image fade-out"
+          />
+        )}
+        <img
+          key={`curr-${current}`}
+          src={images[current]}
+          alt={`Imagen ${current + 1}`}
+          className="fade-image fade-in"
+        />
       </div> 
 
       <article 
         className="proyect-content" 
-        onClick={handleImageClick}
+        onClick={toggleOpen}
         role="button"
         aria-expanded={isOpen}
         tabIndex={0}
