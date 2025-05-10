@@ -37,25 +37,32 @@
 
 
 .cover-contet-paragraph {
-  max-width: 850px;
+  max-width: 1000px;
   padding: 0 2rem;
   text-align: center;
 }
 
 .cover-title {
   text-align: center;
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: bold;
   margin: 1rem 0;
 }
-
+.cover-title::after {
+  content: '';
+  display: block;
+  width: 90%;
+  height: 4px;
+  background-color: var(--main-color);
+  margin: 2rem auto;
+}
 .parallax-cover .cover-content {
   z-index: 1;
   text-align: center;
 }
 
 .parallax-cover i {
-  font-size: 7rem;
+  font-size: 6rem;
 }
 
 .parallax-container {
