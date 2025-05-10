@@ -10,6 +10,10 @@
   pointer-events: none;
 }
 
+.welcome-banner.has-border {
+  border-bottom: .7rem solid var(--main-color);
+}
+
 .welcome-banner::before {
   content: " ";
   position: absolute;

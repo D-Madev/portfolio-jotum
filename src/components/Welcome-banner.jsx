@@ -9,9 +9,12 @@ function WelcomeBanner({
   children,
   style = {}
 }) {
+
+  const bannerClass = `welcome-banner ${backgroundType === 'image' ? 'has-border' : ''}`;
+
   return (
     <section 
-      className="welcome-banner"
+      className={bannerClass}
       style={{ 
         backgroundImage: backgroundType === 'image' ? `url(${backgroundSrc})` : 'none' 
         , ...style
