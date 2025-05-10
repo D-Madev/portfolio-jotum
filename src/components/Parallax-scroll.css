@@ -177,6 +177,10 @@
     flex-direction: column;
   }
 
+  .cover-title {
+    font-size: 2.5rem;
+  }  
+
   .parallax-image,
   .parallax-content {
     flex: unset;
