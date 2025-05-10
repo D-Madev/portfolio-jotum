@@ -15,7 +15,7 @@ export default function ParallaxScroll() {
   const cover = {
     videoSrc: videoSrc,
     title: "ENTERATE COMO TRABAJAMOS",
-    text: "En jotum creemos en la calidad y el compromiso desde el primer día. Por eso dividimos nuestro proceso en 8 etapas bien definidas, para sepas en todo momento qué esperar y qué putno está tu proyecto."
+    text: "En Jötum creemos en la calidad y el compromiso desde el primer día. Por eso dividimos nuestro proceso en 8 etapas bien definidas, para sepas en todo momento qué esperar y qué putno está tu proyecto."
   };
 
   const sections = [
