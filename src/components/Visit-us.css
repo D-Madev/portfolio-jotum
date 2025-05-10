@@ -39,6 +39,12 @@
   cursor: pointer;
 }
 
+@media (min-width: 1800px) {
+  .visit-us-side-content {
+    width: 25%;
+  }
+}
+
 @media (max-width: 768px) {
   .visit-us {
     height: 100%;
