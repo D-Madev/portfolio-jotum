@@ -2,7 +2,7 @@
   color: var(--text-color);
   background-color: white;
   position: relative;
-  padding: 3rem;
+  padding: 3rem 7%;
 }
 
 .proyect-list-h1 {
@@ -38,10 +38,4 @@
     top: 0rem;
     bottom: 0rem;
   }*/
-}
-
-@media (min-width: 1800px) {
-  .proyect-list {
-    padding: 3rem 7%;
-  }  
 }
