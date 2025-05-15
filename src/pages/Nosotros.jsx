@@ -19,7 +19,7 @@ function Nostros() {
           text=""
           logo={logo}
           children={''}
-          style={{ height: '535px'}}
+          style={{ height: '70vh'}}
         />
       <ParagraphGeneric 
         title="VISION"

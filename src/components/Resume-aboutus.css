@@ -37,7 +37,7 @@
 @media (max-width: 1960px) {
   .resume-aboutus {
     justify-content: space-between;
-    padding: 5rem 7%;
+    padding: 4rem 7%;
   }
   .resume-aboutus-text {
     padding: 0 4rem 0 0;
@@ -70,7 +70,7 @@
 
 @media (min-width: 1800px) {
   .resume-aboutus {
-    padding: 7rem 7%;
+    padding: 4rem 7%;
     justify-content: space-between;
   }
 

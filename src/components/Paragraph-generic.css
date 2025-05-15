@@ -24,6 +24,7 @@
 }
 
 .paragraph-generic-content p {
+  line-height: 30px;
   margin: 0 2rem;
 }
 
@@ -32,7 +33,7 @@
     color: var(--text-color);
     max-width: 1300px;
     margin: 0 auto;
-      gap: 40px;
+    gap: 40px;
     padding: 5rem 0;
   }
 
@@ -63,7 +64,7 @@
   }
 
   .paragraph-generic-content p {
-    font-size: 1.3rem;
+    font-size: 1rem;
   }
 
 }

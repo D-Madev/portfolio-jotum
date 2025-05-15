@@ -1,4 +1,7 @@
-import React from 'react';
+import video1 from '../assets/nosotros1.mp4';
+import video2 from '../assets/nosotros2.mp4';
+import video3 from '../assets/nosotros3.mp4';
+import video4 from '../assets/nosotros4.mp4';
 import image1 from '../assets/us-image-1.png'
 import image2 from '../assets/us-image-2.png'
 import image3 from '../assets/us-image-3.png'
@@ -106,7 +109,7 @@ export default function ParallaxScroll() {
         <div className="cover-content">
           <h1 className='cover-title'>{cover.title}</h1>
           <p className="cover-contet-paragraph">{cover.text}</p>
-          <svg width="40%" style={{marginTop:'5%'}} viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="30%" style={{marginTop:'5%'}} viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
           <polyline
             points="6,5 12,11 18,5"
             fill="none"
