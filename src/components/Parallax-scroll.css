@@ -1,5 +1,5 @@
-.parallax-cover {
-  position: sticky; 
+.cover-static {
+  position: relative; 
   top: 0;
   height: 100vh; 
   display: flex;
@@ -10,7 +10,7 @@
   color: white;
 }
 
-.parallax-cover .cover-image img {
+.cover-static .cover-image img {
   position: absolute;
   top: 0; left: 0;
   width: 100%;
@@ -18,7 +18,7 @@
   object-fit: cover;
   z-index: -1;
 }
-.parallax-cover .cover-image {
+.cover-static .cover-image {
   position: absolute;
   top: 0; left: 0;
   width: 100%;
@@ -67,12 +67,12 @@
   background-color: var(--main-color);
   margin: 2rem auto;
 }
-.parallax-cover .cover-content {
+.cover-static .cover-content {
   z-index: 1;
   text-align: center;
 }
 
-.parallax-cover i {
+.cover-static i {
   font-size: 6rem;
 }
 
