@@ -1,3 +1,4 @@
+import { useState, useRef, useEffect } from 'react'
 import video1 from '../assets/nosotros1.mp4';
 import video2 from '../assets/nosotros2.mp4';
 import video3 from '../assets/nosotros3.mp4';
@@ -10,13 +11,36 @@ import image5 from '../assets/us-image-5.png'
 import image6 from '../assets/us-image-6.png'
 import image7 from '../assets/us-image-7.png'
 import image8 from '../assets/us-image-8.png'
-import videoSrc from '../assets/wb-nosotros.mp4'
 import './Parallax-scroll.css'
 
 export default function ParallaxScroll() {
 
+  const videos = [ video1, video2, video3, video4 ];
+    const [currentIndex, setCurrentIndex] = useState(0)
+  const [fadeState, setFadeState] = useState('fade-in')
+  const videoRef = useRef(null)
+
+  // Cada vez que cambie el índice, cargamos y reproducimos el video con fade-in
+  useEffect(() => {
+    if (!videoRef.current) return
+    setFadeState('fade-in')
+    videoRef.current.src = videos[currentIndex]
+    videoRef.current.play()
+  }, [currentIndex])
+
+  // Al terminar el video, iniciamos fade-out
+  const handleEnded = () => {
+    setFadeState('fade-out')
+  }
+
+  // Cuando acaba la transición de opacidad, avanzamos al siguiente
+  const handleTransitionEnd = (e) => {
+    if (e.propertyName !== 'opacity' || fadeState !== 'fade-out') return
+    setCurrentIndex((currentIndex + 1) % videos.length)
+  }
+
   const cover = {
-    videoSrc: videoSrc,
+    videoSrc: videos[Math.floor(Math.random() * videos.length)],
     title: "ENTERATE COMO TRABAJAMOS",
     text: "En Jötum creemos en la calidad y el compromiso desde el primer día. Por eso dividimos nuestro proceso en 8 etapas bien definidas, para sepas en todo momento qué esperar y qué putno está tu proyecto."
   };
@@ -96,13 +120,13 @@ export default function ParallaxScroll() {
         style={{ zIndex: 1 }}
       >
         <div className="cover-image">
-          <video 
-            className="cover-video" 
-            src={cover.videoSrc} 
-            autoPlay 
-            muted 
-            loop 
-            playsInline 
+          <video
+            ref={videoRef}
+            className={`cover-video ${fadeState}`}
+            muted
+            playsInline
+            onEnded={handleEnded}
+            onTransitionEnd={handleTransitionEnd}
           />
         </div>
 
