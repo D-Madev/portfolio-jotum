@@ -217,7 +217,7 @@
   .section-title {
     display: flex;
     justify-content: center;
-    margin: 0 0 1rem 0;
+    margin: 0 0 0 0;
     position: relative;
     top: -8rem;
     font-weight: bold;
@@ -228,7 +228,7 @@
     display: flex;
     justify-content: center;
     position: relative;
-    font-size: 1rem;
+    font-size: .9rem;
     top: -7rem;
     margin: 4rem;
   }
