@@ -15,9 +15,7 @@ function Nostros() {
           backgroundType="image"
           backgroundSrc={wbUsImage}
           showText={false}
-          text=""
           logo={logo}
-          children={''}
           style={{ height: '70vh'}}
         />
       <ParagraphGeneric 

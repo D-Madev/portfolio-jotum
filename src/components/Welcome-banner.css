@@ -12,7 +12,24 @@
 
 .welcome-banner.has-border {
   border-bottom: .7rem solid var(--main-color);
+  position: relative;
+  overflow: hidden;
 }
+
+.welcome-banner.has-border::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.2) 30%,
+    transparent       100%
+  );
+  z-index: 1;
+}
+
 
 .welcome-banner::before {
   content: " ";
@@ -27,7 +44,7 @@
 
 .welcome-banner > .banner-overlay {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .banner-video {
@@ -48,7 +65,7 @@
   z-index: 1;
 }
 
-/* Ocultar capa ::before cuando hay video */
+
 .welcome-banner.has-video::before {
   background-image: none;
 }
