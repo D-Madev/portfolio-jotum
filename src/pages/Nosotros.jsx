@@ -4,7 +4,6 @@ import Footer from "../components/Footer.jsx";
 import Author from "../components/Author.jsx";
 import ParagraphGeneric from "../components/Paragraph-generic.jsx";
 import ParallaxScroll from "../components/Parallax-scroll.jsx"
-
 import wbUsImage from '../assets/wb-nosotros.png'
 import logo from '../assets/logo-jotum-sf.png'
 

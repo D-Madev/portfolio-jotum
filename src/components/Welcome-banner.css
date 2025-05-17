@@ -31,14 +31,26 @@
 }
 
 .banner-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  position: absolute; inset: 0;
+  object-fit: cover;
+  transition: opacity .3s ease-in-out;
+  opacity: 0;
+  width: 100%; height: 100%;
   object-fit: cover;
   z-index: 0;
-  pointer-events: none;
+}
+.banner-video.fade-in {
+  opacity: 1;
+  z-index: 1;
+}
+.banner-video.fade-out {
+  opacity: 0;
+  z-index: 1;
+}
+
+/* Ocultar capa ::before cuando hay video */
+.welcome-banner.has-video::before {
+  background-image: none;
 }
 
 .banner-overlay {

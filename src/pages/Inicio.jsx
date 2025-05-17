@@ -14,6 +14,13 @@ import WhatsAppButton from '../components/WhatsApp-buton.jsx'
 import logo from '../assets/logo-jotum-solotexto.png'
 import videoBackground from '../assets/Background-welcome-banner.mp4'
 import subFooterImage from '../assets/sub-footer-inicio.png'
+import video1 from '../assets/inicio1.mp4'
+import video2 from '../assets/inicio2.mp4'
+import video3 from '../assets/inicio3.mp4'
+import video4 from '../assets/inicio4.mp4'
+import video5 from '../assets/inicio5.mp4'
+import video6 from '../assets/inicio6.mp4'
+import video7 from '../assets/inicio7.mp4'
 
 function Inicio() {
   return (
@@ -22,7 +29,7 @@ function Inicio() {
       <WhatsAppButton />
       <WelcomeBanner 
         backgroundType="video"
-        backgroundSrc={videoBackground}
+        backgroundSrcList = {[video1, video2, video3, video4, video5, video6, video7]}
         showText={false}
         text=""
         logo=""
