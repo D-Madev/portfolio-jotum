@@ -31,7 +31,7 @@
   content: '';
   position: absolute;
   left: 0;
-  bottom: -25px;
+  bottom: -31px;
   width: 0;
   height: 6px;
   background-color: var(--main-color);
