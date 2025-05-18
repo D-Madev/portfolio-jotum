@@ -1,14 +1,48 @@
 .section-services {
-  height: 100vh;
   position: relative;
+  height: 100vh;
   overflow: hidden;
 }
-  
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+
+.fade-in {
+  animation: fadeIn 1s forwards;
+  z-index: 1;
+}
+
+.fade-out {
+  animation: fadeOut 1s forwards;
+  z-index: 1;
+}
+
 .bg {
-  inset: 0;
+  opacity: 0;
   position: absolute;
+  inset: 0;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  transition: backgroud-image .5s ease-in-out;
+}
+
+.services-content {
+  position: relative;   
+  z-index: 2;           
+  display: grid;        
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;       
+  top: 50%;             
+  transform: translateY(-50%);
 }
