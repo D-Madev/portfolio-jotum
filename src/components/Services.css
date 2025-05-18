@@ -1,0 +1,14 @@
+.section-services {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+  
+.bg {
+  inset: 0;
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: backgroud-image .5s ease-in-out;
+}

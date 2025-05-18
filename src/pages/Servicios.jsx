@@ -1,5 +1,6 @@
 import WelcomeBanner from "../components/Welcome-banner"
 import Leyend from "../components/Leyend"
+import Services from "../components/Services"
 import Footer from "../components/Footer"
 import Author from "../components/Author"
 
@@ -22,6 +23,7 @@ profesionales y una visión clara: construir con precisión, estética y comprom
 nos permite mantener un estándar que se ve y se siente en cada proyecto."
         style={{padding: '0'}}
       />
+      <Services />
       <Footer/>
       <Author/>
     </>
