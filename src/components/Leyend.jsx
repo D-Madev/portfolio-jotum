@@ -1,14 +1,14 @@
 import './Leyend.css'
 
-function Leyend() {
+function Leyend({ title, text, style={} }) {
 
   return(
-    <section className="leyend">
+    <section className="leyend" style={style}>
       <div className="leyend-container">
         <div className="leyend-divider">
-          <h2>Eficiencia y precisión alemana, diseño a tu medida.</h2>
+          <h2>{title}</h2>
         </div>
-        <p>Con Jötum, la arquitectura, la tecnica y la vision trabajan para tu futuro</p>
+        <p>{text}</p>
       </div>
     </section>
   );

@@ -35,7 +35,10 @@ function Inicio() {
         logo=""
         children={<h1>Jötum construye con un estándar de excelencia que el mercado reconoce y premia.</h1>}
       />
-      <Leyend />
+      <Leyend 
+        title="Eficiencia y precisión alemana, diseño a tu medida."
+        text="Con Jötum, la arquitectura, la tecnica y la vision trabajan para tu futuro"
+      />
       <ResumeAboutUs />
       <VisitUs/>
       <ProyectList />
