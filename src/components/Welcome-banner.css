@@ -35,7 +35,7 @@
   content: " ";
   position: absolute;
   inset: 0;
-  background-image: url("../assets/wb-nosotros.png"); 
+ background-image: var(--banner-before);
   background-size: cover;
   background-position: center;
   filter: brightness(0.7);

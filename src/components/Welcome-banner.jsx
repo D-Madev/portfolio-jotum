@@ -53,6 +53,7 @@ export default function WelcomeBanner({
       className={`welcome-banner ${isVideo ? 'has-video' : 'has-border'}`}
       style={{
         backgroundImage: !isVideo ? `url(${backgroundSrc})` : 'none',
+        ...(backgroundSrc && {'--banner-before':`url(${backgroundSrc})`}),
         ...style
       }}
     >
