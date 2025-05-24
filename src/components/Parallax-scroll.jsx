@@ -13,16 +13,11 @@ import image7 from '../assets/us-image-7.png'
 import image8 from '../assets/us-image-8.png'
 import './Parallax-scroll.css'
 
-/***********************************************
- * TODO   1  Show multiples videos. 
- * TODO   2  Now we only can see one. 
- * TODO   3  Fade-in, Fade-out.
- ************************************************/
 
 export default function ParallaxScroll() {
 
   const videos = [ video1, video2, video3, video4 ];
-  const [currentIndex, setCurrentIndex]       = useState(0);
+  const [currentIndex, setCurrentIndex]       = useState(Math.floor(Math.random() * videos.length));
   const [nextIndex, setNextIndex]             = useState(null);
   const [isReady, setIsReady]                 = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
