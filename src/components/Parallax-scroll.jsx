@@ -22,35 +22,70 @@ import './Parallax-scroll.css'
 export default function ParallaxScroll() {
 
   const videos = [ video1, video2, video3, video4 ];
-  const [currentIndex, setCurrentIndex] = useState(Math.floor(Math.random() * videos.length))
-  const [fadeState, setFadeState] = useState('fade-in')
-  const videoRef = useRef(null)
+  const [currentIndex, setCurrentIndex]       = useState(0);
+  const [nextIndex, setNextIndex]             = useState(null);
+  const [isReady, setIsReady]                 = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Cada vez que cambie el índice, cargamos y reproducimos el video con fade-in
-  useEffect(() => {
-    if (!videoRef.current) return
-    setFadeState('fade-in')
-    videoRef.current.src = videos[currentIndex]
-    videoRef.current.play()
-  }, [currentIndex])
+  const currentRef = useRef(null);
+  const nextRef    = useRef(null);
 
-  // Al terminar el video, iniciamos fade-out
+  // 1) Termina el vídeo actual → preparamos la carga
   const handleEnded = () => {
-    setFadeState('fade-out')
-  }
+    const upcoming = (currentIndex + 1) % videos.length;
+    setNextIndex(upcoming);
+    setIsReady(false);
+    // No arrancamos aún el fade
+  };
 
-  // Cuando acaba la transición de opacidad, avanzamos al siguiente
-  const handleTransitionEnd = (e) => {
-    if (e.propertyName !== 'opacity' || fadeState !== 'fade-out') return
-    setCurrentIndex((currentIndex + 1) % videos.length)
-  }
+  // 2) Siempre que tengamos un nextIndex, React montará el <video ref={nextRef}> oculto.
+  //    Ahora lo podemos cargar y escuchar canplaythrough.
+  useEffect(() => {
+    if (nextIndex === null) return;
+    const vid = nextRef.current;
+    if (!vid) return;             // <-- clave: esperamos a que exista
+    const onCan = () => {
+      vid.play();
+      setIsReady(true);
+    };
 
+    vid.src = videos[nextIndex];
+    vid.currentTime = 0;
+    vid.load();
+    vid.addEventListener('canplaythrough', onCan);
+    return () => vid.removeEventListener('canplaythrough', onCan);
+  }, [nextIndex, videos]);
+
+  // 3) Cuando isReady===true, disparamos el cross-fade
+  useEffect(() => {
+    if (!isReady) return;
+    setIsTransitioning(true);
+    const t = setTimeout(() => {
+      // 4) Tras 1s de fade:
+      setCurrentIndex(nextIndex);
+      setNextIndex(null);
+      setIsReady(false);
+      setIsTransitioning(false);
+    }, 1000);
+    return () => clearTimeout(t);
+  }, [isReady, nextIndex]);
+
+  /**
+   * Contenido de la sección de portada.
+   * Esta sección contiene un video de fondo, un título y un texto descriptivo.
+   * El video se selecciona aleatoriamente de un array de videos.
+   */
   const cover = {
     videoSrc: videos[Math.floor(Math.random() * videos.length)],
     title: "ENTERATE COMO TRABAJAMOS",
     text: "En Jötum creemos en la calidad y el compromiso desde el primer día. Por eso dividimos nuestro proceso en 8 etapas bien definidas, para sepas en todo momento qué esperar y qué putno está tu proyecto."
   };
 
+  /**
+   * Array con el contenido de todas las tarjetas de informacion.
+   * Cada tarjeta tiene una imagen, un título y un texto descriptivo.
+   * El contenido de cada tarjeta se puede modificar en el array.
+   */
   const sections = [
     {
       image: image1,
@@ -117,62 +152,71 @@ export default function ParallaxScroll() {
 
 
   return (
-      <div
-        className="parallax-container"
+      <div className="parallax-container"
         style={{ height: `${(sections.length + 1) * 100}vh` }}
       >
-      <section className="cover-static" style={{ zIndex: 1 }}>
-        <div className="cover-image">
-          <video
-            ref={videoRef}
-            className={`cover-video ${fadeState}`}
-            muted
-            playsInline
-            onEnded={handleEnded}
-            onTransitionEnd={handleTransitionEnd}
-          />
-        </div>
+        <section className="cover-static">
+          <div className="cover-image">
+            <video
+              ref={currentRef}
+              className={`cover-video ${isTransitioning ? 'fade-out' : 'visible'}`}
+              src={videos[currentIndex]}
+              muted
+              playsInline
+              onEnded={handleEnded}
+              autoPlay
+            />
+            {nextIndex !== null && (
+              <video
+                ref={nextRef}
+                className="cover-video fade-in"
+                muted
+                playsInline
+                // no src aquí: lo ponemos dinámicamente
+              />
+            )}
 
-        <div className="cover-content">
-          <h1 className='cover-title'>{cover.title}</h1>
-          <p className="cover-contet-paragraph">{cover.text}</p>
-          <svg width="20%" style={{marginTop:'5%'}} viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <polyline
-            points="6,5 12,11 18,5"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <polyline
-            points="6,17 12,23 18,17"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      </div>
-    </section>
-
-      {sections.map((section, i) => (
-        <section
-          key={i}
-          className={`parallax-section ${i % 2 !== 1 ? 'reverse' : ''}`}
-          style={{ zIndex: 2 + i }}
-        >
-          <div className="parallax-image">
-            <img src={section.image} alt={section.title} />
           </div>
-          <div className="parallax-content">
-            <h1 className="section-number">{i + 1}</h1>
-            <h2 className="section-title">{section.title}</h2>
-            <p className="section-text">{section.text}</p>
+          <div className="cover-content">
+            <h1 className='cover-title'>{cover.title}</h1>
+            <p className="cover-contet-paragraph">{cover.text}</p>
+            <svg width="20%" style={{marginTop:'5%'}} viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polyline
+                points="6,5 12,11 18,5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <polyline
+                points="6,17 12,23 18,17"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
           </div>
         </section>
-      ))}
+
+        {sections.map((section, i) => (
+          <section
+            key={i}
+            className={`parallax-section ${i % 2 !== 1 ? 'reverse' : ''}`}
+            style={{ zIndex: 2 + i }}
+          >
+            <div className="parallax-image">
+              <img src={section.image} alt={section.title} />
+            </div>
+            <div className="parallax-content">
+              <h1 className="section-number">{i + 1}</h1>
+              <h2 className="section-title">{section.title}</h2>
+              <p className="section-text">{section.text}</p>
+            </div>
+          </section>
+        ))}
     </div>
   );
 }
