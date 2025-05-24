@@ -17,6 +17,9 @@
   padding: 3.5rem 25%;
 }
 
+.leyend-container h2 {
+  margin: 0.5rem;
+}
 /* CAMBIO DE ESTILOS -> PETICION DEL CLIENTE
 .leyend-divider {
   display: flex;
