@@ -13,7 +13,6 @@ import image7 from '../assets/us-image-7.png'
 import image8 from '../assets/us-image-8.png'
 import './Parallax-scroll.css'
 
-
 export default function ParallaxScroll() {
 
   const videos = [ video1, video2, video3, video4 ];
@@ -30,7 +29,6 @@ export default function ParallaxScroll() {
     const upcoming = (currentIndex + 1) % videos.length;
     setNextIndex(upcoming);
     setIsReady(false);
-    // No arrancamos aún el fade
   };
 
   // 2) Siempre que tengamos un nextIndex, React montará el <video ref={nextRef}> oculto.
@@ -167,7 +165,6 @@ export default function ParallaxScroll() {
                 className="cover-video fade-in"
                 muted
                 playsInline
-                // no src aquí: lo ponemos dinámicamente
               />
             )}
 
