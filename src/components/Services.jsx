@@ -23,11 +23,16 @@ import './Services.css';
 
 export default function Servicios() {
   const images = [img1, img2, img3, img4, img5];
-  const [frontIdx, setFrontIdx] = useState(0);
-  const [backIdx, setBackIdx]   = useState(1);
-  const [isFading, setIsFading] = useState(false);
+  const [current, setCurrent] = useState(0);
+  const [next, setNext]       = useState(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
-    const cards = [
+  /**
+   * Contenido de las cards.
+   * Utilizacion dinamica del componente ServiceCard.
+   * Cada card tiene un logo, un titulo y una descripcion.
+  */
+  const cards = [
     { logo: card1, title: 'Proyecto arquitectonico', description: "En Jötum desarrollamos proyectos de alto nivel, donde cada espacio combina diseño, funcionalidad y estética con excelencia. Creamos propuestas únicas y contemporáneas, pensadas para perdurar y en armonía con su entorno." },
     { logo: card2, title: 'Documentacion tecnica',description: "Una obra de calidad empieza con planos claros y precisos. En Jötum elaboramos documentación tecnica completa y detallada para garantizar una ejecución fiel al diseño, optimizando tiempos, recursos y evitando imprevistos." },
     { logo: card3, title: 'Reforma e Interiorismo', description: "Transformamos espacios con visión arquitectónica, respetando su esencia y elevando su diseño, funcionalidad y valor. Cada detalle se piensa para crear ambientes únicos, atemporales y llenos de identidad."   },
@@ -37,29 +42,41 @@ export default function Servicios() {
     { logo: card7, title: 'Diseño de muebles', description: "Muebles a medida, elaborados por los mejores carpinteros, combinando funcionalidad y estilo." },
   ];
 
+  /**
+   * Funcion que cambia la imagen de fondo cada 5 segundos.
+   * Se utiliza un setInterval para cambiar la imagen de fondo.
+   */
   useEffect(() => {
-    const id = setInterval(() => {
-      setBackIdx((frontIdx + 1) % images.length);
-      setIsFading(true);
+    const interval = setInterval(() => {
+      // Iniciamos transición
+      const upcoming = (current + 1) % images.length;
+      setNext(upcoming);
+      setIsTransitioning(true);
+      // Cambiamos la imagen de fondo
       setTimeout(() => {
-        setFrontIdx((f) => (f + 1) % images.length);
-        setIsFading(false);
-      });
+        setCurrent(upcoming);
+        setNext(null);
+        setIsTransitioning(false);
+      }, 1000);
     }, 5000);
 
-    return () => clearInterval(id);
-  }, [frontIdx, images.length]);
+    return () => clearInterval(interval);
+  }, [current, images.length]);
 
   return (
     <section className="section-services">
-      <div
-        className={`bg ${isFading ? 'fade-in' : ''}`}
-        style={{ backgroundImage: `url(${images[backIdx]})` }}
+      <div className={`bg ${
+          isTransitioning ? 'fade-out' : 'visible'
+        }`}
+        style={{ backgroundImage: `url(${images[current]})` }}
       />
-      <div
-        className={`bg ${!isFading ? 'fade-in' : 'fade-out'}`}
-        style={{ backgroundImage: `url(${images[frontIdx]})` }}
-      />
+      {isTransitioning && (
+        <div
+          className="bg fade-in"
+          style={{ backgroundImage: `url(${images[next]})` }}
+        />
+      )}
+
       <div className="services-content">
         {cards.map((c, i) => (
           <ServiceCard

@@ -1,7 +1,32 @@
 .section-services {
   position: relative;
-  height: 200vh;
+  min-height: 100vh;
   overflow: hidden;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 0;
+}
+
+.visible {
+  opacity: 1;
+  z-index: 0;
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in-out forwards;
+  z-index: 1;
+}
+
+.fade-out {
+  animation: fadeOut 1s ease-in-out forwards;
+  z-index: 1;
 }
 
 @keyframes fadeIn {
@@ -13,36 +38,33 @@
   to   { opacity: 0; }
 }
 
-
-.fade-in {
-  animation: fadeIn 1s forwards;
-  z-index: 1;
-}
-
-.fade-out {
-  animation: fadeOut 1s forwards;
-  z-index: 1;
-}
-
-.bg {
-  opacity: 0;
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 .services-content {
   position: relative;   
-  z-index: 2;           
+  z-index: 3;           
   display: grid;        
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
   gap: 1.5rem;
-  padding: 2rem;
+  padding: 10rem 2rem;
   width: 100%;
-  max-width: 1200px;
+  max-width: 83%;
   margin: 0 auto;       
-  top: 50%;             
-  transform: translateY(-50%);
+}
+
+@media (max-width: 1400px) {
+  .services-content {
+    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  }
+}
+
+@media (max-width: 1080px) {
+  .services-content {
+    grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .services-content {
+    grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+    max-width: 100%;
+  }
 }

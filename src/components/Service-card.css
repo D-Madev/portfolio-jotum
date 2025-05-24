@@ -1,5 +1,9 @@
+/*
+  * TODO: Hacer que las cards tengan un espacio designado para cada cosa y no puedan excederlo.
+*/
+
 .service-card {
-  height: 600px;
+  min-height: 560px;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -15,6 +19,10 @@
 }
 
 .service-card h2 {
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   margin: 25px 0 50px 0;
+}
+
+.service-card p {
+  color: #bab8b8
 }
