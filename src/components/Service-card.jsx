@@ -6,6 +6,9 @@ export default function ServiceCard({ logo, title, description}) {
       <img src={logo} alt={logo} />
       <h2>{title}</h2>
       <p>{description}</p>
+      <div className="button-container">
+        <button className="service-button">Ver más</button>
+      </div>
     </article>
   )
 }

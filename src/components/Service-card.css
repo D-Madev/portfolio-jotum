@@ -1,9 +1,6 @@
-/*
-  * TODO: Hacer que las cards tengan un espacio designado para cada cosa y no puedan excederlo.
-*/
-
 .service-card {
-  min-height: 560px;
+  height: 560px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -11,8 +8,16 @@
   background-color: #2E2D2D;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   color: white;
+  position: relative;
+  transition: height 0.4s ease;
 }
 
+/* Solo esta tarjeta se expandirá al hacer hover */
+.service-card:hover {
+  height: 640px;
+}
+
+/* Imagen, título y texto */
 .service-card img {
   width: 130px;
   height: 130px;
@@ -24,5 +29,37 @@
 }
 
 .service-card p {
-  color: #bab8b8
+  color: #bab8b8;
+}
+
+/* Contenedor del botón oculto por defecto */
+.button-container {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease, max-height 0.4s ease;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+}
+
+
+.service-card:hover .button-container {
+  opacity: 1;
+  max-height: 100px;
+}
+
+.service-button {
+  padding: 0.8rem 6rem;
+  font-size: 1rem;
+  background-color: var(--main-color, #f04);
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.service-button:hover {
+  background-color: #c03;
 }
