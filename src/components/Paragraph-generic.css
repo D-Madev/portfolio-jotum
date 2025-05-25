@@ -2,7 +2,7 @@
   color: var(--text-color);
   max-width: 1300px;
   margin: 0 auto;
-  padding: 5rem 0;
+  padding: 0;
   margin-top: 50px;
   display: flex;
   flex-direction: column;
@@ -12,7 +12,7 @@
 
 .paragraph-generic-title {
   text-align: center;
-  font-size: 3rem;
+  font-size: 50px;
   font-weight: bold;
   margin: 1rem 0;
 }
@@ -57,10 +57,6 @@
 
   .paragraph-generic-title {
     line-height: 50px;
-  }
-
-  .paragraph-generic-title {
-    font-size: 4rem;
   }
 
   .paragraph-generic-content p {
