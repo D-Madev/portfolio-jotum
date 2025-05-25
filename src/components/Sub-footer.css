@@ -25,9 +25,8 @@
   content: '';
   position: absolute;
   inset: 0;
-  /*filter: blur(5px);*/
-  filter:  brightness(20%);
-  margin: -5px;
+  filter: blur(5px) brightness(20%);
+  margin: -15px;
   background: inherit;
   z-index: 0;
 }

@@ -4,7 +4,7 @@ import Services from "../components/Services"
 import Footer from "../components/Footer"
 import Author from "../components/Author"
 
-import wbServicesImage from '../assets/fallback.png'
+import wbServicesImage from '../assets/us-image-7.png'
 
 export default function Servicios() {
   return(

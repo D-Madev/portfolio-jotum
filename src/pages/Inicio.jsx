@@ -11,9 +11,7 @@ import Footer from '../components/Footer.jsx'
 import Author from '../components/Author.jsx'
 import WhatsAppButton from '../components/WhatsApp-buton.jsx'
 // IMPORT IMAGES
-import logo from '../assets/logo-jotum-solotexto.png'
-import videoBackground from '../assets/Background-welcome-banner.mp4'
-import subFooterImage from '../assets/sub-footer-inicio.png'
+import imageSubFooter from '../assets/sub-footer-inicio.png'
 import video1 from '../assets/inicio1.mp4'
 import video2 from '../assets/inicio2.mp4'
 import video3 from '../assets/inicio3.mp4'
@@ -34,7 +32,7 @@ function Inicio() {
         text=""
         logo=""
         children={<h1>Jötum construye con un estándar de excelencia que el mercado reconoce y premia.</h1>}
-      />
+        />
       <Leyend 
         title="Eficiencia y precisión alemana, diseño a tu medida."
         text="Con Jötum, la arquitectura, la tecnica y la vision trabajan para tu futuro"
@@ -45,8 +43,10 @@ function Inicio() {
       <Benefits />
       <Testimonials />
       <SubFooter 
-        text = "Cada proyecto que emprendemos es una oportunidad para crear algo único y significativo. Nuestro enfoque combina escucha, análisis riguroso, diseño con identidad y una ejecución cuidada de principio a fin. Si estás listo para dar vida a tus ideas, nos encantaría acompañarte en ese camino. Hablemos."
-        img = {subFooterImage}
+        title="Hoy das el primer paso"
+        text={`Tu consulta no nos molesta, al contrario: nos importa.
+        Porque construir con Jötum es construir con confianza.`}
+        img={imageSubFooter}
       />
       <Footer />
       <Author /> 

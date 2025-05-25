@@ -6,6 +6,7 @@ import ParagraphGeneric from "../components/Paragraph-generic.jsx";
 import ParallaxScroll from "../components/Parallax-scroll.jsx"
 import wbUsImage from '../assets/wb-nosotros.png'
 import logo from '../assets/logo-jotum-sf.png'
+import subFooterImage from '../assets/sub-footer-inicio.png'
 
 function Nostros() {
   /*<h1>El verdadero valor está en lo que perdura. Jötum construye con excelencia para ese tipo de cliente.</h1>*/
@@ -33,7 +34,11 @@ function Nostros() {
         text3="Lo que realmente distingue a Jötum es nuestra capacidad para transformar espacios comunes en entornos extraordinarios, donde la exclusividad y la funcionalidad se encuentran. Nuestro trabajo no es solo construir una vivienda, sino dejar un legado que nuestros clientes puedan disfrutar, sabiendo que han elegido un espacio que refleja su estilo de vida y valores. Cada obra de Jötum es una inversión en calidad, confianza y distinción, creando hogares que se destacan por su originalidad, belleza y durabilidad."
       />
       <ParallaxScroll />
-      <SubFooter />
+      <SubFooter 
+        title = "Hablemos"
+        text = "Transformamos cada idea en un proyecto único, combinando la escucha activa y el análisis riguroso con un diseño con identidad propia y una ejecución impecable de principio a fin. Si quieres que tus ideas cobren vida, estaremos a tu lado en todo el proceso."
+        img = {subFooterImage}
+      />
       <Footer />
       <Author />
     </>
