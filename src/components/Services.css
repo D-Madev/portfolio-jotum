@@ -40,10 +40,12 @@
 
 .services-content {
   position: relative;   
+  overflow: visible;
   z-index: 3;           
-  display: grid;        
-  grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
-  gap: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
   padding: 10rem 2rem;
   width: 100%;
   max-width: 83%;
@@ -51,20 +53,11 @@
 }
 
 @media (max-width: 1400px) {
-  .services-content {
-    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
-  }
+  .service-card-wrapper { flex: 1 1 30%; max-width: 30%; }
 }
-
 @media (max-width: 1080px) {
-  .services-content {
-    grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
-  }
+  .service-card-wrapper { flex: 1 1 40%; max-width: 40%; }
 }
-
 @media (max-width: 768px) {
-  .services-content {
-    grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
-    max-width: 100%;
-  }
+  .service-card-wrapper { flex: 1 1 50%; max-width: 50%; }
 }

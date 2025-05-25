@@ -1,65 +1,72 @@
+.service-card-wrapper {
+  flex: 1 1 20%;
+  max-width: 22%;
+  position: relative;
+  overflow: visible;
+}
+
 .service-card {
-  height: 560px;
+  height: 460px;
   overflow: hidden;
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: start;
   padding: 2rem;
   background-color: #2E2D2D;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   color: white;
-  position: relative;
-  transition: height 0.4s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: height 0.4s ease, box-shadow 0.4s ease;
+  z-index: 1;
+  
 }
 
-/* Solo esta tarjeta se expandirá al hacer hover */
-.service-card:hover {
-  height: 640px;
+.service-card-wrapper:hover .service-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 520px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  z-index: 10;
 }
 
-/* Imagen, título y texto */
 .service-card img {
-  width: 130px;
-  height: 130px;
+  width: 110px;
+  height: 110px;
 }
 
 .service-card h2 {
-  font-size: 1.6rem;
-  margin: 25px 0 50px 0;
+  font-size: 1.4rem;
+  margin: 25px 0 40px 0;
 }
 
 .service-card p {
   color: #bab8b8;
 }
 
-/* Contenedor del botón oculto por defecto */
 .button-container {
   opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: opacity 0.4s ease, max-height 0.4s ease;
-  width: 100%;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  margin-top: auto;
   display: flex;
   justify-content: center;
-  margin-top: auto;
 }
 
-
-.service-card:hover .button-container {
+.service-card-wrapper:hover .button-container {
   opacity: 1;
-  max-height: 100px;
+  pointer-events: auto;
 }
 
 .service-button {
-  padding: 0.8rem 6rem;
-  font-size: 1rem;
-  background-color: var(--main-color, #f04);
-  border: none;
+  padding: 0.8rem 5rem;
+  background-color: transparent;
+  border: solid 2px var(--main-color);
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .service-button:hover {
-  background-color: #c03;
+  background-color: var(--main-color);
 }
