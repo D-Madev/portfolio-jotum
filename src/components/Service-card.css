@@ -3,6 +3,8 @@
   max-width: 22%;
   position: relative;
   overflow: visible;
+  height: 460px;
+  transition: heigth .4s ease;
 }
 
 .service-card {
@@ -17,16 +19,13 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: height 0.4s ease, box-shadow 0.4s ease;
   z-index: 1;
-  
 }
 
-.service-card-wrapper:hover .service-card {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+.service-card.is-expanded {
   height: 520px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  position: absolute;
+  top: 0; left: 0;
+  box-shadow: 0 8px 16px rgba(0,0,0,.3);
   z-index: 10;
 }
 
@@ -41,7 +40,7 @@
 }
 
 .service-card p {
-  color: #bab8b8;
+  color: #BAB8B8;
 }
 
 .button-container {
@@ -53,7 +52,7 @@
   justify-content: center;
 }
 
-.service-card-wrapper:hover .button-container {
+.service-card.is-expanded .button-container {
   opacity: 1;
   pointer-events: auto;
 }
