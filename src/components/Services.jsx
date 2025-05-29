@@ -14,16 +14,16 @@ import card7 from '../assets/card-logo7.png'
 import ServiceCard from '../components/Service-card';
 import './Services.css';
 
-
-/********************************************************
- * TODO   1   Size of the cards. 
- * TODO   2   Add animations and display information.
- *******************************************************/
-
-
 export default function Servicios() {
   const images = [img1, img2, img3, img4, img5];
-  const [current, setCurrent] = useState(0);
+  const sectionRef = useRef(null);
+  const state = useRef({
+    hasAnimated: false,
+    isAnimating: false,
+  }).current;
+  const SCROLL_DURATION = 1200;
+  const TRIGGER_PERCENT = 0.6;
+  const [current, setCurrent] = useState(Math.floor(Math.random() * images.length));
   const [next, setNext]       = useState(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
@@ -63,8 +63,74 @@ export default function Servicios() {
     return () => clearInterval(interval);
   }, [current, images.length]);
 
+   useEffect(() => {
+    const section = sectionRef.current;
+    const THRESH_Y = window.innerHeight * TRIGGER_PERCENT;
+
+    function resetIfNeeded(rect) {
+      // Si ya animamos y la sección queda fuera del umbral, rearmamos trigger
+      if (
+        state.hasAnimated &&
+        (rect.top > THRESH_Y || rect.bottom < 0)
+      ) {
+        state.hasAnimated = false;
+      }
+    }
+
+    function onScroll() {
+      if (state.isAnimating) return;
+
+      const rect = section.getBoundingClientRect();
+      resetIfNeeded(rect);
+
+      // Si no animamos y el top cruza el umbral, disparamos:
+      if (!state.hasAnimated && rect.top <= THRESH_Y && rect.bottom > 0) {
+        state.hasAnimated = true;
+        state.isAnimating = true;
+        document.body.classList.add('no-scroll');
+
+        animateScrollToCenter(section, SCROLL_DURATION, () => {
+          state.isAnimating = false;
+          document.body.classList.remove('no-scroll');
+        });
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [SCROLL_DURATION, TRIGGER_PERCENT]);
+
+  // Función de animación custom
+  function animateScrollToCenter(el, duration, callback) {
+    const rect = el.getBoundingClientRect();
+    const startY = window.scrollY;
+    const absoluteTop = startY + rect.top;
+    const targetY =
+      absoluteTop - (window.innerHeight - rect.height) / 2 - 50;
+    const diff = targetY - startY;
+    let startTime = null;
+
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease =
+        progress < 0.5
+          ? 2 * progress * progress
+          : -1 + (4 - 2 * progress) * progress;
+      window.scrollTo(0, startY + diff * ease);
+      if (elapsed < duration) {
+        window.requestAnimationFrame(step);
+      } else {
+        callback && callback();
+      }
+    }
+
+    window.requestAnimationFrame(step);
+  }
+
   return (
-    <section className="section-services">
+    <section ref={sectionRef} className="section-services">
       <div className={`bg ${
           isTransitioning ? 'fade-out' : 'visible'
         }`}

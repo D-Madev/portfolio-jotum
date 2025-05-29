@@ -1,6 +1,6 @@
 .section-services {
   position: relative;
-  min-height: 100vh;
+  height: 120vh;
   overflow: hidden;
 }
 
@@ -50,6 +50,11 @@
   width: 100%;
   max-width: 83%;
   margin: 0 auto;       
+}
+
+.no-scroll {
+  overflow: hidden !important;
+  height: 100vh;
 }
 
 @media (max-width: 1400px) {
