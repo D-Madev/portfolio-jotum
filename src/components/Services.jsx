@@ -26,20 +26,66 @@ export default function Servicios() {
   const [current, setCurrent] = useState(Math.floor(Math.random() * images.length));
   const [next, setNext]       = useState(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
-
+  const [selectedIndex, setSelectedIndex] = useState(null);
+  
   /**
    * Contenido de las cards.
    * Utilizacion dinamica del componente ServiceCard.
    * Cada card tiene un logo, un titulo y una descripcion.
   */
   const cards = [
-    { logo: card1, title: 'Proyecto arquitectonico', description: "En Jötum desarrollamos proyectos de alto nivel, donde cada espacio combina diseño, funcionalidad y estética con excelencia. Creamos propuestas únicas y contemporáneas, pensadas para perdurar y en armonía con su entorno." },
-    { logo: card2, title: 'Documentacion tecnica',description: "Una obra de calidad empieza con planos claros y precisos. En Jötum elaboramos documentación tecnica completa y detallada para garantizar una ejecución fiel al diseño, optimizando tiempos, recursos y evitando imprevistos." },
-    { logo: card3, title: 'Reforma e Interiorismo', description: "Transformamos espacios con visión arquitectónica, respetando su esencia y elevando su diseño, funcionalidad y valor. Cada detalle se piensa para crear ambientes únicos, atemporales y llenos de identidad."   },
-    { logo: card4, title: 'Asesoría técnica integral', description: "Acompañamos cada decisión clave del proyecto: desde la elección del terreno hasta el diseño sostenible. En Jötum brindamos asesoría técnica de excelencia para construir sobre bases sólidas, eficientes y con alto valor estético."   },
-    { logo: card5, title: 'Llave en mano', description: "Nos encargamos de todo: diseño, obra y terminaciones. En Jötum gestionamos cada etapa con eficiencia y cuidado, para que construir sea una experiencia simple, segura y con resultados excepcionales." },
-    { logo: card6, title: 'Direccion y ejecucion de obra', description: "En Jötum llevamos cada obra con compromiso y precisión, garantizando que el proyecto se construya con la calidad, estética y solidez que fue pensada. Coordinamos equipos, controlamos cada etapa y cuidamos cada detalle." },
-    { logo: card7, title: 'Diseño de muebles', description: "Muebles a medida, elaborados por los mejores carpinteros, combinando funcionalidad y estilo." },
+    { logo: card1, 
+      title: 'Proyecto arquitectonico', 
+      description: "En Jötum desarrollamos proyectos de alto nivel, donde cada espacio combina diseño, funcionalidad y estética con excelencia. Creamos propuestas únicas y contemporáneas, pensadas para perdurar y en armonía con su entorno.", 
+      information: `En Jötum entendemos el proyecto arquitectónico como el corazón de cada obra. Por eso, abordamos cada diseño a partir de una escucha atenta y profunda de las necesidades de nuestros clientes, transformando sus ideas en propuestas únicas que combinan creatividad, precisión técnica y una estética cuidada. Cada línea, cada espacio, está pensado con un criterio funcional claro, respetando el entorno y anticipando los desafíos reales de la construcción. 
+      
+      Nuestro compromiso es materializar visiones que trasciendan lo ordinario, creando proyectos contemporáneos que equilibran eficiencia, armonía con el entorno y una belleza pensada para perdurar. Diseñamos hogares que enorgullecen, donde cada decisión refleja una historia, un estilo de vida y un futuro compartido. Espacios pensados para ser vividos, disfrutados y recordados, por quienes los habitan y por quienes vendrán después.` },
+    { logo: card2, 
+      title: 'Documentacion tecnica',
+      description: "Una obra de calidad empieza con planos claros y precisos. En Jötum elaboramos documentación tecnica completa y detallada para garantizar una ejecución fiel al diseño, optimizando tiempos, recursos y evitando imprevistos.", 
+      information: `En Jötum sabemos que toda gran obra se construye primero sobre el papel. La documentación técnica no es solo un requisito: es la base que garantiza una ejecución fiel, segura y eficiente. Por eso, elaboramos cada plano, memoria y cómputo con el máximo nivel de detalle y precisión, entendiendo que de ellos depende tanto la aprobación de trámites como el desarrollo exitoso en obra. 
+      
+      Preparamos planos ejecutivos y memorias descriptivas, cómputos métricos y pliegos de especificaciones constructivas, junto a toda la documentación específica que el proyecto requiera: planos y cálculos de gas y calefacción, instalaciones sanitarias, estructura, electricidad, implantación, domótica y detalles constructivos, entre otros. Esta información es clave no solo para cumplir con normativas y agilizar permisos, sino también para anticipar soluciones, evitar errores en obra y optimizar tiempos y recursos desde el primer día. 
+      
+      Cada documento que producimos está pensado como una herramienta estratégica que acompaña todo el proceso constructivo. Porque en Jötum creemos que la calidad visible de una obra empieza en aquello que no siempre se ve, pero se siente en cada resultado.` },
+    { logo: card3, 
+      title: 'Reforma e Interiorismo', 
+      description: "Transformamos espacios con visión arquitectónica, respetando su esencia y elevando su diseño, funcionalidad y valor. Cada detalle se piensa para crear ambientes únicos, atemporales y llenos de identidad.", 
+      information: `Transformar un espacio existente va mucho más allá de renovarlo: implica comprender su esencia, imaginar su potencial y ejecutar cada detalle con precisión. En Jötum abordamos las reformas y proyectos de interiorismo de forma integral, respetando la identidad original del lugar mientras potenciamos su funcionalidad, estética y valor a largo plazo. 
+      
+      Cada intervención es diseñada con criterio arquitectónico, cuidando la elección de materiales, texturas, iluminación y soluciones constructivas que dialogan entre sí para crear ambientes coherentes, armónicos y atemporales. Nuestro enfoque combina sensibilidad estética con control técnico, permitiendo transformar lo cotidiano en una nueva experiencia de habitar. 
+
+      Como complemento, ofrecemos el diseño y fabricación de muebles a medida, elaborados por los mejores carpinteros, que se integran al proyecto con la misma dedicación que el resto de la obra. Estas piezas únicas no solo optimizan el espacio, sino que elevan su carácter, aportando calidez, funcionalidad y un nivel de calidad que se percibe en cada uso. Reformamos para revelar lo mejor de cada espacio, creando entornos que se sientan propios, cómodos y llenos de intención.` },
+    { logo: card4, 
+      title: 'Asesoría técnica integral', 
+      description: "Acompañamos cada decisión clave del proyecto: desde la elección del terreno hasta el diseño sostenible. En Jötum brindamos asesoría técnica de excelencia para construir sobre bases sólidas, eficientes y con alto valor estético.", 
+      information: `En Jötum creemos que tomar buenas decisiones desde el inicio es clave para el éxito de cualquier obra. Por eso, ofrecemos un servicio de asesoría técnica pensado para acompañar a nuestros clientes en cada etapa temprana del proceso constructivo, brindando claridad, respaldo profesional y visión estratégica. 
+      
+      Asistimos en la elección del terreno, evaluando su potencial y viabilidad técnica; analizamos normativas, restricciones municipales y parámetros urbanísticos; y colaboramos en la definición de sistemas constructivos, materiales y soluciones de diseño sostenible. Nuestro enfoque combina conocimiento técnico con sensibilidad arquitectónica, ayudando a que cada decisión contribuya a un resultado más eficiente, duradero y estéticamente sólido. 
+      
+      Esta asesoría no solo permite evitar errores costosos y optimizar recursos, sino que da a nuestros clientes la tranquilidad de construir sobre bases firmes, sabiendo que cada paso está guiado por profesionales comprometidos con la excelencia. Porque una obra bien pensada desde el principio es una obra que se disfruta durante toda la vida.` },
+    { logo: card5, 
+      title: 'Llave en mano', 
+      description: "Nos encargamos de todo: diseño, obra y terminaciones. En Jötum gestionamos cada etapa con eficiencia y cuidado, para que construir sea una experiencia simple, segura y con resultados excepcionales.", 
+      information: `En Jötum entendemos que construir puede ser un proceso complejo, por eso desarrollamos un servicio llave en mano que ofrece una solución integral, clara y sin sobresaltos. Nos ocupamos de todo: desde el diseño arquitectónico inicial hasta la entrega final del espacio terminado, funcionando como un único interlocutor que centraliza y resuelve cada etapa del proyecto. 
+      
+      Coordinamos la elaboración de la documentación técnica, la tramitación de permisos, la planificación de obra, la contratación de mano de obra especializada y la ejecución completa, incluyendo detalles de terminación. Este enfoque de gestión unificada no solo optimiza tiempos y recursos, sino que asegura una ejecución coherente con el proyecto original, sin desviaciones ni sorpresas. 
+      
+      El cliente puede seguir cada avance con confianza y tranquilidad, sabiendo que cada decisión técnica y estética está en manos de profesionales comprometidos con la excelencia. Con Jötum, construir deja de ser una carga para convertirse en una experiencia positiva, eficiente y a la altura de las expectativas.` },
+    { logo: card6, 
+      title: 'Direccion y ejecucion de obra', 
+      description: "En Jötum llevamos cada obra con compromiso y precisión, garantizando que el proyecto se construya con la calidad, estética y solidez que fue pensada. Coordinamos equipos, controlamos cada etapa y cuidamos cada detalle.", 
+      information: `En Jötum, dirigir y ejecutar una obra es mucho más que supervisar tareas: es custodiar la calidad proyectada y convertirla en una realidad tangible, sin concesiones. Nos encargamos de coordinar cada etapa del proceso constructivo con rigurosidad, compromiso y visión técnica, garantizando que cada decisión tomada en obra esté alineada con los más altos estándares. 
+      
+      Organizamos y lideramos equipos de trabajo especializados, controlamos la correcta ejecución de cada rubro —desde la estructura hasta los detalles de terminación— y gestionamos recursos y tiempos con precisión para asegurar una obra ágil, segura y eficiente. Nuestra presencia en el día a día de la obra nos permite anticipar desafíos, resolver imprevistos y mantener la coherencia del proyecto original en cada metro construido. 
+      
+      Cada espacio ejecutado por Jötum refleja solidez estructural, calidad constructiva y un diseño cuidado que perdura en el tiempo. Porque construir bien es, para nosotros, un acto de responsabilidad, técnica y pasión por la excelencia.` },
+    { logo: card7, 
+      title: 'Diseño de muebles', 
+      description: "Muebles a medida, elaborados por los mejores carpinteros, combinando funcionalidad y estilo.", 
+      information: `Nuestro servicio de diseño de mobiliario a medida potencia al máximo la identidad de cada espacio. Cuando se integra con nuestros proyectos de arquitectura, interiorismo o reforma, permite crear ambientes únicos, donde cada pieza responde a una lógica funcional, estética y espacial. 
+      
+      Trabajamos con carpinteros de excelencia y materiales de primera calidad para lograr muebles duraderos, elegantes y pensados exclusivamente para vos. El resultado es una armonía total entre espacio y objeto, donde todo encaja con precisión y estilo.` },
   ];
 
   /**
@@ -129,11 +175,17 @@ export default function Servicios() {
     window.requestAnimationFrame(step);
   }
 
+  const handleSelectCard = (index) => {
+    setSelectedIndex(index);
+  };
+
+  const handleDeselect = () => {
+    setSelectedIndex(null);
+  };
+
   return (
     <section ref={sectionRef} className="section-services">
-      <div className={`bg ${
-          isTransitioning ? 'fade-out' : 'visible'
-        }`}
+      <div className={`bg ${isTransitioning ? 'fade-out' : 'visible'}`}
         style={{ backgroundImage: `url(${images[current]})` }}
       />
       {isTransitioning && (
@@ -142,17 +194,41 @@ export default function Servicios() {
           style={{ backgroundImage: `url(${images[next]})` }}
         />
       )}
-
-      <div className="services-content">
-        {cards.map((c, i) => (
-          <ServiceCard
-            key={i}
-            logo={c.logo}
-            title={c.title}
-            description={c.description}
-          />
-        ))}
-      </div>
+      {selectedIndex === null ? (
+        <div className="services-content">
+          {cards.map((c, i) => (
+            <ServiceCard
+              key={i}
+              logo={c.logo}
+              title={c.title}
+              description={c.description}
+              onSelect={() => handleSelectCard(i)}
+              isHidden={false}
+              isSelected={false}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className='services-content-selected'>
+          <div className='selected-card-wrapper'>
+            <ServiceCard 
+              logo={cards[selectedIndex].logo}
+              title={cards[selectedIndex].title}
+              description={cards[selectedIndex].description}
+              onSelect={() => {}}
+              isHidden={false}
+              isSelected={true}
+            />
+            <button className="back-button" onClick={handleDeselect}>
+               ← Volver
+            </button>
+          </div>
+          <div className="selected-card-detail">
+            <h2 className="detail-title">{cards[selectedIndex].title}</h2>
+            <p className="detail-text">{cards[selectedIndex].information}</p>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

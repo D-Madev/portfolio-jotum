@@ -4,7 +4,7 @@
   position: relative;
   overflow: visible;
   height: 460px;
-  transition: heigth .4s ease;
+  transition: height .4s ease;
 }
 
 .service-card {
@@ -52,7 +52,8 @@
   justify-content: center;
 }
 
-.service-card.is-expanded .button-container {
+.service-card.is-selected .button-container,
+.service-card:hover .button-container {
   opacity: 1;
   pointer-events: auto;
 }
