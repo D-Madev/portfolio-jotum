@@ -78,7 +78,7 @@
   flex: 0 0 auto;
   max-width: none;
   width: 360px;
-  height: auto;
+  height: 520px;
 }
 
 .selected-card-wrapper .service-card-wrapper {
@@ -88,14 +88,13 @@
 .back-button {
   padding: 0.8rem 5rem;
   background-color: transparent;
-  border: solid 2px var(--main-color);
+  border: none;
   color: white;
   cursor: pointer;
+  text-decoration: none;
+  text-align: center;
   transition: background-color 0.3s ease;
   z-index: 10;
-}
-
-.back-button:hover {
 }
 
 .selected-card-detail {

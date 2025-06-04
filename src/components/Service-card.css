@@ -59,11 +59,15 @@
 }
 
 .service-button {
+  display: inline-block;
   padding: 0.8rem 5rem;
   background-color: transparent;
+  margin-top: auto;
   border: solid 2px var(--main-color);
   color: white;
   cursor: pointer;
+  text-decoration: none;
+  text-align: center;
   transition: background-color 0.3s ease;
 }
 

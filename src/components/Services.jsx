@@ -92,13 +92,15 @@ export default function Servicios() {
    * Funcion que cambia la imagen de fondo cada 5 segundos.
    * Se utiliza un setInterval para cambiar la imagen de fondo.
    */
-  useEffect(() => {
+   useEffect(() => {
+    // Si hay tarjeta única seleccionada, salgo y no instalo el interval
+    if (selectedIndex !== null) return;
+
     const interval = setInterval(() => {
-      // Iniciamos transición
       const upcoming = (current + 1) % images.length;
       setNext(upcoming);
       setIsTransitioning(true);
-      // Cambiamos la imagen de fondo
+
       setTimeout(() => {
         setCurrent(upcoming);
         setNext(null);
@@ -107,7 +109,7 @@ export default function Servicios() {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [current, images.length]);
+  }, [current, images.length, selectedIndex]);
 
    useEffect(() => {
     const section = sectionRef.current;
@@ -151,8 +153,7 @@ export default function Servicios() {
     const rect = el.getBoundingClientRect();
     const startY = window.scrollY;
     const absoluteTop = startY + rect.top;
-    const targetY =
-      absoluteTop - (window.innerHeight - rect.height) / 2 - 50;
+    const targetY = absoluteTop - (window.innerHeight - rect.height) / 2 - 50;
     const diff = targetY - startY;
     let startTime = null;
 
@@ -215,12 +216,12 @@ export default function Servicios() {
               logo={cards[selectedIndex].logo}
               title={cards[selectedIndex].title}
               description={cards[selectedIndex].description}
-              onSelect={() => {}}
+              onSelect={null}
               isHidden={false}
               isSelected={true}
             />
             <button className="back-button" onClick={handleDeselect}>
-               ← Volver
+               <i class="fas fa-solid fa-chevron-left"></i> 
             </button>
           </div>
           <div className="selected-card-detail">
