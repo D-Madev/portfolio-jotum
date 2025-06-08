@@ -135,7 +135,11 @@
 }
 
 @media (max-width: 768px) {
-  .service-content {
+  .services-content {
     padding: 10rem 0rem;
   }
+}
+
+@media (max-width: 425px) {
+  .service-card-wrapper { flex: 1 1 50%; max-width: 100%; }
 }

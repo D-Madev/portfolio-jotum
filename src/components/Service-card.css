@@ -219,3 +219,66 @@
     padding: 0.6rem 3rem;
   }
 }
+
+@media (max-width: 740px) {
+  .service-card img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .service-card h2 {
+    font-size: .8rem;
+    margin: 10px 0 15px 0;
+  }
+} 
+
+@media (max-width: 690px) {
+  .service-card {
+    height: 300px;
+  }
+
+  .service-card-wrapper {
+    height: 300px;
+  }
+
+  .service-card.is-expanded {
+    height: 350px;
+  }
+
+  .service-card p {
+    font-size: .65rem;
+  }
+} 
+
+@media (max-width: 425px) {
+    .service-card {
+    height: 300px;
+  }
+
+  .service-card-wrapper {
+    height: 300px;
+  }
+
+  .service-card.is-expanded {
+    height: 350px;
+  }
+
+  .service-card img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .service-card h2 {
+    font-size: 1.2rem;
+    margin: 10px 0 15px 0;
+  }
+
+  .service-card p {
+    font-size: 1rem;
+  }
+
+  .service-card {
+    align-items: center;
+    text-align: center;
+  }
+}
