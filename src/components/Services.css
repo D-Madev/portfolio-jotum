@@ -68,7 +68,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     width: 40%;
 }
 
@@ -85,13 +84,17 @@
 }
 
 .back-button {
-  padding: 0.8rem 5rem;
+  padding: 0.8rem 1rem;
   background-color: transparent;
   border: none;
   color: white;
   cursor: pointer;
   text-decoration: none;
   text-align: center;
+  display: flex;
+  align-self: flex-start;
+  
+  border: solid 2px var(--main-color);
   transition: background-color 0.3s ease;
   z-index: 10;
 }
@@ -111,9 +114,22 @@
   margin-top: 2rem;
 }
 
+.detail-buttons {
+  display: none;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.detail-buttons a {
+  margin: 0 2rem;
+}
+
 @media (max-width: 1900px) {
   .services-content {
     max-width: 90%;
+  }
+  .services-content-selected {
+    margin: 20% 0%;
   }
 }
 
@@ -124,8 +140,47 @@
   }
 }
 
+@media (max-width: 1360px) {
+  .selected-card-detail {
+    width: 50%;
+  }
+  
+  .selected-card-wrapper .is-selected {
+    width: 300px;
+    height: 550px;
+  }
+
+  .selected-card-wrapper .is-selected h2 {
+    margin: 15px 0 25px 0;
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 1280px) {
+  .selected-card-detail {
+    width: 55%;
+    line-height: 1.3rem;
+    font-size: .9rem;
+    padding: 1.5rem;
+  }
+}
+
 @media (max-width: 1024px) {
   .service-card-wrapper { flex: 1 1 25%; max-width: 50%; }
+}
+
+@media (max-width: 900px) {
+  .selected-card-wrapper {
+    display: none;
+  }
+  
+  .selected-card-detail {
+    width: 80%;
+  }
+
+  .detail-buttons {
+    display: flex;
+  }
 }
 
 @media (max-width: 850px) {
@@ -137,6 +192,12 @@
 @media (max-width: 768px) {
   .services-content {
     padding: 10rem 0rem;
+  }
+
+  .selected-card-detail {
+    width: 90%;
+    padding: 1rem;
+    font-size: 0.7rem;
   }
 }
 

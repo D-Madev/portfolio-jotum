@@ -27,7 +27,10 @@ export default function Servicios() {
   const [next, setNext]       = useState(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
-  
+  const phoneNumber = '5491121747565';
+  const message = 'Hola, estoy interesado en el servicio de Jötum.';
+  const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+
   /**
    * Contenido de las cards.
    * Utilizacion dinamica del componente ServiceCard.
@@ -219,14 +222,16 @@ export default function Servicios() {
               onSelect={null}
               isHidden={false}
               isSelected={true}
+              onDeselect={handleDeselect}
             />
-            <button className="back-button" onClick={handleDeselect}>
-               <i class="fas fa-solid fa-chevron-left"></i> 
-            </button>
           </div>
           <div className="selected-card-detail">
             <h2 className="detail-title">{cards[selectedIndex].title}</h2>
             <p className="detail-text">{cards[selectedIndex].information}</p>
+            <div className="detail-buttons">
+              <button className="back-button" onClick={handleDeselect}><i class="fas fa-solid fa-chevron-left"></i> </button>
+              <a href={whatsappLink} target='_blank' rel="noopener noreferrer" className='service-button'>Contactar</a>
+            </div>
           </div>
         </div>
       )}
