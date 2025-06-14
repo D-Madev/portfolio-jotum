@@ -2,7 +2,8 @@ import { Routes, Route } from 'react-router-dom'
 import Inicio from './pages/Inicio.jsx'
 import Nosotros from './pages/Nosotros.jsx'
 import Servicios from './pages/Servicios.jsx'
-import Working from './pages/Working.jsx' 
+import Contact from './pages/Contact.jsx'
+//import Working from './pages/Working.jsx' 
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
       <Route path='/inicio' element={<Inicio />} />
       <Route path='/nosotros' element={<Nosotros />} />
       <Route path='/servicios' element={<Servicios />} />
-      <Route path='/contacto' element={<Working />} />
+      <Route path='/contacto' element={<Contact />} />
     </Routes>
   )
 }
