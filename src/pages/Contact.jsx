@@ -1,4 +1,5 @@
 import WelcomeBanner from '../components/Welcome-banner'
+import ContactForm from '../components/Contact-form'
 import Footer from '../components/Footer'
 import Author from '../components/Author'
 
@@ -17,6 +18,7 @@ export default function Contact() {
         children={<h1 style={{ fontSize: '100px'}}>Contactanos</h1>}
         style={{ height: '70vh' }}
       />
+      <ContactForm />
       <Footer/>
       <Author/>
     </>
