@@ -71,8 +71,8 @@ export default function WelcomeBanner({
 
       <div className="banner-overlay">
         {logo && <img src={logo} className="banner-logo" alt="Logo" />}
-        {showText && <p className="banner-text">{text}</p>}
         {children}
+        {showText && <p className="banner-text">{text}</p>}
       </div>
     </section>
   );
