@@ -94,6 +94,7 @@
 
 .contact-form-form input:focus + label {
   color: var(--main-color);
+  transition: 0.3s ease;
 }
 
 .contact-form-side {
