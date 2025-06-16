@@ -1,8 +1,6 @@
 import WelcomeBanner from "../components/Welcome-banner"
 import Leyend from "../components/Leyend"
 import Services from "../components/Services"
-import Footer from "../components/Footer"
-import Author from "../components/Author"
 import wbServicesImage from '../assets/servicios/welcome-banner.webp'
 
 export default function Servicios() {
@@ -21,8 +19,6 @@ export default function Servicios() {
         style={{padding: '0'}}
       />
       <Services />
-      <Footer/>
-      <Author/>
     </>
   )
 }

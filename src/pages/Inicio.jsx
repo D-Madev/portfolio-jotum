@@ -7,8 +7,6 @@ import ProyectList from '../components/Proyect-list.jsx'
 import Benefits from '../components/Benefits.jsx'
 import Testimonials from '../components/Testimonials.jsx'
 import SubFooter from '../components/Sub-footer.jsx'
-import Footer from '../components/Footer.jsx'
-import Author from '../components/Author.jsx'
 import WhatsAppButton from '../components/WhatsApp-buton.jsx'
 // IMPORT IMAGES
 import imageSubFooter from '../assets/inicio/sub-footer-inicio.webp'
@@ -48,8 +46,6 @@ function Inicio() {
         Porque construir con Jötum es construir con confianza.`}
         img={imageSubFooter}
       />
-      <Footer />
-      <Author /> 
     </>
   )
 }

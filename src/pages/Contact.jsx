@@ -1,7 +1,5 @@
 import WelcomeBanner from '../components/Welcome-banner'
 import ContactForm from '../components/Contact-form'
-import Footer from '../components/Footer'
-import Author from '../components/Author'
 
 import wbContact from '../assets/contacto/wb-contact.webp'
 
@@ -19,8 +17,6 @@ export default function Contact() {
         style={{ height: '70vh' }}
       />
       <ContactForm />
-      <Footer/>
-      <Author/>
     </>
   )
 }

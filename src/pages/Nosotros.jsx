@@ -1,7 +1,5 @@
 import WelcomeBanner from "../components/Welcome-banner.jsx";
 import SubFooter from "../components/Sub-footer.jsx";
-import Footer from "../components/Footer.jsx";
-import Author from "../components/Author.jsx";
 import ParagraphGeneric from "../components/Paragraph-generic.jsx";
 import ParallaxScroll from "../components/Parallax-scroll.jsx"
 
@@ -40,8 +38,6 @@ function Nostros() {
         text = "Transformamos cada idea en un proyecto único, combinando la escucha activa y el análisis riguroso con un diseño con identidad propia y una ejecución impecable de principio a fin. Si quieres que tus ideas cobren vida, estaremos a tu lado en todo el proceso."
         img = {subFooterImage}
       />
-      <Footer />
-      <Author />
     </>
   );
 }

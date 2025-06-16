@@ -7,6 +7,8 @@ import { HashRouter as Router } from 'react-router-dom';
 import ScrollToTop from './components/Scroll-to-top.jsx'
 import App from './App.jsx'
 import Navbar from './components/Navbar.jsx'
+import Footer from './components/Footer.jsx'
+import Author from './components/Author.jsx'
 import './styles/index.css';
 
 createRoot(document.getElementById('root')).render(
@@ -15,6 +17,8 @@ createRoot(document.getElementById('root')).render(
       <ScrollToTop />
       <Navbar />
       <App />
+      <Footer />
+      <Author /> 
     </Router>
   </StrictMode>,
 )
