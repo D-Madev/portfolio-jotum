@@ -200,7 +200,7 @@ export default function ParallaxScroll() {
             style={{ zIndex: 2 + i }}
           >
             <div className="parallax-image">
-              <img src={section.image} alt={section.title} />
+              <img src={section.image} alt={section.title} loading="lazy" />
             </div>
             <div className="parallax-content">
               <h1 className="section-number">{i + 1}</h1>

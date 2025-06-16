@@ -52,6 +52,7 @@ function Proyect({ images = [], title, location, m2, state, description }) {
             src={images[prev]}
             alt=""
             className="fade-image fade-out"
+            loading="lazy"
           />
         )}
         <img
@@ -59,6 +60,7 @@ function Proyect({ images = [], title, location, m2, state, description }) {
           src={images[current]}
           alt={`Imagen ${current + 1}`}
           className="fade-image fade-in"
+          loading="lazy"
         />
       </div> 
 

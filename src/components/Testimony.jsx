@@ -4,7 +4,7 @@ function Testimony({ image, author, rate, content }) {
   return(
     <article className='testimony'>
       <header className='testimony-header'>
-        <img src={image} alt={image} className='testimony-avatar'/>
+        <img src={image} alt={image} className='testimony-avatar' loading="lazy"/>
         <div className="testimony-info">
           <h1>{author}</h1>
           <p className="testimony-rate">
