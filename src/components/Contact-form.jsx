@@ -28,6 +28,13 @@ export default function ContactForm() {
                  `Mensaje: ${data.msg}`;
       window.location.href = `mailto:destino@example.com?subject=Consulta desde el formulario&body=${encodeURIComponent(body)}`;
     */
+    const email = "jotumproyectos@gmail.com"
+    const asunto = encodeURIComponent("Consulta desde formulario web")
+    const body = encodeURIComponent("Nombre:    " + data.name + "\nDe:    " + data.city +
+                                    "\nEmail:    " + data.email + "\nTelefono:    +54 9 11 " + data.phone +
+                                    "\n\nMensaje: " + data.msg);
+    const emailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${asunto}&body=${body}`
+    window.open(emailLink, "_blank");
 
     // Reset the form after submission
     e.target.reset();
