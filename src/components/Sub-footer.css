@@ -25,9 +25,10 @@
   content: '';
   position: absolute;
   inset: 0;
-  filter: blur(5px) brightness(20%);
-  margin: -15px;
   background: inherit;
+  filter: blur(5px) brightness(20%);
+  transform: scale(1.05);
+  transform-origin: center;
   z-index: 0;
 }
 
