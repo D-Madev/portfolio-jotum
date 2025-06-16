@@ -3,7 +3,7 @@ import ContactForm from '../components/Contact-form'
 import Footer from '../components/Footer'
 import Author from '../components/Author'
 
-import wbContact from '../assets/wb-contact.png'
+import wbContact from '../assets/contacto/wb-contact.webp'
 
 export default function Contact() {
   return (

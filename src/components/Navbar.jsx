@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import logo from '../assets/logo-jotum-sf.png';
+import logo from '../assets/logo/jotum-architekturburo-bauunternehmen.png';
 import './navbar.css';
 
 function Navbar() {

@@ -1,5 +1,5 @@
 import './Footer.css'
-import jotumLogo from '../assets/logo-jotum-sf.png'
+import jotumLogo from '../assets/logo/jotum-architekturburo-bauunternehmen.png'
 
 // EMAIL
 const email = "jotumproyectos@gmail.com"

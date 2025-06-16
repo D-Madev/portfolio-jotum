@@ -4,9 +4,10 @@ import Footer from "../components/Footer.jsx";
 import Author from "../components/Author.jsx";
 import ParagraphGeneric from "../components/Paragraph-generic.jsx";
 import ParallaxScroll from "../components/Parallax-scroll.jsx"
-import wbUsImage from '../assets/wb-nosotros.png'
-import logo from '../assets/logo-jotum-sf.png'
-import subFooterImage from '../assets/sub-footer-inicio.png'
+
+import wbUsImage from '../assets/nosotros/welcome-banner.webp'
+import logo from '../assets/logo/jotum-architekturburo-bauunternehmen.png'
+import subFooterImage from '../assets/inicio/sub-footer-inicio.webp'
 
 function Nostros() {
   /*<h1>El verdadero valor está en lo que perdura. Jötum construye con excelencia para ese tipo de cliente.</h1>*/

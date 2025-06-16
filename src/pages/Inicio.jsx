@@ -11,7 +11,7 @@ import Footer from '../components/Footer.jsx'
 import Author from '../components/Author.jsx'
 import WhatsAppButton from '../components/WhatsApp-buton.jsx'
 // IMPORT IMAGES
-import imageSubFooter from '../assets/sub-footer-inicio.png'
+import imageSubFooter from '../assets/inicio/sub-footer-inicio.webp'
 import video1 from '../assets/inicio1.mp4'
 import video2 from '../assets/inicio2.mp4'
 import video3 from '../assets/inicio3.mp4'

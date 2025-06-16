@@ -1,5 +1,5 @@
 import './WhatsApp-buton.css';
-import whatsappIcon from '../assets/whatsapp-icon.png'
+import whatsappIcon from '../assets/whatsapp-icon.webp'
 
 const phoneNumber = '5491121747565';
 const message = 'Hola, estoy interesado en el servicio de Jötum.';

@@ -1,5 +1,5 @@
 import "./Contact-form.css"
-import formImage from "../assets/contact-form.png"
+import formImage from "../assets/logo/jotum-architekturburo-bauunternehmen.png"
 
 export default function ContactForm() {
 

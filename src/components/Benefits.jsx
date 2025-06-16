@@ -1,7 +1,7 @@
 import BenefitCard from './Benefit-card'
-import BenefitLeaf from '../assets/Benefit-leaf.png'
-import BenefitMoney from '../assets/Benefit-money.png'
-import BenefitJotum from '../assets/Benefit-jotum.png'
+import BenefitLeaf from '../assets/inicio/benefit-leaf.webp'
+import BenefitMoney from '../assets/inicio/benefit-money.webp'
+import BenefitJotum from '../assets/inicio/benefit-jotum.webp'
 import './Benefits.css'
 
 function Benefits() {

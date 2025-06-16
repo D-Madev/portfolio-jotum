@@ -3,14 +3,14 @@ import video1 from '../assets/nosotros1.mp4';
 import video2 from '../assets/nosotros2.mp4';
 import video3 from '../assets/nosotros3.mp4';
 import video4 from '../assets/nosotros4.mp4';
-import image1 from '../assets/us-image-1.png'
-import image2 from '../assets/us-image-2.png'
-import image3 from '../assets/us-image-3.png'
-import image4 from '../assets/us-image-4.png'
-import image5 from '../assets/us-image-5.png'
-import image6 from '../assets/us-image-6.png'
-import image7 from '../assets/us-image-7.png'
-import image8 from '../assets/us-image-8.png'
+import image1 from '../assets/nosotros/us-image-1.webp';
+import image2 from '../assets/nosotros/us-image-2.webp';
+import image3 from '../assets/nosotros/us-image-3.webp';
+import image4 from '../assets/nosotros/us-image-4.webp';
+import image5 from '../assets/nosotros/us-image-5.webp';
+import image6 from '../assets/nosotros/us-image-6.webp';
+import image7 from '../assets/nosotros/us-image-7.webp';
+import image8 from '../assets/nosotros/us-image-8.webp';
 import './Parallax-scroll.css'
 
 export default function ParallaxScroll() {

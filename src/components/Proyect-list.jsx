@@ -1,7 +1,7 @@
 import Proyect from './Proyect';
-import proyect1 from '../assets/Proyect-1.png'
-import proyect2 from '../assets/Proyect-2.png'
-import proyect3 from '../assets/Proyect-3.png'
+import proyect1 from '../assets/inicio/proyect-1.webp'
+import proyect2 from '../assets/inicio/proyect-2.webp'
+import proyect3 from '../assets/inicio/proyect-3.webp'
 import './Proyect-list.css'
 
 function ProyectList() {

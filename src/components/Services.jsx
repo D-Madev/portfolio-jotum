@@ -1,16 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
-import img1 from '../assets/services1.png';
-import img2 from '../assets/services2.png';
-import img3 from '../assets/services3.png';
-import img4 from '../assets/services4.png';
-import img5 from '../assets/services5.png';
-import card1 from '../assets/card-logo1.png'
-import card2 from '../assets/card-logo2.png'
-import card3 from '../assets/card-logo3.png'
-import card4 from '../assets/card-logo4.png'
-import card5 from '../assets/card-logo5.png'
-import card6 from '../assets/card-logo6.png'
-import card7 from '../assets/card-logo7.png'
+import img1 from '../assets/servicios/services1.webp';
+import img2 from '../assets/servicios/services2.webp';
+import img3 from '../assets/servicios/services3.webp';
+import img4 from '../assets/servicios/services4.webp';
+import img5 from '../assets/servicios/services5.webp';
+import card1 from '../assets/servicios/card-logo1.webp';
+import card2 from '../assets/servicios/card-logo2.webp';
+import card3 from '../assets/servicios/card-logo3.webp';
+import card4 from '../assets/servicios/card-logo4.webp';
+import card5 from '../assets/servicios/card-logo5.webp';
+import card6 from '../assets/servicios/card-logo6.webp';
+import card7 from '../assets/servicios/card-logo7.webp';
 import ServiceCard from '../components/Service-card';
 import './Services.css';
 

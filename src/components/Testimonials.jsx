@@ -1,8 +1,8 @@
 import './Testimonials.css';
-import avatar1 from '../assets/avataaars.png'
-import avatar2 from '../assets/avataaars_1.png'
-import avatar3 from '../assets/avataaars_2.png'
-import avatar4 from '../assets/avataaars_3.png'
+import avatar1 from '../assets/inicio/avataaars.webp'
+import avatar2 from '../assets/inicio/avataaars_1.webp'
+import avatar3 from '../assets/inicio/avataaars_2.webp'
+import avatar4 from '../assets/inicio/avataaars_3.webp'
 import TestimonialsList from './Testimonials-list.jsx';
 
 const testimonialsData = [

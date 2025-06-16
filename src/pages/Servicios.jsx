@@ -3,7 +3,7 @@ import Leyend from "../components/Leyend"
 import Services from "../components/Services"
 import Footer from "../components/Footer"
 import Author from "../components/Author"
-import wbServicesImage from '../assets/us-image-7.png'
+import wbServicesImage from '../assets/servicios/welcome-banner.webp'
 
 export default function Servicios() {
   return(
