@@ -15,7 +15,7 @@ export default function Contact() {
         text={`No te preocupes si aún no tenés un plan de proyecto definido.
           Estamos para acompañarte desde el primer paso.
           ¡Empecemos juntos!`}
-        children={<h1 style={{ fontSize: '100px'}}>Contactanos</h1>}
+        children={<h2>Contactanos</h2>}
         style={{ height: '70vh' }}
       />
       <ContactForm />

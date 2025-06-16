@@ -106,17 +106,26 @@
   /*text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);*/
 }
 
+.welcome-banner h2 {
+  font-size: 100px;
+  /*text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);*/
+}
+
 @media (max-width: 768px) {
   .welcome-banner {
     height: 100vh;
   }
 
-  .welcome-banner h1 {
-    font-size: 1.5rem;
+  .banner-overlay h1 {
+    font-size: 3rem;
+  }
+
+  .banner-overlay h2 {
+    font-size: 3rem;
   }
 
   .banner-text {
-    font-size: 1.5rem;
+    font-size: .8rem;
   }
 
   .banner-logo {
@@ -132,5 +141,9 @@
 
   .welcome-banner h1 {
     font-size: 2.8rem;
+  }
+
+  .welcome-banner h2 {
+    font-size: 100px;
   }
 }
