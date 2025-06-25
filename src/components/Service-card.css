@@ -81,18 +81,18 @@
 .service-button {
   display: inline-block;
   padding: 0.8rem 5rem;
-  background-color: var(--main-color);
   margin-top: auto;
-  border: solid 2px var(--main-color);
   color: white;
   cursor: pointer;
   text-decoration: none;
   text-align: center;
+  border: solid 2px var(--main-color);
+  background-color: var(--main-color);
   transition: background-color 0.3s ease;
 }
 
 .service-button:hover {
-  background-color: var(--main-color);
+  background-color: transparent;
 }
 
 @media (max-width: 1750px) {

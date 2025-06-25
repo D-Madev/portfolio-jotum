@@ -27,15 +27,15 @@
 
 .visit-us-button {
   text-align: center;
-  background-color: transparent;
   padding: .7rem 1rem;
   color: white;
-  border: 2px solid var(--main-color);
   font-size: 1.1rem;
+  border: 2px solid var(--main-color);
+  background-color: var(--main-color);
 }
 
 .visit-us-button:hover {
-  background-color: var(--main-color);
+  background-color: transparent;
   cursor: pointer;
 }
 
