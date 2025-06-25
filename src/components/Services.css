@@ -45,7 +45,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.6rem;
   padding: 10rem 2rem;
   max-width: 83%;
   margin: 0 auto;       
