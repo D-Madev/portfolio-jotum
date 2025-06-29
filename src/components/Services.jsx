@@ -190,65 +190,58 @@ export default function Servicios() {
 
   return (
     <section ref={sectionRef} className="section-services">
+    {/* Logica para cambiar el fondo del componente */}
+    <div 
+      className={`bg ${isTransitioning ? 'fade-out' : 'visible'}`} 
+      style={{ backgroundImage: `url(${images[current]})` }}
+    />
+    {isTransitioning && (
+      <div 
+        className="bg fade-in" 
+        style={{ backgroundImage: `url(${images[next]})` }}
+      /> 
+    )}
+
+    {/* Seccion contenedora de los servicios y cards */}
       <LayoutGroup>
-        <AnimatePresence exitBeforEnter>
-          <div className={`bg ${isTransitioning ? 'fade-out' : 'visible'}`}
-            style={{ backgroundImage: `url(${images[current]})` }}
-          />
-          {isTransitioning && (
-            <div
-            className="bg fade-in"
-            style={{ backgroundImage: `url(${images[next]})` }}
-            />
-          )}
-          {selectedIndex === null ? (
-            <motion.div 
-              key="grid"
-              className="services-content"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              {cards.map((c, i) => (
-                <ServiceCard
-                  key={i}
-                  logo={c.logo}
-                  title={c.title}
-                  description={c.description}
-                  onSelect={() => { setSelectedIndex(i); handleSelectCard(i); }}
-                  isHidden={false}
-                  isSelected={false}
+        <AnimatePresence>
+          {selectedIndex === null && (
+            <motion.div key="grid" className="services-content">
+              {cards.map((card, i) => (
+                <ServiceCard 
+                  logo={card.logo} 
+                  title={card.title}
+                  description={card.description} 
+                  isSelected={selectedIndex === i}
+                  onSelect={() => setSelectedIndex(i)} 
+                  onDeselect={() => setSelectedIndex(null)}
                   layoutId={`card-${i}`}
+                  initial={{ opacity: 0, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={selectedIndex === i ? {} : { opacity: 0, y: 0, transition: { duration: 0.5 } }}
+                  transition={{ duration: 0.5, ease: 'easeInOut' }}
                 />
               ))}
             </motion.div>
-          ) : (
-            <motion.div
-              key="detail" 
-              className='services-content-selected'
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              <motion.div 
-                layoutId={`card-${selectedIndex}`}
-                className='selected-card-wrapper'
-              >
-                <ServiceCard 
-                  logo={cards[selectedIndex].logo}
-                  title={cards[selectedIndex].title}
-                  description={cards[selectedIndex].description}
-                  onSelect={null}
-                  isHidden={false}
-                  isSelected={true}
-                  onDeselect={() => {setSelectedIndex(null); handleDeselect; }}
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {selectedIndex !== null && (
+            <motion.div key="detail" className='services-content-selected'>
+              <motion.div layoutId={`card-${selectedIndex}`} className='selected-card-wrapper'>
+                <ServiceCard
+                  logo={cards[selectedIndex].logo} title={cards[selectedIndex].title}
+                  description={cards[selectedIndex].description} isSelected
+                  onDeselect={() => { setSelectedIndex(null) }}
                 />
               </motion.div>
-              <motion.div 
+              <motion.div
                 className="selected-card-detail"
-                initial={{ x: 50, opacity: 0}}
-                animate={{ x: 0, opacity: 1}}
-                transition={{ type: 'tween'}}
+                initial={{ x: 50, opacity: 0 }}
+                animate={{ x: -50, opacity: 1 }}
+                exit={{ x: -50, opacity: 0 }}
+                transition={{ type: 'tween', duration: 0.5 }}
               >
                 <h2 className="detail-title">{cards[selectedIndex].title}</h2>
                 <p className="detail-text">{cards[selectedIndex].information}</p>

@@ -6,7 +6,8 @@ export default function ServiceCard({
   logo, title, 
   description, onSelect, 
   isHidden, isSelected, 
-  onDeselect, layoutId
+  onDeselect, layoutId,
+  initial, animate, exit, transition
 }) {
   if (isHidden) {
     return null;
@@ -37,19 +38,23 @@ export default function ServiceCard({
   };
 
   return(
-     <motion.div 
+     <motion.article 
       className={`service-card-wrapper ${isSelected? 'wrapper-selected' : ''}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-    >
-      <motion.article 
-        layoutId={layoutId}
+      >
+      <motion.div 
         className={`service-card ${expanded? 'is-expanded' : ''} ${isSelected? 'is-selected' : '' }`}
+        layoutId={layoutId}
+        initial={initial}
+        animate={animate}
+        exit={exit}
+        transition={transition}
       >
         <img src={logo} alt={title} />
         <h2>{title}</h2>
         <p>{description}</p>
-        <div className="button-container">         
+        <div className="button-container">    
           {(isSelected ?
             <>
               <button className="back-button" onClick={handleDeselect}>
@@ -61,7 +66,7 @@ export default function ServiceCard({
             <button className="service-button" onClick={onSelect}>Ver más</button>
           )}
         </div>
-      </motion.article>
-    </motion.div>
+      </motion.div>
+    </motion.article>
   )
 }

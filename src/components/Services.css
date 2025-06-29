@@ -11,7 +11,8 @@
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0;
-  z-index: 0;
+  z-index: -1;
+  transition: opacity 1s ease-in-out;
 }
 
 .visible {
@@ -57,9 +58,13 @@
 }
 
 .services-content-selected {
+  position: absolute;   
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
   display: flex;
   margin: 20% 7%;
-  position: relative;
   align-items: center;
   justify-content: center;
   z-index: 10;
@@ -83,6 +88,13 @@
   max-width: none;
   width: 360px;
   height: 520px;
+}
+
+.services-content.hidden {
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: height 0.5s ease, opacity 0.5s ease;
 }
 
 .selected-card-wrapper .service-card-wrapper {
