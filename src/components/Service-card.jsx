@@ -1,7 +1,13 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import './Service-card.css'
 
-export default function ServiceCard({ logo, title, description, onSelect, isHidden, isSelected, onDeselect}) {
+export default function ServiceCard({ 
+  logo, title, 
+  description, onSelect, 
+  isHidden, isSelected, 
+  onDeselect, layoutId
+}) {
   if (isHidden) {
     return null;
   }
@@ -31,12 +37,15 @@ export default function ServiceCard({ logo, title, description, onSelect, isHidd
   };
 
   return(
-     <div 
+     <motion.div 
       className={`service-card-wrapper ${isSelected? 'wrapper-selected' : ''}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <article className={`service-card ${expanded? 'is-expanded' : ''} ${isSelected? 'is-selected' : '' }`}>
+      <motion.article 
+        layoutId={layoutId}
+        className={`service-card ${expanded? 'is-expanded' : ''} ${isSelected? 'is-selected' : '' }`}
+      >
         <img src={logo} alt={title} />
         <h2>{title}</h2>
         <p>{description}</p>
@@ -52,7 +61,7 @@ export default function ServiceCard({ logo, title, description, onSelect, isHidd
             <button className="service-button" onClick={onSelect}>Ver más</button>
           )}
         </div>
-      </article>
-    </div>
+      </motion.article>
+    </motion.div>
   )
 }

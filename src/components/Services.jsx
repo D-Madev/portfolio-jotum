@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { AnimatePresence, motion, LayoutGroup } from 'framer-motion';
 import img1 from '../assets/servicios/services1.webp';
 import img2 from '../assets/servicios/services2.webp';
 import img3 from '../assets/servicios/services3.webp';
@@ -189,52 +190,77 @@ export default function Servicios() {
 
   return (
     <section ref={sectionRef} className="section-services">
-      <div className={`bg ${isTransitioning ? 'fade-out' : 'visible'}`}
-        style={{ backgroundImage: `url(${images[current]})` }}
-      />
-      {isTransitioning && (
-        <div
-          className="bg fade-in"
-          style={{ backgroundImage: `url(${images[next]})` }}
-        />
-      )}
-      {selectedIndex === null ? (
-        <div className="services-content">
-          {cards.map((c, i) => (
-            <ServiceCard
-              key={i}
-              logo={c.logo}
-              title={c.title}
-              description={c.description}
-              onSelect={() => handleSelectCard(i)}
-              isHidden={false}
-              isSelected={false}
+      <LayoutGroup>
+        <AnimatePresence exitBeforEnter>
+          <div className={`bg ${isTransitioning ? 'fade-out' : 'visible'}`}
+            style={{ backgroundImage: `url(${images[current]})` }}
+          />
+          {isTransitioning && (
+            <div
+            className="bg fade-in"
+            style={{ backgroundImage: `url(${images[next]})` }}
             />
-          ))}
-        </div>
-      ) : (
-        <div className='services-content-selected'>
-          <div className='selected-card-wrapper'>
-            <ServiceCard 
-              logo={cards[selectedIndex].logo}
-              title={cards[selectedIndex].title}
-              description={cards[selectedIndex].description}
-              onSelect={null}
-              isHidden={false}
-              isSelected={true}
-              onDeselect={handleDeselect}
-            />
-          </div>
-          <div className="selected-card-detail">
-            <h2 className="detail-title">{cards[selectedIndex].title}</h2>
-            <p className="detail-text">{cards[selectedIndex].information}</p>
-            <div className="detail-buttons">
-              <button className="back-button" onClick={handleDeselect}><i class="fas fa-solid fa-chevron-left"></i> </button>
-              <a href={whatsappLink} target='_blank' rel="noopener noreferrer" className='service-button'>Contactar</a>
-            </div>
-          </div>
-        </div>
-      )}
+          )}
+          {selectedIndex === null ? (
+            <motion.div 
+              key="grid"
+              className="services-content"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              {cards.map((c, i) => (
+                <ServiceCard
+                  key={i}
+                  logo={c.logo}
+                  title={c.title}
+                  description={c.description}
+                  onSelect={() => { setSelectedIndex(i); handleSelectCard(i); }}
+                  isHidden={false}
+                  isSelected={false}
+                  layoutId={`card-${i}`}
+                />
+              ))}
+            </motion.div>
+          ) : (
+            <motion.div
+              key="detail" 
+              className='services-content-selected'
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <motion.div 
+                layoutId={`card-${selectedIndex}`}
+                className='selected-card-wrapper'
+              >
+                <ServiceCard 
+                  logo={cards[selectedIndex].logo}
+                  title={cards[selectedIndex].title}
+                  description={cards[selectedIndex].description}
+                  onSelect={null}
+                  isHidden={false}
+                  isSelected={true}
+                  onDeselect={() => {setSelectedIndex(null); handleDeselect; }}
+                />
+              </motion.div>
+              <motion.div 
+                className="selected-card-detail"
+                initial={{ x: 50, opacity: 0}}
+                animate={{ x: 0, opacity: 1}}
+                transition={{ type: 'tween'}}
+              >
+                <h2 className="detail-title">{cards[selectedIndex].title}</h2>
+                <p className="detail-text">{cards[selectedIndex].information}</p>
+                <div className="detail-buttons">
+                  <button className="back-button" onClick={handleDeselect}><i class="fas fa-solid fa-chevron-left"></i> </button>
+                  <a href={whatsappLink} target='_blank' rel="noopener noreferrer" className='service-button'>Contactar</a>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </LayoutGroup>
     </section>
   );
 }

@@ -59,9 +59,15 @@
 .services-content-selected {
   display: flex;
   margin: 20% 7%;
+  position: relative;
   align-items: center;
   justify-content: center;
   z-index: 10;
+}
+
+.selected-card-wrapper,
+.selected-card-detail {
+  flex: 0 0 40%;
 }
 
 .selected-card-wrapper {
