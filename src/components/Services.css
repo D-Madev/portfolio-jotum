@@ -40,16 +40,12 @@
 }
 
 .services-content {
-  position: relative;   
-  overflow: visible;
-  z-index: 3;           
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.6rem;
-  padding: 10rem 2rem;
-  max-width: 83%;
-  margin: 0 auto;       
+  gap: 1.5rem;
+  padding: clamp(2rem, 5vw, 10rem) clamp(1rem, 4vw, 5rem);
+  margin: auto;
 }
 
 .no-scroll {

@@ -216,9 +216,9 @@ export default function Servicios() {
                   onSelect={() => setSelectedIndex(i)} 
                   onDeselect={() => setSelectedIndex(null)}
                   layoutId={`card-${i}`}
-                  initial={{ opacity: 0, y: 0 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={selectedIndex === i ? {} : { opacity: 0, y: 0, transition: { duration: 0.5 } }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={selectedIndex === i ? {} : { opacity: 0, transition: { duration: 0.5 } }}
                   transition={{ duration: 0.5, ease: 'easeInOut' }}
                 />
               ))}
