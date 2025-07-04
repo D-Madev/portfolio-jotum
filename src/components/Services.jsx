@@ -189,7 +189,7 @@ export default function Servicios() {
   };
 
   return (
-    <section ref={sectionRef} className="section-services">
+    <section ref={sectionRef} className={`section-services  ${selectedIndex !== null ? 'detail-mode' : ''}`}>
     {/* Logica para cambiar el fondo del componente */}
     <div 
       className={`bg ${isTransitioning ? 'fade-out' : 'visible'}`} 
@@ -238,9 +238,9 @@ export default function Servicios() {
               </motion.div>
               <motion.div
                 className="selected-card-detail"
-                initial={{ x: 50, opacity: 0 }}
-                animate={{ x: -50, opacity: 1 }}
-                exit={{ x: -50, opacity: 0 }}
+                initial={{ x: 0, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: 0, opacity: 0 }}
                 transition={{ type: 'tween', duration: 0.5 }}
               >
                 <h2 className="detail-title">{cards[selectedIndex].title}</h2>
