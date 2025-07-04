@@ -1,3 +1,7 @@
+/* =========================
+   CONTENEDOR PRINCIPAL DE LA CARD
+   (service-card-wrapper)
+   ========================= */
 .service-card-wrapper {
   flex: 1 1 20%;
   max-width: 22%;
@@ -7,6 +11,11 @@
   transition: height .4s ease;
 }
 
+
+/* =========================
+   CARD DE SERVICIO
+   (service-card)
+   ========================= */
 .service-card {
   height: 430px;
   overflow: hidden;
@@ -21,6 +30,7 @@
   z-index: 1;
 }
 
+/* --- Card expandida al hacer hover (is-expanded) --- */
 .service-card.is-expanded {
   height: 500px;
   position: absolute;
@@ -29,10 +39,15 @@
   z-index: 10;
 }
 
+/* --- Card seleccionada (modo detalle) --- */
 .service-card.is-selected {
   height: auto;
 }
 
+
+/* =========================
+   IMAGEN Y TEXTO DE LA CARD
+   ========================= */
 .service-card img {
   width: 90px;
   height: 90px;
@@ -59,6 +74,11 @@
   font-size: 1rem;
 }
 
+
+/* =========================
+   BOTONES DE ACCIÓN
+   (Ver más, Contactar, Volver)
+   ========================= */
 .button-container {
   opacity: 0;
   pointer-events: none;
@@ -72,12 +92,14 @@
   margin-left: 1rem;
 }
 
+/* --- Mostrar botones al seleccionar o hacer hover --- */
 .service-card.is-selected .button-container,
 .service-card:hover .button-container {
   opacity: 1;
   pointer-events: auto;
 }
 
+/* --- Botón principal (Ver más / Contactar) --- */
 .service-button {
   display: inline-block;
   padding: 0.8rem 5rem;
@@ -94,7 +116,13 @@
 .service-button:hover {
   background-color: transparent;
 }
-/*
+
+
+/* =========================
+   MEDIA QUERIES (RESPONSIVE)
+   ========================= */
+
+/* --- Ajustes para pantallas <= 1750px --- */
 @media (max-width: 1750px) {
   .service-card {
     height: 500px;
@@ -109,6 +137,7 @@
   }
 }
 
+/* --- Ajustes para pantallas <= 1600px --- */
 @media (max-width: 1600px) {
   .service-card {
     height: 420px;
@@ -141,6 +170,7 @@
   }
 }
 
+/* --- Ajustes para pantallas <= 1500px --- */
 @media (max-width: 1500px) {
     .service-card {
     height: 440px;
@@ -155,6 +185,7 @@
   } 
 }
 
+/* --- Ajustes para pantallas <= 1300px --- */
 @media (max-width: 1300px) {
   .service-card {
     padding: 1.5rem;
@@ -180,11 +211,10 @@
 
   .service-card.is-expanded {
     height: 470px;
-  } 
-
-  
+  }   
 }
 
+/* --- Ajustes para pantallas <= 1200px --- */
 @media (max-width: 1200px) {
   .service-card img {
     width: 80px;
@@ -201,6 +231,7 @@
   }
 }
 
+/* --- Ajustes para pantallas <= 1100px --- */
 @media (max-width: 1100px) {
   .service-card img {
     width: 70px;
@@ -217,6 +248,7 @@
   }
 }
 
+/* --- Ajustes para pantallas <= 1024px --- */
 @media (max-width: 1024px) {
   .service-card {
     height: 320px;
@@ -231,6 +263,7 @@
   }
 }
 
+/* --- Ajustes para pantallas <= 850px --- */
 @media (max-width: 850px) {
   .service-card {
       padding: 1rem;
@@ -241,6 +274,7 @@
   }
 }
 
+/* --- Ajustes para pantallas <= 740px --- */
 @media (max-width: 740px) {
   .service-card img {
     width: 60px;
@@ -253,6 +287,7 @@
   }
 } 
 
+/* --- Ajustes para pantallas <= 690px --- */
 @media (max-width: 690px) {
   .service-card {
     height: 300px;
@@ -271,6 +306,7 @@
   }
 } 
 
+/* --- Ajustes para pantallas <= 425px --- */
 @media (max-width: 425px) {
     .service-card {
     height: 300px;
