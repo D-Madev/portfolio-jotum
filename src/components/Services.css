@@ -93,6 +93,7 @@
     flex-direction: column;
     justify-content: center;
     width: 40%;
+    align-items: end;
 }
 
 .selected-card-wrapper .is-selected{
@@ -119,7 +120,7 @@
 
 /* --- BOTÓN DE VOLVER EN DETALLE --- */
 .back-button {
-  padding: 1.1rem 1rem;
+  padding: 7% 20px;
   background-color: transparent;
   border: none;
   color: white;
@@ -165,7 +166,6 @@
 
 
 /* --- MEDIA QUERIES (RESPONSIVE) --- */
-
 @media (max-width: 1900px) {
   .services-content {
     max-width: 90%;
@@ -187,10 +187,9 @@
   }
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1540px) {
   .services-content {
       gap: 1.5rem;
-      max-width: 95%;
   }
 }
 
@@ -216,6 +215,10 @@
     line-height: 1.3rem;
     font-size: .9rem;
     padding: 1.5rem;
+  }
+
+  .back-button {
+    padding: 7% 10px;
   }
 }
 

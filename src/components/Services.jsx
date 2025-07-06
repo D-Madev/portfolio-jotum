@@ -238,7 +238,7 @@ export default function Servicios() {
               </motion.div>
               <motion.div
                 className="selected-card-detail"
-                initial={{ x: 0, opacity: 0 }}
+                initial={{ x: -200, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: 0, opacity: 0 }}
                 transition={{ type: 'tween', duration: 0.5 }}
