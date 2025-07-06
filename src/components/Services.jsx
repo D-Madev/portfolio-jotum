@@ -216,9 +216,9 @@ export default function Servicios() {
                   onSelect={() => setSelectedIndex(i)} 
                   onDeselect={() => setSelectedIndex(null)}
                   layoutId={`card-${i}`}
-                  initial={{ opacity: 0 }}
+                  initial={{ opacity: 1 }}
                   animate={{ opacity: 1 }}
-                  exit={selectedIndex === i ? {} : { opacity: 0, transition: { duration: 0.5 } }}
+                  exit={selectedIndex === i ? {} : { opacity: 1, transition: { duration: 0.5 } }}
                   transition={{ duration: 0.5, ease: 'easeInOut' }}
                 />
               ))}
@@ -228,8 +228,14 @@ export default function Servicios() {
 
         <AnimatePresence>
           {selectedIndex !== null && (
-            <motion.div key="detail" className='services-content-selected'>
-              <motion.div layoutId={`card-${selectedIndex}`} className='selected-card-wrapper'>
+            <motion.div 
+              key="detail" 
+              className='services-content-selected'
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <motion.div layoutId={`card-${selectedIndex}`} className='selected-card-wrapper' transition={{ duration: 0.5, ease: "easeInOut" }}>
                 <ServiceCard
                   logo={cards[selectedIndex].logo} title={cards[selectedIndex].title}
                   description={cards[selectedIndex].description} isSelected
@@ -238,10 +244,14 @@ export default function Servicios() {
               </motion.div>
               <motion.div
                 className="selected-card-detail"
-                initial={{ x: -200, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: 0, opacity: 0 }}
-                transition={{ type: 'tween', duration: 0.5 }}
+                initial={{ clipPath: "inset(0 100% 0 0)", opacity: 1 }}
+                animate={{ clipPath: "inset(0 0% 0 0)" }}
+                exit={{ clipPath: "inset(0 100% 0 0)", opacity: 0 }}
+                transition={{
+                  type: "tween",
+                  duration: 0.7,
+                  delay: 0.7
+                }}
               >
                 <h2 className="detail-title">{cards[selectedIndex].title}</h2>
                 <p className="detail-text">{cards[selectedIndex].information}</p>

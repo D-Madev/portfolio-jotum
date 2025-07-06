@@ -79,7 +79,6 @@
   margin: 0;
   position: absolute;
   width: auto;
-  justify-content: center;
   z-index: 10;
 }
 
@@ -94,6 +93,7 @@
     justify-content: center;
     width: 40%;
     align-items: end;
+    overflow: hidden;
 }
 
 .selected-card-wrapper .is-selected{
@@ -138,14 +138,22 @@
 
 /* --- PANEL DE DETALLE DEL SERVICIO SELECCIONADO --- */
 .selected-card-detail {
-  width: 40%;
   line-height: 1.5rem;
   color: white;
   background-color: rgba(35, 35, 35, 0.7);
-  box-shadow: -35px 0px 0px #2E2D2D;
+  /* box-shadow: -35px 0px 0px #2E2D2D; */
+  clip-path: inset(0 100% 0 0);
+  width: 40%;
   padding: 2rem;
+  overflow: hidden;
   z-index: 10;
   white-space: pre-line;
+  transform-origin: left center;
+}
+
+.selected-card-detail .detail-title,
+.selected-card-detail .detail-text {
+  transform-origin: left center;
 }
 
 .detail-text {
