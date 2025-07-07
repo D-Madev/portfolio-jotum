@@ -35,10 +35,10 @@
 .footer-left-p::before {
   content: '';
   position: absolute;
-  top: -10px;
-  margin-left: 260px;
+  top: -8px;
+  margin-left: 10%;
   width: 80%;
-  height: 1px;
+  height: 2px;
   background-color: #ffffff;
   z-index: 10;
   display: flex;
