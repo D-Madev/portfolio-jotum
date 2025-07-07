@@ -95,11 +95,13 @@
 
 .footer-social li a:hover {
   color: #1a2231;
+  transition: color ease 0.5s;
 }
 
 .footer-contact a:hover {
   color: #1a2231;
   font-weight: bold;
+  transition: color   ease 0.5s;
 }
 
 @media (max-width: 768px) {
