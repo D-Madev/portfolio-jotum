@@ -47,19 +47,20 @@
 }
 
 .sub-footer-button {
-  background-color: var(--main-color);
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
   font-size: 1rem;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
+  border: solid var(--main-color) 2px;
+  background-color: var(--main-color);
   box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-  transition: background-color 0.2s ease;
+  transition: background-color 0.3s ease;
 }
 
 .sub-footer-button:hover {
-  background-color: var(--submain-color);
+  background-color: var(--black-color);
 }
 
 .sub-footer-background > * {
