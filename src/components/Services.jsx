@@ -1,5 +1,7 @@
+// Importaciones de React y librerías externas
 import { useState, useEffect, useRef } from 'react';
 import { AnimatePresence, motion, LayoutGroup } from 'framer-motion';
+// Importación de imágenes de fondo y logos de las cards
 import img1 from '../assets/servicios/services1.webp';
 import img2 from '../assets/servicios/services2.webp';
 import img3 from '../assets/servicios/services3.webp';
@@ -12,31 +14,40 @@ import card4 from '../assets/servicios/card-logo4.webp';
 import card5 from '../assets/servicios/card-logo5.webp';
 import card6 from '../assets/servicios/card-logo6.webp';
 import card7 from '../assets/servicios/card-logo7.webp';
+// Importación del componente de tarjeta de servicio
 import ServiceCard from '../components/Service-card';
+// Importación de estilos CSS
 import './Services.css';
 
+// Componente principal de Servicios
 export default function Servicios() {
+  // Array de imágenes de fondo para el slider
   const images = [img1, img2, img3, img4, img5];
+  // Referencia a la sección principal para animaciones de scroll
   const sectionRef = useRef(null);
+  // Estado interno para controlar animaciones de scroll
   const state = useRef({
     hasAnimated: false,
     isAnimating: false,
   }).current;
+  // Constantes para duración y porcentaje de trigger del scroll
   const SCROLL_DURATION = 1200;
   const TRIGGER_PERCENT = 0.6;
+  // Estado para la imagen de fondo actual y la siguiente (transición)
   const [current, setCurrent] = useState(Math.floor(Math.random() * images.length));
   const [next, setNext]       = useState(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  // Estado para la card seleccionada (detalle)
   const [selectedIndex, setSelectedIndex] = useState(null);
+  // Datos para el enlace de WhatsApp
   const phoneNumber = '5491121747565';
   const message = 'Hola, estoy interesado en el servicio de Jötum.';
   const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
 
   /**
-   * Contenido de las cards.
-   * Utilizacion dinamica del componente ServiceCard.
-   * Cada card tiene un logo, un titulo y una descripcion.
-  */
+   * Definición de las tarjetas de servicios.
+   * Cada objeto contiene logo, título, descripción corta y texto de información extendida.
+   */
   const cards = [
     { logo: card1, 
       title: 'Proyecto arquitectonico', 
@@ -93,8 +104,8 @@ export default function Servicios() {
   ];
 
   /**
-   * Funcion que cambia la imagen de fondo cada 5 segundos.
-   * Se utiliza un setInterval para cambiar la imagen de fondo.
+   * Efecto para cambiar la imagen de fondo automáticamente cada 5 segundos.
+   * Si hay una tarjeta seleccionada (detalle), se pausa el cambio de fondo.
    */
    useEffect(() => {
     // Si hay tarjeta única seleccionada, salgo y no instalo el interval
@@ -115,12 +126,16 @@ export default function Servicios() {
     return () => clearInterval(interval);
   }, [current, images.length, selectedIndex]);
 
+  /**
+   * Efecto para animar el scroll cuando la sección entra en el viewport.
+   * Solo se dispara una vez hasta que la sección sale completamente de pantalla.
+   */
    useEffect(() => {
     const section = sectionRef.current;
     const THRESH_Y = window.innerHeight * TRIGGER_PERCENT;
 
+    // Reinicia el trigger si la sección sale del umbral
     function resetIfNeeded(rect) {
-      // Si ya animamos y la sección queda fuera del umbral, rearmamos trigger
       if (
         state.hasAnimated &&
         (rect.top > THRESH_Y || rect.bottom < 0)
@@ -129,6 +144,7 @@ export default function Servicios() {
       }
     }
 
+    // Handler de scroll: dispara la animación si corresponde
     function onScroll() {
       if (state.isAnimating) return;
 
@@ -152,7 +168,10 @@ export default function Servicios() {
     return () => window.removeEventListener('scroll', onScroll);
   }, [SCROLL_DURATION, TRIGGER_PERCENT]);
 
-  // Función de animación custom
+  /**
+   * Función auxiliar para animar el scroll y centrar la sección en pantalla.
+   * Usa una función de easing para suavizar el movimiento.
+   */
   function animateScrollToCenter(el, duration, callback) {
     const rect = el.getBoundingClientRect();
     const startY = window.scrollY;
@@ -165,6 +184,7 @@ export default function Servicios() {
       if (!startTime) startTime = timestamp;
       const elapsed = timestamp - startTime;
       const progress = Math.min(elapsed / duration, 1);
+      // Easing cuadrático para suavidad
       const ease =
         progress < 0.5
           ? 2 * progress * progress
@@ -180,17 +200,20 @@ export default function Servicios() {
     window.requestAnimationFrame(step);
   }
 
+  // Selecciona una card para mostrar el detalle
   const handleSelectCard = (index) => {
     setSelectedIndex(index);
   };
 
+  // Vuelve al listado de cards (sale del detalle)
   const handleDeselect = () => {
     setSelectedIndex(null);
   };
 
+  // Renderizado del componente
   return (
     <section ref={sectionRef} className={`section-services  ${selectedIndex !== null ? 'detail-mode' : ''}`}>
-    {/* Logica para cambiar el fondo del componente */}
+    {/* Fondo dinámico con transición */}
     <div 
       className={`bg ${isTransitioning ? 'fade-out' : 'visible'}`} 
       style={{ backgroundImage: `url(${images[current]})` }}
@@ -202,9 +225,10 @@ export default function Servicios() {
       /> 
     )}
 
-    {/* Seccion contenedora de los servicios y cards */}
+    {/* Contenedor de las tarjetas de servicios */}
       <LayoutGroup>
         <AnimatePresence>
+          {/* Vista de grilla de servicios (cuando no hay detalle seleccionado) */}
           {selectedIndex === null && (
             <motion.div key="grid" className="services-content">
               {cards.map((card, i) => (
@@ -227,6 +251,7 @@ export default function Servicios() {
         </AnimatePresence>
 
         <AnimatePresence>
+          {/* Vista de detalle de un servicio */}
           {selectedIndex !== null && (
             <motion.div 
               key="detail" 
@@ -235,6 +260,7 @@ export default function Servicios() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
+              {/* Card seleccionada con animación */}
               <motion.div layoutId={`card-${selectedIndex}`} className='selected-card-wrapper' transition={{ duration: 0.5, ease: "easeInOut" }}>
                 <ServiceCard
                   logo={cards[selectedIndex].logo} title={cards[selectedIndex].title}
@@ -242,6 +268,7 @@ export default function Servicios() {
                   onDeselect={() => { setSelectedIndex(null) }}
                 />
               </motion.div>
+              {/* Detalle extendido del servicio */}
               <motion.div
                 className="selected-card-detail"
                 initial={{ clipPath: "inset(0 100% 0 0)", opacity: 1 }}
@@ -256,7 +283,9 @@ export default function Servicios() {
                 <h2 className="detail-title">{cards[selectedIndex].title}</h2>
                 <p className="detail-text">{cards[selectedIndex].information}</p>
                 <div className="detail-buttons">
+                  {/* Botón para volver atrás */}
                   <button className="back-button" onClick={handleDeselect}><i class="fas fa-solid fa-chevron-left"></i> </button>
+                  {/* Botón para contactar por WhatsApp */}
                   <a href={whatsappLink} target='_blank' rel="noopener noreferrer" className='service-button'>Contactar</a>
                 </div>
               </motion.div>
