@@ -14,6 +14,17 @@ import image8 from '../assets/nosotros/us-image-8.webp';
 import './Parallax-scroll.css'
 
 export default function ParallaxScroll() {
+  // Referencia a la sección principal para animaciones de scroll
+  const sectionRef = useRef(null);
+  // Estado interno para controlar animaciones de scroll
+  const state = useRef({
+    hasAnimated: false,
+    isAnimating: false,
+  }).current;
+  // Constantes para duración y porcentaje de trigger del scroll
+  const SCROLL_DURATION = 1200;
+  const TRIGGER_PERCENT = 0.6;
+
 
   const videos = [ video1, video2, video3, video4 ];
   const [currentIndex, setCurrentIndex]       = useState(Math.floor(Math.random() * videos.length));
@@ -143,12 +154,85 @@ export default function ParallaxScroll() {
     }
   ];
 
+    /**
+   * Efecto para animar el scroll cuando la sección entra en el viewport.
+   * Solo se dispara una vez hasta que la sección sale completamente de pantalla.
+   */
+   useEffect(() => {
+    const section = sectionRef.current;
+    const THRESH_Y = window.innerHeight * TRIGGER_PERCENT;
+
+    // Reinicia el trigger si la sección sale del umbral
+    function resetIfNeeded(rect) {
+      if (
+        state.hasAnimated &&
+        (rect.top > THRESH_Y || rect.bottom < 0)
+      ) {
+        state.hasAnimated = false;
+      }
+    }
+
+    // Handler de scroll: dispara la animación si corresponde
+    function onScroll() {
+      if (state.isAnimating) return;
+
+      const rect = section.getBoundingClientRect();
+      resetIfNeeded(rect);
+
+      // Si no animamos y el top cruza el umbral, disparamos:
+      if (!state.hasAnimated && rect.top <= THRESH_Y && rect.bottom > 0) {
+        state.hasAnimated = true;
+        state.isAnimating = true;
+        document.body.classList.add('no-scroll');
+
+        animateScrollToCenter(section, SCROLL_DURATION, () => {
+          state.isAnimating = false;
+          document.body.classList.remove('no-scroll');
+        });
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [SCROLL_DURATION, TRIGGER_PERCENT]);
+
+  /**
+   * Función auxiliar para animar el scroll y centrar la sección en pantalla.
+   * Usa una función de easing para suavizar el movimiento.
+   */
+  function animateScrollToCenter(el, duration, callback) {
+    const rect = el.getBoundingClientRect();
+    const startY = window.scrollY;
+    const absoluteTop = startY + rect.top;
+    const targetY = absoluteTop - (window.innerHeight - rect.height) / 2 - 50;
+    const diff = targetY - startY;
+    let startTime = null;
+
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // Easing cuadrático para suavidad
+      const ease =
+        progress < 0.5
+          ? 2 * progress * progress
+          : -1 + (4 - 2 * progress) * progress;
+      window.scrollTo(0, startY + diff * ease);
+      if (elapsed < duration) {
+        window.requestAnimationFrame(step);
+      } else {
+        callback && callback();
+      }
+    }
+
+    window.requestAnimationFrame(step);
+  }
 
   return (
       <div className="parallax-container"
         style={{ height: `${(sections.length + 1) * 100}vh` }}
       >
-        <section className="cover-static">
+        <section ref={sectionRef} className="cover-static">
           <div className="cover-image">
             <video
               ref={currentRef}

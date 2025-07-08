@@ -11,6 +11,12 @@
   z-index: 1;
 }
 
+/* --- BLOQUEO DE SCROLL DURANTE ANIMACIONES --- */
+.no-scroll {
+  overflow: hidden !important;
+  height: 100vh;
+}
+
 .cover-static .cover-image img {
   position: absolute;
   top: 0; left: 0;
