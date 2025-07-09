@@ -19,7 +19,7 @@ function Nostros() {
           style={{ height: '70vh'}}
         />
       <ParagraphGeneric 
-        title="VISION"
+        title="NUESTRA VISION"
         text1={`En Jötum, concebimos la arquitectura como la unión perfecta entre eficiencia, diseño y precisión. Inspirados en la filosofía de la Bauhaus, creemos que cada espacio debe ser funcional sin perder su identidad estética. No construimos casas comunes, sino obras de arte habitables, diseñadas para quienes buscan más que una simple vivienda: un espacio exclusivo que refleje su estilo de vida y visión.
 
         Nuestro proceso comienza con la idea del cliente, que perfeccionamos con un enfoque técnico meticuloso y una atención al detalle digna de la más alta arquitectura. Nos especializamos en espacios privados y complejos, optimizando cada metro cuadrado con un diseño inteligente que combine confort, sofisticación y solidez estructural. Cada material, cada linea y cada proporción se estudian cuidadosamente para lograr un equilibrio entre modernidad, funcionalidad y distinción.

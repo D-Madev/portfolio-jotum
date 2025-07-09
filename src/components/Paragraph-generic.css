@@ -6,7 +6,7 @@
   margin-top: 50px;
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 30px;
   width: 80%;
 }
 
@@ -14,7 +14,7 @@
   text-align: center;
   font-size: 50px;
   font-weight: bold;
-  margin: 1rem 0;
+  margin: 1rem 1rem 0 1rem;
 }
 
 .paragraph-generic-content {
@@ -51,7 +51,7 @@
     margin-top: 50px;
     display: flex;
     flex-direction: column;
-    gap: 60px;
+    gap: 30px;
     width: 80%;
   }
 
