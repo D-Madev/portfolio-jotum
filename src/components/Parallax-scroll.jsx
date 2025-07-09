@@ -256,7 +256,7 @@ export default function ParallaxScroll() {
           <div className="cover-content">
             <h1 className='cover-title'>{cover.title}</h1>
             <p className="cover-contet-paragraph">{cover.text}</p>
-            <svg width="20%" style={{marginTop:'5%'}} viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="12%" style={{marginTop:'5%'}} viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
               <polyline
                 points="6,5 12,11 18,5"
                 fill="none"
@@ -264,6 +264,9 @@ export default function ParallaxScroll() {
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
+                style={{
+                  animation: 'bounce 1.2s infinite ease-in-out'
+                }}
               />
               <polyline
                 points="6,17 12,23 18,17"
@@ -272,6 +275,10 @@ export default function ParallaxScroll() {
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
+                style={{
+                  animation: 'bounce 1.2s infinite ease-in-out',
+                  animationDelay: '0.3s'
+                }}
               />
             </svg>
           </div>
