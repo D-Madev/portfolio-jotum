@@ -3,7 +3,7 @@ import ContactForm from '../components/Contact-form'
 
 import wbContact from '../assets/contacto/wb-contact.webp'
 
-export default function Contact() {
+export default function Contacto() {
   return (
     <>
       <WelcomeBanner 

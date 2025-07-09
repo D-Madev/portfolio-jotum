@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import Inicio from './pages/Inicio.jsx'
 import Nosotros from './pages/Nosotros.jsx'
 import Servicios from './pages/Servicios.jsx'
-import Contact from './pages/Contact.jsx'
+import Contacto from './pages/Contacto.jsx'
 //import Working from './pages/Working.jsx' 
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
       <Route path='/inicio' element={<Inicio />} />
       <Route path='/nosotros' element={<Nosotros />} />
       <Route path='/servicios' element={<Servicios />} />
-      <Route path='/contacto' element={<Contact />} />
+      <Route path='/contacto' element={<Contacto />} />
     </Routes>
   )
 }
