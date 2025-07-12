@@ -1,5 +1,7 @@
 // Importaciones de React y librerías externas
 import { useState, useEffect, useRef } from 'react';
+import { useInView } from 'react-intersection-observer';
+import useNavbarStore from '../store/navbarStore';
 import { AnimatePresence, motion, LayoutGroup } from 'framer-motion';
 // Importación de imágenes de fondo y logos de las cards
 import img1 from '../assets/servicios/services1.webp';
@@ -43,6 +45,8 @@ export default function Servicios() {
   const phoneNumber = '5491121747565';
   const message = 'Hola, estoy interesado en el servicio de Jötum.';
   const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+  // Referencia para ocultar la navbar al entrar en vista
+  const hideNavbar = useNavbarStore((s) => s.hideNavbar)
 
   /**
    * Definición de las tarjetas de servicios.
@@ -165,6 +169,7 @@ export default function Servicios() {
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
+    hideNavbar()
     return () => window.removeEventListener('scroll', onScroll);
   }, [SCROLL_DURATION, TRIGGER_PERCENT]);
 
@@ -214,7 +219,7 @@ export default function Servicios() {
   return (
     <section ref={sectionRef} className={`section-services  ${selectedIndex !== null ? 'detail-mode' : ''}`}>
     {/* Fondo dinámico con transición */}
-    <div 
+    <div
       className={`bg ${isTransitioning ? 'fade-out' : 'visible'}`} 
       style={{ backgroundImage: `url(${images[current]})` }}
     />

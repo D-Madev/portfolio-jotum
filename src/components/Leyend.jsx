@@ -1,9 +1,22 @@
 import './Leyend.css'
+import { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
+import useNavbarStore from '../store/navbarStore';
 
-function Leyend({ title, text, style={} }) {
+export default function Leyend({ title, text, style={} }) {
+
+  const { ref, inView } = useInView({
+    threshold: 0.2,   // cuando el 20% aparezca
+  });
+  const showNavbar = useNavbarStore((s) => s.showNavbar);
+
+  useEffect(() => {
+    if (inView) showNavbar();
+  }, [inView, showNavbar]);
+
 
   return(
-    <section className="leyend" style={style}>
+    <section ref={ref} className="leyend" style={style}>
       <div className="leyend-container">
         <div className="leyend-divider">
           <h2>{title}</h2>
@@ -13,5 +26,3 @@ function Leyend({ title, text, style={} }) {
     </section>
   );
 }
-
-export default Leyend;

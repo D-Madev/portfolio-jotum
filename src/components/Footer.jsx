@@ -1,4 +1,7 @@
 import './Footer.css'
+import { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
+import useNavbarStore from '../store/navbarStore';
 import jotumLogo from '../assets/logo/jotum-architekturburo-bauunternehmen.png'
 
 // EMAIL
@@ -16,9 +19,19 @@ const phone = phoneNumberView.replaceAll(' ','').replaceAll('+','').replaceAll('
 const whatsappLink = `https://api.whatsapp.com/send?phone=${phone}&text=${message}`;
 const emailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${asunto}&body=${body}`
 
-function Footer() {
+export default function Footer() {
+
+  const { ref, inView } = useInView({
+    threshold: 0.2,   // cuando el 20% aparezca
+  });
+  const showNavbar = useNavbarStore((s) => s.showNavbar);
+
+  useEffect(() => {
+    if (inView) showNavbar();
+  }, [inView, showNavbar]);
+
   return(
-    <footer className="footer-section">
+    <footer ref={ref} className="footer-section">
       <div className="footer-container">
         <div className='footer-left-container'>
           <div className="footer-left">
@@ -79,5 +92,3 @@ function Footer() {
     </footer>
   )
 }
-
-export default Footer

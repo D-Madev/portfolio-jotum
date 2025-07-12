@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import useNavbarStore from '../store/navbarStore'
 import video1 from '../assets/nosotros1.mp4';
 import video2 from '../assets/nosotros2.mp4';
 import video3 from '../assets/nosotros3.mp4';
@@ -34,6 +35,11 @@ export default function ParallaxScroll() {
 
   const currentRef = useRef(null);
   const nextRef    = useRef(null);
+
+  // Referencia para ocultar la navbar al entrar en vista
+  const hideNavbar = useNavbarStore((s) => s.hideNavbar)
+  const showNavbar = useNavbarStore((s) => s.showNavbar)
+
 
   // 1) Termina el vídeo actual → preparamos la carga
   const handleEnded = () => {
@@ -184,6 +190,9 @@ export default function ParallaxScroll() {
         state.hasAnimated = true;
         state.isAnimating = true;
         document.body.classList.add('no-scroll');
+
+        // Oculta la navbar al entrar en vista
+        hideNavbar()
 
         animateScrollToCenter(section, SCROLL_DURATION, () => {
           state.isAnimating = false;

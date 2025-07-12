@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
+import { useInView } from 'react-intersection-observer';
+import useNavbarStore from '../store/navbarStore';
 import './welcome-banner.css';
 
 export default function WelcomeBanner({
@@ -9,13 +11,25 @@ export default function WelcomeBanner({
   text = '',
   logo,
   children,
-  style = {}
+  style = {},
+  hideNavOnView = false
 }) {
   const isVideo = backgroundType === 'video';
   const [queue, setQueue] = useState([]);
   const [idx, setIdx] = useState(0);
   const [isFading, setIsFading] = useState(false);
   const videoRef = useRef(null);
+
+  // Usamos useInView para ocultar la navbar cuando el banner está visible
+  const { ref: ref, inView } = useInView({
+    threshold: 0.9, // 90% visible
+  });
+  const hideNavbar = useNavbarStore((s) => s.hideNavbar)
+
+  useEffect(() => {
+    if (!hideNavOnView) return;
+    if (inView) hideNavbar();
+  }, [inView, hideNavbar])
 
   // Al montar, barajamos la lista
   useEffect(() => {
@@ -56,6 +70,7 @@ export default function WelcomeBanner({
         ...(backgroundSrc && {'--banner-before':`url(${backgroundSrc})`}),
         ...style
       }}
+      ref={ref}
     >
       {isVideo && queue.length > 0 && (
         <video
