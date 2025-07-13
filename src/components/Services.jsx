@@ -1,6 +1,5 @@
 // Importaciones de React y librerías externas
 import { useState, useEffect, useRef } from 'react';
-import { useInView } from 'react-intersection-observer';
 import useNavbarStore from '../store/navbarStore';
 import { AnimatePresence, motion, LayoutGroup } from 'framer-motion';
 // Importación de imágenes de fondo y logos de las cards
