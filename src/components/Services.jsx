@@ -105,7 +105,7 @@ export default function Servicios() {
       
       Trabajamos con carpinteros de excelencia y materiales de primera calidad para lograr muebles duraderos, elegantes y pensados exclusivamente para vos. El resultado es una armonía total entre espacio y objeto, donde todo encaja con precisión y estilo.` },
   ];
-
+  
   /**
    * Efecto para cambiar la imagen de fondo automáticamente cada 5 segundos.
    * Si hay una tarjeta seleccionada (detalle), se pausa el cambio de fondo.
@@ -284,8 +284,8 @@ export default function Servicios() {
                   delay: 0.7
                 }}
               >
-                <h2 className="detail-title">{cards[selectedIndex].title}</h2>
-                <p className="detail-text">{cards[selectedIndex].information}</p>
+                <h2 className={`detail-title`}>{cards[selectedIndex].title}</h2>
+                <p className={`detail-text`}>{cards[selectedIndex].information}</p>
                 <div className="detail-buttons">
                   {/* Botón para volver atrás */}
                   <button className="back-button" onClick={handleDeselect}><i class="fas fa-solid fa-chevron-left"></i> </button>

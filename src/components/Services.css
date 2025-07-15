@@ -156,6 +156,12 @@
   transform-origin: left center;
 }
 
+.detail-title,
+.detail-text {
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+
 .detail-text {
   margin-top: 2rem;
 }
