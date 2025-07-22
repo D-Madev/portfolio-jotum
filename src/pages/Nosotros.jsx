@@ -5,7 +5,7 @@ import ParallaxScroll from "../components/Parallax-scroll.jsx"
 
 import wbUsImage from '../assets/nosotros/welcome-banner.webp'
 import logo from '../assets/logo/jotum-architekturburo-bauunternehmen.png'
-import subFooterImage from '../assets/inicio/sub-footer-inicio.webp'
+import subFooterImage from '../assets/nosotros/sub-footer.webp'
 
 function Nostros() {
   /*<h1>El verdadero valor está en lo que perdura. Jötum construye con excelencia para ese tipo de cliente.</h1>*/
