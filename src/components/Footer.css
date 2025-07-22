@@ -30,13 +30,15 @@
 
 .footer-left-p {
   position: relative;
+  text-align: center;
 }
 
 .footer-left-p::before {
   content: '';
   position: absolute;
   top: -8px;
-  margin-left: 10%;
+  left: 50%;
+  transform: translateX(-50%);
   width: 80%;
   height: 2px;
   background-color: #ffffff;
