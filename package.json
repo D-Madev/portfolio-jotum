@@ -5,6 +5,7 @@
   "type": "module",
   "homepage": "https://d-madev.github.io/portfolio-jotum/dist",
   "scripts": {
+    "start": "node server/server.cjs",
     "dev": "vite",
     "dev-h": "vite --host",
     "build": "vite build",
@@ -14,8 +15,13 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
     "framer-motion": "^12.19.2",
     "gh-pages": "^6.3.0",
+    "nodemailer": "^7.0.5",
+    "notyf": "^3.10.0",
     "odometer": "^0.4.8",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",

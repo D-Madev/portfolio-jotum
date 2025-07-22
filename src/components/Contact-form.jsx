@@ -1,4 +1,6 @@
 import { useRef, useEffect } from 'react'
+import 'notyf'
+import 'notyf/notyf.min.css'
 import "./Contact-form.css"
 import formImage from "../assets/logo/jotum-architekturburo-bauunternehmen.png"
 
@@ -26,31 +28,31 @@ export default function ContactForm() {
       document.getElementById("contact-form-button").style.display = "";
   }
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
+    const notyf = new Notyf({ duration: 3000, position: { x: 'center', y: 'top' }})
     
-    /* Send the form data to a email service or API
-
-        const body = `Nombre: ${data.name}%0D` +
-                 `Ciudad: ${data.city}%0D` +
-                 `Email: ${data.email}%0D` +
-                 `Telefono: ${data.phone}%0D` +
-                 `Mensaje: ${data.msg}`;
-      window.location.href = `mailto:destino@example.com?subject=Consulta desde el formulario&body=${encodeURIComponent(body)}`;
-    */
-    const email = "jotumproyectos@gmail.com"
-    const asunto = encodeURIComponent("Consulta desde formulario web")
-    const body = encodeURIComponent("Nombre:    " + data.name + "\nDe:    " + data.city +
-                                    "\nEmail:    " + data.email + "\nTelefono:    +54 9 11 " + data.phone +
-                                    "\n\nMensaje: " + data.msg);
-    const emailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${asunto}&body=${body}`
-    window.open(emailLink, "_blank");
-
-    // Reset the form after submission
-    e.target.reset();
-    document.getElementById("contact-form-button").style.display = "none";
+    try {
+      const res = await fetch('http://localhost:3001/send/mail', {
+        method: 'POST',
+        headers: { 'Content-Type' : 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (res.ok) {
+        notyf.success('Formulario enviado correctamente');
+        e.target.reset();
+        document.getElementById("contact-form-button").style.display = "none";
+      } else {
+        console.error('Error 400 - al enviar el formulario:', res);
+        notyf.error('Error al enviar el formulario. Por favor, intente nuevamente.');
+      }
+    }
+    catch(e)  {
+      console.error('Error 500 - al enviar el formulario:', e);
+      notyf.error('Error al enviar el formulario. Por favor, intente nuevamente.');
+    }
   }
 
   /**
