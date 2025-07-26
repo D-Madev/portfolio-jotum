@@ -3,7 +3,7 @@ import WelcomeBanner from '../components/Welcome-banner.jsx'
 import Leyend from '../components/Leyend.jsx'
 import ResumeAboutUs from '../components/Resume-aboutus.jsx'
 import VisitUs from '../components/Visit-us.jsx'
-import ProyectList from '../components/Proyect-list.jsx'
+import ProjectList from '../components/Project-list.jsx'
 import Benefits from '../components/Benefits.jsx'
 import Testimonials from '../components/Testimonials.jsx'
 import SubFooter from '../components/Sub-footer.jsx'
@@ -38,7 +38,7 @@ function Inicio() {
       />
       <ResumeAboutUs />
       <VisitUs/>
-      <ProyectList />
+      <ProjectList />
       <Benefits />
       <Testimonials />
       <SubFooter 

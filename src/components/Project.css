@@ -1,4 +1,4 @@
-.proyect {
+.project {
   display: flex;
   align-items: stretch;
   gap: 0;
@@ -7,7 +7,7 @@
   background-color: #fbfbfb;
 }
 
-.proyect-img-container {
+.project-img-container {
   position: relative;
   flex: 0 0 60%;
   overflow: hidden;
@@ -29,7 +29,7 @@
 .carousel-btn.next { right: .5rem; }
 
 
-.proyect-img-container .fade-image {
+.project-img-container .fade-image {
   position: absolute;
   top: 0; left: 0;
   width: 100%;
@@ -40,12 +40,12 @@
   z-index: 1;
 }
 
-.proyect-img-container .fade-in {
+.project-img-container .fade-in {
   animation: fadeIn 1s ease-in-out forwards;
   z-index: 2;
 }
 
-.proyect-img-container .fade-out {
+.project-img-container .fade-out {
   animation: fadeOut 1s ease-in-out forwards;
   z-index: 1;
 }
@@ -62,7 +62,7 @@
 
 
 
-.proyect-content {
+.project-content {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -71,21 +71,21 @@
   box-sizing: border-box;
 }
 
-.proyect-header {            
+.project-header {            
   align-items: baseline;
   gap: 1rem;
 }
 
-.proyect-title {
+.project-title {
   font-size: 2rem;
 }
 
-.proyect-state {
+.project-state {
   color: var(--secondary-color);
   font-size: 1rem;
 }
 
-.proyect-resume-bar {
+.project-resume-bar {
   font-size: 1.2rem;
   color: var(--text-color);
   background-color: transparent;
@@ -95,17 +95,17 @@
   margin-top: 1rem;
 }
 
-.proyect-resume-bar i {
+.project-resume-bar i {
   margin: .7rem;
 }
 
-.proyect-description {
+.project-description {
   margin-top: 2rem;
   color: var(--secondary-color);
   font-size: .97rem;
 }
 
-.proyect-content {
+.project-content {
   max-height: none;
   overflow: visible;
 }
@@ -115,40 +115,40 @@
 }
 
 @media (max-width: 800px) {
-  .proyect {
+  .project {
     flex-direction: column;
     align-items: center;
   }
 
-    .proyect-img-container {
+    .project-img-container {
     flex: 0 0 auto;    /* que no mantenga el 60% */
     width: 100%;       /* ocupe todo el ancho */
   }
 
-  .proyect-img-container img {
+  .project-img-container img {
     width: 100%;   /* ocupar el 100% del contenedor */
     height: auto;  /* mantener proporción */
     object-fit: cover; /* opcional si quieres recorte */
   }
 
-  .proyect-img-container {
+  .project-img-container {
     aspect-ratio: 16 / 9;
   }
 
-  .proyect-title {
+  .project-title {
     text-align: center;
   }
 
-  .proyect-state {
+  .project-state {
     text-align: center;
     font-size: 1.1rem;
   }
 
-  .proyect-description {
+  .project-description {
     font-size: 1.3rem;    
   }
 
-  .proyect-content {
+  .project-content {
     max-height: 13rem;
     overflow: hidden;
     transition: max-height 0.3s ease;
@@ -162,16 +162,16 @@
     transition: all 0.3s ease;
   }
 
-  .proyect.open .proyect-content {
+  .project.open .project-content {
     max-height: 1000px;
     color: var(--text-color);
   }
 
-  .proyect.open .show-down {
+  .project.open .show-down {
     display: none;
   }
 
-  .proyect.open .show-up {
+  .project.open .show-up {
     display: flex;
     color: var(--text-color);
     justify-content: center;
@@ -181,29 +181,29 @@
 }
 
 @media (min-width: 1800px) {
-  .proyect-img-container {
+  .project-img-container {
     flex: 0 0 75%;
   }
 
-  .proyect-title {
+  .project-title {
     font-size: 2.5rem;
   }
 
-  .proyect-state {
+  .project-state {
     font-size: 1rem;
   }
 
-  .proyect-description {
+  .project-description {
     font-size: 1rem;    
   }
 
-  .proyect-resume-bar {
+  .project-resume-bar {
     font-size: 1.5rem;
   }
 }
 
 @media (max-width: 450px) {
-    .proyect-content {
+    .project-content {
     max-height: 17rem;
   }
 }

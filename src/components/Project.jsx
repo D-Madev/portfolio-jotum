@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import './Proyect.css'
+import { useState, useEffect } from 'react';
+import './Project.css'
 
-function Proyect({ images = [], title, location, m2, state, description }) {
+function Project({ images = [], title, location, baths, rooms, cars, m2, desk, gameroom, state, description }) {
   const [current, setCurrent] = useState(0);
   const [prev, setPrev]       = useState(null);
   const [isOpen, setIsOpen]   = useState(false);
@@ -32,9 +32,9 @@ function Proyect({ images = [], title, location, m2, state, description }) {
 
 
   return(
-    <section className={`proyect ${isOpen ? 'open' : ''}`}>
+    <section className={`project ${isOpen ? 'open' : ''}`}>
             <div
-        className="proyect-img-container"
+        className="project-img-container"
         onClick={toggleOpen}
         role="button"
         aria-expanded={isOpen}
@@ -65,30 +65,34 @@ function Proyect({ images = [], title, location, m2, state, description }) {
       </div> 
 
       <article 
-        className="proyect-content" 
+        className="project-content" 
         onClick={toggleOpen}
         role="button"
         aria-expanded={isOpen}
         tabIndex={0}
       >
-        <header className="proyect-header">
-          <p className="proyect-title"><b>{title}</b> {location}</p>
-          <p className="proyect-state">{state}</p>
+        <header className="project-header">
+          <p className="project-title"><b>{title}</b> {location}</p>
+          <p className="project-state">{state}</p>
         </header>
 
-        <body className='proyect-resume-bar'>
-          <i className="fas fa-ruler-combined"></i>  {m2} m²
-          <i className="fas fa-bed"></i> 1
-          <i className="fas fa-bath"></i> 1
-          <i className="fas fa-car"></i>
-        </body>
+        {!m2 && !rooms && !baths && !cars ? null : 
+          <body className='project-resume-bar'>
+            {m2? <div><i className="fas fa-ruler-combined"></i>{m2} m²</div> : null }
+            {rooms? <div><i className="fas fa-bed"></i> {rooms}</div> : null }
+            {desk? <div><i className="fas fa-compass-drafting"></i>{desk}</div> : null }
+            {gameroom? <div><i className="fas fa-dice"></i>{gameroom}</div> : null }
+            {baths? <div><i className="fas fa-bath"></i>{baths}</div> : null }
+            {cars? <div><i className="fas fa-car"></i>{cars}</div> : null }
+          </body>
+        }
 
         <i className='fas fa-angle-up show-up'></i>
         <i className='fas fa-angle-down show-down'></i>
-        <p className="proyect-description">{description}</p>
+        <p className="project-description">{description}</p>
       </article>
     </section>
   );
 }
 
-export default Proyect
+export default Project
