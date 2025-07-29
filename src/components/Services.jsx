@@ -124,7 +124,7 @@ export default function Servicios() {
         setNext(null);
         setIsTransitioning(false);
       }, 1000);
-    }, 5000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, [current, images.length, selectedIndex]);
