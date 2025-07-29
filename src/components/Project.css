@@ -151,7 +151,7 @@
   .project-content {
     max-height: 13rem;
     overflow: hidden;
-    transition: max-height 0.3s ease;
+    transition: max-height 1s ease;
   }
 
   .show-down {
@@ -159,7 +159,7 @@
     color: var(--text-color);
     justify-content: center;
     align-items: center;
-    transition: all 0.3s ease;
+    transition: all 1s ease;
   }
 
   .project.open .project-content {
@@ -176,7 +176,7 @@
     color: var(--text-color);
     justify-content: center;
     align-items: center;
-    transition: all 0.3s ease;
+    transition: all 1s ease;
   }
 }
 
