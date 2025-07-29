@@ -37,10 +37,10 @@ function Inicio() {
         text="Con Jötum, la arquitectura, la tecnica y la vision trabajan para tu futuro"
       />
       <ResumeAboutUs />
-      <VisitUs/>
+      {/* <VisitUs/> */}
       <ProjectList />
       <Benefits />
-      <Testimonials />
+      {/*<Testimonials /> */}
       <SubFooter 
         title="Hoy das el primer paso"
         text={`Tu consulta no nos molesta, al contrario: nos importa.

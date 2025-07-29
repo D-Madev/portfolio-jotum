@@ -182,7 +182,7 @@
 
 @media (min-width: 1800px) {
   .project-img-container {
-    flex: 0 0 75%;
+    flex: 0 0 70%;
   }
 
   .project-title {

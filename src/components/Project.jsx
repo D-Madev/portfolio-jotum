@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './Project.css'
 
-function Project({ images = [], title, location, baths, rooms, cars, m2, desk, gameroom, state, description }) {
+function Project({ images = [], title, location, baths, rooms, cars, m2, desk, gameroom, gym, state, description }) {
   const [current, setCurrent] = useState(0);
   const [prev, setPrev]       = useState(null);
   const [isOpen, setIsOpen]   = useState(false);
@@ -80,7 +80,8 @@ function Project({ images = [], title, location, baths, rooms, cars, m2, desk, g
           <body className='project-resume-bar'>
             {m2? <div><i className="fas fa-ruler-combined"></i>{m2} m²</div> : null }
             {rooms? <div><i className="fas fa-bed"></i> {rooms}</div> : null }
-            {desk? <div><i className="fas fa-compass-drafting"></i>{desk}</div> : null }
+            {desk? <div><i className="fas fa-book"></i>{desk}</div> : null }
+            {gym? <div><i className="fas fa-dumbbell"></i>{gym}</div> : null }
             {gameroom? <div><i className="fas fa-dice"></i>{gameroom}</div> : null }
             {baths? <div><i className="fas fa-bath"></i>{baths}</div> : null }
             {cars? <div><i className="fas fa-car"></i>{cars}</div> : null }

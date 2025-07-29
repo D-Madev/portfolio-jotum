@@ -1,5 +1,16 @@
 import Project from './Project'
-/* PROJECTO MC */
+/* PROJECT Casa Umlaut */
+import cua from '../assets/inicio/cu/1.webp'
+import cub from '../assets/inicio/cu/2.webp'
+import cuc from '../assets/inicio/cu/3.webp'
+import cud from '../assets/inicio/cu/4.webp'
+import cue from '../assets/inicio/cu/5.webp'
+import cuf from '../assets/inicio/cu/6.webp'
+import cug from '../assets/inicio/cu/7.webp'
+import cuh from '../assets/inicio/cu/8.webp'
+import cui from '../assets/inicio/cu/9.webp'
+import cuj from '../assets/inicio/cu/10.webp'
+/* PROJECTO Man Cave */
 import mca from '../assets/inicio/mc/1.webp'
 import mcb from '../assets/inicio/mc/2.webp'
 import mcc from '../assets/inicio/mc/3.webp'
@@ -39,7 +50,7 @@ function ProjectList() {
       <h1 className='project-list-h1'>DESTACADOS CON ESTANDAR JÖTUM</h1>
       <p>Una selección de nuestros projectos que cumplen con los más altos estándares de diseño y construcción que nos representan.</p>
       <Project
-        images={[ mca, mcb, mcc, mcd, mce, mcf ]}
+        images={[ cua, cub, cuc, cud, cue, cuf, cug, cuh, cui, cuj ]}
         title="Casa Umlaut"
         location="Del Viso"
         baths="3"
@@ -48,6 +59,13 @@ function ProjectList() {
         m2="216"
         state="Diseño arquitectonico"
         description="Laura y Pablo soñaban con un hogar rodeado de naturaleza, donde cada espacio invite a relajarse y disfrutar en familia. Trabajamos junto a ellos para crear una casa cálida y funcional, pensada para una familia de cuatro, con una suite principal y ambientes integrados que potencian la vida diaria. El diseño combina la simpleza nórdica con detalles naturales: varillados de madera que actúan como cortinas corredizas, generando movimiento, privacidad y juego de luces. Un quincho conectado al living y una cocina moderna terminan de dar forma a un refugio que respira armonía desde cada rincón."
+      />
+     <Project
+        images={[ ssa, ssb, ssc, ssd, sse, ssf, ssg ]}
+        title="Sunken seatting"
+        location="Alumine"
+        state="Diseño y obra completada"
+        description="La idea del sunken seating nació de una charla casual con los chicos, cuando nos contaron su deseo de tener un lugar al aire libre para compartir con amigos. Así diseñamos un espacio simple pero con carácter: un patio trasero con un living exterior en desnivel, construido en hormigón, donde la calidez surge del entorno natural y la compañía. Un rincón pensado para disfrutar charlas largas, fuegos nocturnos y momentos que quedan para siempre."
       />
       <Project
         images={[ cga, cgb, cgc, cgd, cge, cgf, cgg, cgh, cgi, cgj ]}
@@ -72,11 +90,14 @@ function ProjectList() {
         description="Julieta nos encargó el diseño de su casa en la Patagonia, al borde de los Andes, con una idea muy clara: quería aprovechar al máximo las vistas y la luz natural. Desde el inicio, priorizamos orientar los espacios principales —como el dormitorio en suite y el estar— hacia el paisaje, para enmarcar la cordillera desde el interior. El programa incluyó también un cuarto extra, pensado como espacio flexible, un laundry independiente y una galería envolvente que permite disfrutar del exterior en cualquier época del año. Trabajamos con materiales nobles como piedra y madera, buscando una estética cálida, simple y bien integrada al entorno."
       />
       <Project
-        images={[ ssa, ssb, ssc, ssd, sse, ssf, ssg ]}
-        title="Sunken seatting"
-        location="Alumine"
-        state="Diseño y obra completada"
-        description="La idea del sunken seating nació de una charla casual con los chicos, cuando nos contaron su deseo de tener un lugar al aire libre para compartir con amigos. Así diseñamos un espacio simple pero con carácter: un patio trasero con un living exterior en desnivel, construido en hormigón, donde la calidez surge del entorno natural y la compañía. Un rincón pensado para disfrutar charlas largas, fuegos nocturnos y momentos que quedan para siempre."
+        images={[ mca, mcb, mcc, mcd, mce, mcf ]}
+        title="Man Cave"
+        location="Del Viso"
+        gameroom="1"
+        rooms="1"
+        gym="1"
+        state="Diseño arquitectonico"
+        description="Lo más lindo de este proyecto fue salir del enfoque habitual de pensar en viviendas, funciones básicas o dormitorios, para crear algo que entrega pura felicidad. El cliente quería un espacio en su patio trasero donde pudiera entrenar, trabajar y juntarse con amigos. Siempre soñó con tener un lugar apartado de su casa, y aprovechando el amplio terreno disponible, diseñamos una man cave al estilo americano un refugio pensado para disfrutar, desconectar y vivir sus pasiones."
       />
     </article>
   );
