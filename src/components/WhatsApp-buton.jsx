@@ -8,6 +8,7 @@ const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${
 function WhatsAppButon() {
   return(
     <div className="whatsapp-button">
+      <span className="whatsapp-text">Contáctanos</span>
       <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
         <img 
           src={whatsappIcon} 
@@ -15,7 +16,6 @@ function WhatsAppButon() {
           className="whatsapp-icon" 
         />
       </a>
-      <span className="whatsapp-text">Contáctanos</span>
     </div>
   )
 }
