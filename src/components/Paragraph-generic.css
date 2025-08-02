@@ -14,7 +14,7 @@
 
 .paragraph-generic-title {
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: bold;
   margin: 1rem 1rem 2rem 1rem;
 }
@@ -62,7 +62,7 @@
   }
 
   .paragraph-generic-content p {
-    font-size: 1rem;
+    font-size: .9rem;
   }
 
 }
