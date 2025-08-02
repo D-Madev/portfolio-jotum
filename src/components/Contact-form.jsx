@@ -131,11 +131,10 @@ export default function ContactForm() {
 
   return (
     <section ref={sectionRef} className="contact-form">
-      <h1 className="contact-form-title">{`Contanos sobre tu proyecto y
-       nos ponemos en contacto.`}</h1>
+      <h1 className="contact-form-title">Contanos sobre tu proyecto y nos ponemos en contacto.</h1>
       <article>
         <header>
-          <h3 className="contact-form-subtitle">¿Que estas buscando?</h3>
+          <h3 className="contact-form-subtitle">¿Qué estás buscando?</h3>
           <div className="contact-form-tags">
             <button>Proyecto</button>
             <button>Llave en mano</button>
@@ -158,7 +157,7 @@ export default function ContactForm() {
             </div>
             <div className="input-container">
               <input type="text" inputMode="numeric" pattern="^\d{8}$" maxLength={8} name="phone" id="phone" required onInput={e => {e.target.value = e.target.value.replace(/\D/g, '').slice(0,8)}}/>
-              <label for="phone">Telefono</label>
+              <label for="phone">Teléfono</label>
             </div>
             <div className="input-container">
               <input type="text" name="msg" id="msg" required pattern="^[A-Za-zÀ-ÿ\s]+$" onInput={e => {e.target.value = e.target.value.replace(/[^A-Za-zÀ-ÿ\s]/g,'')}}/>
