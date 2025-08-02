@@ -231,66 +231,83 @@ export default function Servicios() {
 
     {/* Contenedor de las tarjetas de servicios */}
       <LayoutGroup>
-        <AnimatePresence>
-          {/* Vista de grilla de servicios (cuando no hay detalle seleccionado) */}
-          {selectedIndex === null && (
-            <motion.div key="grid" className="services-content">
+        <AnimatePresence mode="wait">
+          {selectedIndex === null ? (
+            /* GRID: fade and appear cards smoothly */
+            <motion.div
+              key="grid"
+              className="services-content"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, transition: { duration: 0.5, ease: 'easeInOut' } }}
+              transition={{ duration: 0.5, ease: 'easeInOut' }}
+            >
               {cards.map((card, i) => (
-                <ServiceCard 
-                  logo={card.logo} 
+                <ServiceCard
+                  key={i}
+                  logo={card.logo}
                   title={card.title}
-                  description={card.description} 
-                  isSelected={selectedIndex === i}
-                  onSelect={() => setSelectedIndex(i)} 
-                  onDeselect={() => setSelectedIndex(null)}
+                  description={card.description}
+                  onSelect={() => setSelectedIndex(i)}
                   layoutId={`card-${i}`}
-                  initial={{ opacity: 1 }}
-                  animate={{ opacity: 1 }}
-                  exit={selectedIndex === i ? {} : { opacity: 1, transition: { duration: 0.5 } }}
+                  // Entrada suave al grid
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={
+                    i === selectedIndex
+                      ? {} // la seleccionada no desaparece
+                      : { opacity: 0, transition: { duration: 0.5, ease: 'easeInOut' } }
+                  }
                   transition={{ duration: 0.5, ease: 'easeInOut' }}
                 />
               ))}
             </motion.div>
-          )}
-        </AnimatePresence>
-
-        <AnimatePresence>
-          {/* Vista de detalle de un servicio */}
-          {selectedIndex !== null && (
-            <motion.div 
-              key="detail" 
-              className='services-content-selected'
+          ) : (
+            /* DETAIL: move card then clip path */
+            <motion.div
+              key="detail"
+              className="services-content-selected"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              exit={{ opacity: 0, transition: { duration: 0.5 } }}
+              transition={{ duration: 0.3 }}
             >
-              {/* Card seleccionada con animación */}
-              <motion.div layoutId={`card-${selectedIndex}`} className='selected-card-wrapper' transition={{ duration: 0.5, ease: "easeInOut" }}>
+              {/* Card seleccionada se mueve sin desaparecer */}
+              <motion.div
+                layoutId={`card-${selectedIndex}`}
+                className="selected-card-wrapper"
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
+              >
                 <ServiceCard
-                  logo={cards[selectedIndex].logo} title={cards[selectedIndex].title}
-                  description={cards[selectedIndex].description} isSelected
-                  onDeselect={() => { setSelectedIndex(null) }}
+                  logo={cards[selectedIndex].logo}
+                  title={cards[selectedIndex].title}
+                  description={cards[selectedIndex].description}
+                  isSelected
+                  onDeselect={() => setSelectedIndex(null)}
                 />
               </motion.div>
-              {/* Detalle extendido del servicio */}
+
+              {/* Animación de detalle */}
               <motion.div
                 className="selected-card-detail"
-                initial={{ clipPath: "inset(0 100% 0 0)", opacity: 1 }}
-                animate={{ clipPath: "inset(0 0% 0 0)" }}
-                exit={{ clipPath: "inset(0 100% 0 0)", opacity: 0 }}
-                transition={{
-                  type: "tween",
-                  duration: 0.7,
-                  delay: 0.7
-                }}
+                initial={{ clipPath: 'inset(0 100% 0 0)', opacity: 0 }}
+                animate={{ clipPath: 'inset(0 0% 0 0)', opacity: 1, transition: { type: 'tween', duration: 0.7, delay: 0.5 } }}
+                exit={{ clipPath: 'inset(0 100% 0 0)', opacity: 0, transition: { type: 'tween', duration: 0.7, delay: 0 } }}
               >
-                <h2 className={`detail-title`}>{cards[selectedIndex].title}</h2>
-                <p className={`detail-text`}>{cards[selectedIndex].information}</p>
+                <h2 className="detail-title">{cards[selectedIndex].title}</h2>
+                <p className="detail-text">{cards[selectedIndex].information}</p>
                 <div className="detail-buttons">
-                  {/* Botón para volver atrás */}
-                  <button className="back-button" onClick={handleDeselect}><i class="fas fa-solid fa-chevron-left"></i> </button>
-                  {/* Botón para contactar por WhatsApp */}
-                  <a href={whatsappLink} target='_blank' rel="noopener noreferrer" className='service-button'>Contactar</a>
+                  <button className="back-button" onClick={() => setSelectedIndex(null)}>
+                    <i className="fas fa-chevron-left" />
+                  </button>
+                  <a
+                    href={whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="service-button"
+                  >
+                    Contactar
+                  </a>
                 </div>
               </motion.div>
             </motion.div>
