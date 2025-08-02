@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 import useNavbarStore from '../store/navbarStore';
+import useWButtonStore from '../store/whatsappButtonStore';
 import './welcome-banner.css';
 
 export default function WelcomeBanner({
@@ -25,10 +26,12 @@ export default function WelcomeBanner({
     threshold: 0.9, // 90% visible
   });
   const hideNavbar = useNavbarStore((s) => s.hideNavbar)
+  const hideWButton = useWButtonStore((s) => s.hideWButton)
 
   useEffect(() => {
     if (!hideNavOnView) return;
     if (inView) hideNavbar();
+    if (inView) hideWButton();
   }, [inView, hideNavbar])
 
   // Al montar, barajamos la lista

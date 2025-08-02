@@ -1,7 +1,23 @@
 import './Resume-aboutus.css'
+import { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 import MiniStatCard from './Mini-stats-card.jsx';
+import useNavbarStore from '../store/navbarStore';
+import useWButtonStore from '../store/whatsappButtonStore';
+
 
 export default function ResumeAboutUs() {
+  const { ref, inView } = useInView({
+    threshold: 0.2,   // cuando el 20% aparezca
+  });
+  const showNavbar = useNavbarStore((s) => s.showNavbar);
+  const showWButton = useWButtonStore((s) => s.showWButton);
+
+  useEffect(() => {
+    if (inView) showNavbar();
+    if (inView) showWButton();
+  }, [inView, showNavbar]);
+
   const stats = [
     { label: 'Presencia en provincias', value: 5, suffix: ''},
     { label: 'Espacios pensados desde cero para cada cliente', value: 20, suffix: '+'},
@@ -10,7 +26,7 @@ export default function ResumeAboutUs() {
   ];
 
   return (
-    <article className="resume-aboutus">
+    <article ref={ref} className="resume-aboutus">
       <section className='resume-aboutus-text'>
         <h3 className="resume-aboutus-title">Un poco sobre nosotros</h3>
         <p className="resume-aboutus-paragraph"> 

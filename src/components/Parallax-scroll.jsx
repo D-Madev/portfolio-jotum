@@ -38,8 +38,6 @@ export default function ParallaxScroll() {
 
   // Referencia para ocultar la navbar al entrar en vista
   const hideNavbar = useNavbarStore((s) => s.hideNavbar)
-  const showNavbar = useNavbarStore((s) => s.showNavbar)
-
 
   // 1) Termina el vídeo actual → preparamos la carga
   const handleEnded = () => {
@@ -234,6 +232,7 @@ export default function ParallaxScroll() {
       }
     }
 
+    hideNavbar();
     window.requestAnimationFrame(step);
   }
 

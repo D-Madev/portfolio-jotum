@@ -168,7 +168,6 @@ export default function Servicios() {
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    hideNavbar()
     return () => window.removeEventListener('scroll', onScroll);
   }, [SCROLL_DURATION, TRIGGER_PERCENT]);
 
@@ -200,7 +199,8 @@ export default function Servicios() {
         callback && callback();
       }
     }
-
+    
+    hideNavbar();
     window.requestAnimationFrame(step);
   }
 
