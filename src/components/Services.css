@@ -129,12 +129,15 @@
   text-align: center;
   display: flex;
   align-self: flex-start;
-  
   border: solid 2px var(--main-color);
   transition: background-color 0.3s ease;
   z-index: 10;
 }
 
+.back-button:hover {
+  background-color: var(--main-color);
+  color: var(--black-color);
+}
 
 /* --- PANEL DE DETALLE DEL SERVICIO SELECCIONADO --- */
 .selected-card-detail {
