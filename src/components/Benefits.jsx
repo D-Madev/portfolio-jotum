@@ -15,14 +15,14 @@ function Benefits() {
       <div className='benefits-list'>
         <BenefitCard 
           img={BenefitMoney}
-          title="RELACION CALIDAD/PRECIO"
-          description="Optimizamos materiales, diseño estructural y logística de obra para lograr la mejor ecuación costo-beneficio."
+          title="ADAPTADO A TU FORMA DE VIVIR"
+          description="Cada proyecto nace de una escucha atenta. Diseñamos espacios que se ajustan a tus rutinas, deseos y formas de habitar, priorizando funcionalidad sin sacrificar identidad. Porque la buena arquitectura no impone: acompaña."
           className="benefit-card-1"
         /> 
         <BenefitCard 
           img={BenefitJotum}
-          title="FUNCIONALIDAD Y DISEÑO"
-          description="Optimizamos materiales, diseño estructural y logística de obra para lograr la mejor ecuación costo-beneficio."
+          title="DISEÑO QUE PERDURA EN EL TIEMPO"
+          description="Un buen diseño arquitectónico no solo envejece con elegancia, sino que también conserva —y muchas veces incrementa— su valor monetario. Apostamos por espacios pensados para durar, tanto en su estética como en su inversión."
           className="benefit-card-2"
         />
         <BenefitCard 
