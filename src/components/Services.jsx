@@ -1,13 +1,27 @@
 // Importaciones de React y librerías externas
 import { useState, useEffect, useRef } from 'react';
-import useNavbarStore from '../store/navbarStore';
 import { AnimatePresence, motion, LayoutGroup } from 'framer-motion';
-// Importación de imágenes de fondo y logos de las cards
+import useNavbarStore from '../store/navbarStore';
+import ServiceCard from '../components/Service-card';
+import './Services.css';
+
+// Importación de imágenes de fondo de las cards
 import img1 from '../assets/servicios/services1.webp';
 import img2 from '../assets/servicios/services2.webp';
 import img3 from '../assets/servicios/services3.webp';
 import img4 from '../assets/servicios/services4.webp';
 import img5 from '../assets/servicios/services5.webp';
+
+// Importación de imágenes específicas para cada servicio
+import asesoria from '../assets/servicios/asesoria.webp';
+import direccion from '../assets/servicios/direccion.webp';
+import documentacion from '../assets/servicios/documentacion.webp';
+import llaveEnMano from '../assets/servicios/llave-en-mano.webp';
+import muebles from '../assets/servicios/muebles.webp';
+import proyectoImg from '../assets/servicios/proyecto.webp';
+import reforma from '../assets/servicios/reforma.webp';
+
+// Importación de los logos de cada card
 import card1 from '../assets/servicios/card-logo1.webp';
 import card2 from '../assets/servicios/card-logo2.webp';
 import card3 from '../assets/servicios/card-logo3.webp';
@@ -15,36 +29,28 @@ import card4 from '../assets/servicios/card-logo4.webp';
 import card5 from '../assets/servicios/card-logo5.webp';
 import card6 from '../assets/servicios/card-logo6.webp';
 import card7 from '../assets/servicios/card-logo7.webp';
-// Importación del componente de tarjeta de servicio
-import ServiceCard from '../components/Service-card';
-// Importación de estilos CSS
-import './Services.css';
 
-// Componente principal de Servicios
 export default function Servicios() {
-  // Array de imágenes de fondo para el slider
-  const images = [img1, img2, img3, img4, img5];
-  // Referencia a la sección principal para animaciones de scroll
+  // Constantes que forman parte de la animacion del Scroll
   const sectionRef = useRef(null);
-  // Estado interno para controlar animaciones de scroll
-  const state = useRef({
-    hasAnimated: false,
-    isAnimating: false,
-  }).current;
-  // Constantes para duración y porcentaje de trigger del scroll
+  const state = useRef({ hasAnimated: false, isAnimating: false, }).current;
   const SCROLL_DURATION = 1200;
   const TRIGGER_PERCENT = 0.6;
+  
+  // Array de imágenes de fondo para el slider
+  const images = [img1, img2, img3, img4, img5];
+  
   // Estado para la imagen de fondo actual y la siguiente (transición)
   const [current, setCurrent] = useState(Math.floor(Math.random() * images.length));
   const [next, setNext]       = useState(null);
+  const [overrideImage, setOverrideImage] = useState(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  // Estado para la card seleccionada (detalle)
   const [selectedIndex, setSelectedIndex] = useState(null);
+
   // Datos para el enlace de WhatsApp
   const phoneNumber = '5491121747565';
   const message = 'Hola, estoy interesado en el servicio de Jötum.';
   const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
-  // Referencia para ocultar la navbar al entrar en vista
   const hideNavbar = useNavbarStore((s) => s.hideNavbar)
 
   /**
@@ -57,7 +63,8 @@ export default function Servicios() {
       description: "En Jötum desarrollamos proyectos de alto nivel, donde cada espacio combina diseño, funcionalidad y estética con excelencia. Creamos propuestas únicas y contemporáneas, pensadas para perdurar y en armonía con su entorno.", 
       information: `En Jötum entendemos el proyecto arquitectónico como el corazón de cada obra. Por eso, abordamos cada diseño a partir de una escucha atenta y profunda de las necesidades de nuestros clientes, transformando sus ideas en propuestas únicas que combinan creatividad, precisión técnica y una estética cuidada. Cada línea, cada espacio, está pensado con un criterio funcional claro, respetando el entorno y anticipando los desafíos reales de la construcción. 
       
-      Nuestro compromiso es materializar visiones que trasciendan lo ordinario, creando proyectos contemporáneos que equilibran eficiencia, armonía con el entorno y una belleza pensada para perdurar. Diseñamos hogares que enorgullecen, donde cada decisión refleja una historia, un estilo de vida y un futuro compartido. Espacios pensados para ser vividos, disfrutados y recordados, por quienes los habitan y por quienes vendrán después.` },
+      Nuestro compromiso es materializar visiones que trasciendan lo ordinario, creando proyectos contemporáneos que equilibran eficiencia, armonía con el entorno y una belleza pensada para perdurar. Diseñamos hogares que enorgullecen, donde cada decisión refleja una historia, un estilo de vida y un futuro compartido. Espacios pensados para ser vividos, disfrutados y recordados, por quienes los habitan y por quienes vendrán después.`,
+      image: proyectoImg },
     { logo: card2, 
       title: 'Documentacion tecnica',
       description: "Una obra de calidad empieza con planos claros y precisos. En Jötum elaboramos documentación tecnica completa y detallada para garantizar una ejecución fiel al diseño, optimizando tiempos, recursos y evitando imprevistos.", 
@@ -65,7 +72,8 @@ export default function Servicios() {
       
       Preparamos planos ejecutivos y memorias descriptivas, cómputos métricos y pliegos de especificaciones constructivas, junto a toda la documentación específica que el proyecto requiera: planos y cálculos de gas y calefacción, instalaciones sanitarias, estructura, electricidad, implantación, domótica y detalles constructivos, entre otros. Esta información es clave no solo para cumplir con normativas y agilizar permisos, sino también para anticipar soluciones, evitar errores en obra y optimizar tiempos y recursos desde el primer día. 
       
-      Cada documento que producimos está pensado como una herramienta estratégica que acompaña todo el proceso constructivo. Porque en Jötum creemos que la calidad visible de una obra empieza en aquello que no siempre se ve, pero se siente en cada resultado.` },
+      Cada documento que producimos está pensado como una herramienta estratégica que acompaña todo el proceso constructivo. Porque en Jötum creemos que la calidad visible de una obra empieza en aquello que no siempre se ve, pero se siente en cada resultado.`, 
+      image: documentacion},
     { logo: card3, 
       title: 'Reforma e Interiorismo', 
       description: "Transformamos espacios con visión arquitectónica, respetando su esencia y elevando su diseño, funcionalidad y valor. Cada detalle se piensa para crear ambientes únicos, atemporales y llenos de identidad.", 
@@ -73,7 +81,8 @@ export default function Servicios() {
       
       Cada intervención es diseñada con criterio arquitectónico, cuidando la elección de materiales, texturas, iluminación y soluciones constructivas que dialogan entre sí para crear ambientes coherentes, armónicos y atemporales. Nuestro enfoque combina sensibilidad estética con control técnico, permitiendo transformar lo cotidiano en una nueva experiencia de habitar. 
 
-      Como complemento, ofrecemos el diseño y fabricación de muebles a medida, elaborados por los mejores carpinteros, que se integran al proyecto con la misma dedicación que el resto de la obra. Estas piezas únicas no solo optimizan el espacio, sino que elevan su carácter, aportando calidez, funcionalidad y un nivel de calidad que se percibe en cada uso. Reformamos para revelar lo mejor de cada espacio, creando entornos que se sientan propios, cómodos y llenos de intención.` },
+      Como complemento, ofrecemos el diseño y fabricación de muebles a medida, elaborados por los mejores carpinteros, que se integran al proyecto con la misma dedicación que el resto de la obra. Estas piezas únicas no solo optimizan el espacio, sino que elevan su carácter, aportando calidez, funcionalidad y un nivel de calidad que se percibe en cada uso. Reformamos para revelar lo mejor de cada espacio, creando entornos que se sientan propios, cómodos y llenos de intención.`,
+      image: reforma },
     { logo: card4, 
       title: 'Asesoría técnica integral', 
       description: "Acompañamos cada decisión clave del proyecto: desde la elección del terreno hasta el diseño sostenible. En Jötum brindamos asesoría técnica de excelencia para construir sobre bases sólidas, eficientes y con alto valor estético.", 
@@ -81,7 +90,8 @@ export default function Servicios() {
       
       Asistimos en la elección del terreno, evaluando su potencial y viabilidad técnica; analizamos normativas, restricciones municipales y parámetros urbanísticos; y colaboramos en la definición de sistemas constructivos, materiales y soluciones de diseño sostenible. Nuestro enfoque combina conocimiento técnico con sensibilidad arquitectónica, ayudando a que cada decisión contribuya a un resultado más eficiente, duradero y estéticamente sólido. 
       
-      Esta asesoría no solo permite evitar errores costosos y optimizar recursos, sino que da a nuestros clientes la tranquilidad de construir sobre bases firmes, sabiendo que cada paso está guiado por profesionales comprometidos con la excelencia. Porque una obra bien pensada desde el principio es una obra que se disfruta durante toda la vida.` },
+      Esta asesoría no solo permite evitar errores costosos y optimizar recursos, sino que da a nuestros clientes la tranquilidad de construir sobre bases firmes, sabiendo que cada paso está guiado por profesionales comprometidos con la excelencia. Porque una obra bien pensada desde el principio es una obra que se disfruta durante toda la vida.`,
+      image: asesoria },
     { logo: card5, 
       title: 'Llave en mano', 
       description: "Nos encargamos de todo: diseño, obra y terminaciones. En Jötum gestionamos cada etapa con eficiencia y cuidado, para que construir sea una experiencia simple, segura y con resultados excepcionales.", 
@@ -89,7 +99,8 @@ export default function Servicios() {
       
       Coordinamos la elaboración de la documentación técnica, la tramitación de permisos, la planificación de obra, la contratación de mano de obra especializada y la ejecución completa, incluyendo detalles de terminación. Este enfoque de gestión unificada no solo optimiza tiempos y recursos, sino que asegura una ejecución coherente con el proyecto original, sin desviaciones ni sorpresas. 
       
-      El cliente puede seguir cada avance con confianza y tranquilidad, sabiendo que cada decisión técnica y estética está en manos de profesionales comprometidos con la excelencia. Con Jötum, construir deja de ser una carga para convertirse en una experiencia positiva, eficiente y a la altura de las expectativas.` },
+      El cliente puede seguir cada avance con confianza y tranquilidad, sabiendo que cada decisión técnica y estética está en manos de profesionales comprometidos con la excelencia. Con Jötum, construir deja de ser una carga para convertirse en una experiencia positiva, eficiente y a la altura de las expectativas.`,
+      image: llaveEnMano },
     { logo: card6, 
       title: 'Direccion y ejecucion de obra', 
       description: "En Jötum llevamos cada obra con compromiso y precisión, garantizando que el proyecto se construya con la calidad, estética y solidez que fue pensada. Coordinamos equipos, controlamos cada etapa y cuidamos cada detalle.", 
@@ -97,13 +108,15 @@ export default function Servicios() {
       
       Organizamos y lideramos equipos de trabajo especializados, controlamos la correcta ejecución de cada rubro —desde la estructura hasta los detalles de terminación— y gestionamos recursos y tiempos con precisión para asegurar una obra ágil, segura y eficiente. Nuestra presencia en el día a día de la obra nos permite anticipar desafíos, resolver imprevistos y mantener la coherencia del proyecto original en cada metro construido. 
       
-      Cada espacio ejecutado por Jötum refleja solidez estructural, calidad constructiva y un diseño cuidado que perdura en el tiempo. Porque construir bien es, para nosotros, un acto de responsabilidad, técnica y pasión por la excelencia.` },
+      Cada espacio ejecutado por Jötum refleja solidez estructural, calidad constructiva y un diseño cuidado que perdura en el tiempo. Porque construir bien es, para nosotros, un acto de responsabilidad, técnica y pasión por la excelencia.`,
+      image: direccion },
     { logo: card7, 
       title: 'Diseño de muebles', 
       description: "Muebles a medida, elaborados por los mejores carpinteros, combinando funcionalidad y estilo.", 
       information: `Nuestro servicio de diseño de mobiliario a medida potencia al máximo la identidad de cada espacio. Cuando se integra con nuestros proyectos de arquitectura, interiorismo o reforma, permite crear ambientes únicos, donde cada pieza responde a una lógica funcional, estética y espacial. 
       
-      Trabajamos con carpinteros de excelencia y materiales de primera calidad para lograr muebles duraderos, elegantes y pensados exclusivamente para vos. El resultado es una armonía total entre espacio y objeto, donde todo encaja con precisión y estilo.` },
+      Trabajamos con carpinteros de excelencia y materiales de primera calidad para lograr muebles duraderos, elegantes y pensados exclusivamente para vos. El resultado es una armonía total entre espacio y objeto, donde todo encaja con precisión y estilo.`,
+      image: muebles },
   ];
   
   /**
@@ -111,8 +124,17 @@ export default function Servicios() {
    * Si hay una tarjeta seleccionada (detalle), se pausa el cambio de fondo.
    */
    useEffect(() => {
-    // Si hay tarjeta única seleccionada, salgo y no instalo el interval
-    if (selectedIndex !== null) return;
+    // Si hay tarjeta única seleccionada, usamos su imagen como fondo
+    if (selectedIndex !== null) {
+      setOverrideImage(cards[selectedIndex].image);
+      return () => {
+        // Al salir del detalle, limpiamos el override
+        setOverrideImage(null);
+      };
+    }
+
+    // Si no hay selección, nos aseguramos de que no haya override
+    setOverrideImage(null);
 
     const interval = setInterval(() => {
       const upcoming = (current + 1) % images.length;
@@ -127,7 +149,10 @@ export default function Servicios() {
     }, 10000);
 
     return () => clearInterval(interval);
-  }, [current, images.length, selectedIndex]);
+  }, [current, images.length, selectedIndex, cards]);
+  
+  const bgImage        = overrideImage || images[current];
+  const fadeInImage    = overrideImage !== null ? overrideImage : (next !== null ? images[next] : null);
 
   /**
    * Efecto para animar el scroll cuando la sección entra en el viewport.
@@ -207,11 +232,13 @@ export default function Servicios() {
   // Selecciona una card para mostrar el detalle
   const handleSelectCard = (index) => {
     setSelectedIndex(index);
+    setOverrideImage(cards[index].image);
   };
 
   // Vuelve al listado de cards (sale del detalle)
   const handleDeselect = () => {
     setSelectedIndex(null);
+    setOverrideImage(null);
   };
 
   // Renderizado del componente
@@ -220,12 +247,12 @@ export default function Servicios() {
     {/* Fondo dinámico con transición */}
     <div
       className={`bg ${isTransitioning ? 'fade-out' : 'visible'}`} 
-      style={{ backgroundImage: `url(${images[current]})` }}
+      style={{ backgroundImage: `url(${bgImage})` }}
     />
-    {isTransitioning && (
+    {isTransitioning && fadeInImage && (
       <div 
         className="bg fade-in" 
-        style={{ backgroundImage: `url(${images[next]})` }}
+        style={{ backgroundImage: `url(${fadeInImage})` }}
       /> 
     )}
 
@@ -248,7 +275,7 @@ export default function Servicios() {
                   logo={card.logo}
                   title={card.title}
                   description={card.description}
-                  onSelect={() => setSelectedIndex(i)}
+                  onSelect={() => handleSelectCard(i)}
                   layoutId={`card-${i}`}
                   // Entrada suave al grid
                   initial={{ opacity: 0 }}
@@ -283,7 +310,7 @@ export default function Servicios() {
                   title={cards[selectedIndex].title}
                   description={cards[selectedIndex].description}
                   isSelected
-                  onDeselect={() => setSelectedIndex(null)}
+                  onDeselect={() => handleDeselect()}
                 />
               </motion.div>
 
@@ -297,7 +324,7 @@ export default function Servicios() {
                 <h2 className="detail-title">{cards[selectedIndex].title}</h2>
                 <p className="detail-text">{cards[selectedIndex].information}</p>
                 <div className="detail-buttons">
-                  <button className="back-button" onClick={() => setSelectedIndex(null)}>
+                  <button className="back-button" onClick={() => handleDeselect()}>
                     <i className="fas fa-chevron-left" />
                   </button>
                   <a
