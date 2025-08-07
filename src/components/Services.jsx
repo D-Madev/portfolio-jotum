@@ -1,6 +1,6 @@
 // Importaciones de React y librerías externas
 import { useState, useEffect, useRef } from 'react';
-import { AnimatePresence, motion, LayoutGroup, useInView } from 'framer-motion';
+import { AnimatePresence, motion, LayoutGroup } from 'framer-motion';
 import useNavbarStore from '../store/navbarStore';
 import ServiceCard from '../components/Service-card';
 import './Services.css';

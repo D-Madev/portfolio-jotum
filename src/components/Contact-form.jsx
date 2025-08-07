@@ -1,21 +1,15 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import 'notyf'
 import 'notyf/notyf.min.css'
 import "./Contact-form.css"
+import useNavbarStore from '../store/navbarStore';
 import formImage from "../assets/logo/jotum-architekturburo-bauunternehmen.png"
 
 export default function ContactForm() {
-  // Referencia a la sección principal para animaciones de scroll
-  const sectionRef = useRef(null);
-  // Estado interno para controlar animaciones de scroll
-  const state = useRef({
-    hasAnimated: false,
-    isAnimating: false,
-  }).current;
-  // Constantes para duración y porcentaje de trigger del scroll
-  const SCROLL_DURATION = 1200;
-  const TRIGGER_PERCENT = 0.6;
-
+  // Scroll consts
+  const sectionRef = useRef(null)
+  const [animating, setAnimating] = useState(false)
+  const hideNavbar = useNavbarStore((s) => s.hideNavbar)
 
   // Show the submit button when input is detected
   const handleInput = () => {
@@ -59,75 +53,70 @@ export default function ContactForm() {
    * Efecto para animar el scroll cuando la sección entra en el viewport.
    * Solo se dispara una vez hasta que la sección sale completamente de pantalla.
    */
-   useEffect(() => {
-    const section = sectionRef.current;
-    const THRESH_Y = window.innerHeight * TRIGGER_PERCENT;
+useEffect(() => {
+  const loco = window.locoScroll; if (!loco) return;
+  const container = document.querySelector('[data-scroll-container]'); if (!container) return;
 
-    // Reinicia el trigger si la sección sale del umbral
-    function resetIfNeeded(rect) {
-      if (
-        state.hasAnimated &&
-        (rect.top > THRESH_Y || rect.bottom < 0)
-      ) {
-        state.hasAnimated = false;
-      }
+  const blockOpts    = { passive: false };
+  const preventScroll = e => e.preventDefault();
+
+  // flag para no re-disparar mientras dure la animación
+  let animating = false;
+  // flag para saber si ya hemos cruzado el umbral
+  let triggered = false;
+
+  const onScroll = (args) => {
+    const rect = sectionRef.current.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+
+    // Calcula cuánto del componente está visible:
+    const topVisible    = Math.max(rect.top, 0);
+    const bottomVisible = Math.min(rect.bottom, viewportHeight);
+    const visibleHeight = bottomVisible - topVisible;
+
+    // Ratio de visibilidad (0 = nada visible, 1 = todo visible)
+    const visibilityRatio = visibleHeight / rect.height;
+    
+    // Disparo cuando al menos el 60 % del componente está visible
+    if (visibilityRatio >= 0.5 && !triggered && !animating) {
+      triggered = true;
+      animating = true;
+      setAnimating(true);
+      hideNavbar()
+
+      // desplazamiento automático
+      const offset = -(window.innerHeight/2 - rect.height/2);
+      loco.scrollTo(sectionRef.current, {
+        offset,
+        duration: 1000,
+        disableLerp: true,
+      });
+
+      // bloqueo de scroll usuario
+      container.addEventListener('wheel',    preventScroll, blockOpts);
+      container.addEventListener('touchmove', preventScroll, blockOpts);
+
+      setTimeout(() => {
+        container.removeEventListener('wheel',    preventScroll, blockOpts);
+        container.removeEventListener('touchmove', preventScroll, blockOpts);
+        setAnimating(false);
+        animating = false;
+      }, 1000);
     }
 
-    // Handler de scroll: dispara la animación si corresponde
-    function onScroll() {
-      if (state.isAnimating) return;
-
-      const rect = section.getBoundingClientRect();
-      resetIfNeeded(rect);
-
-      // Si no animamos y el top cruza el umbral, disparamos:
-      if (!state.hasAnimated && rect.top <= THRESH_Y && rect.bottom > 0) {
-        state.hasAnimated = true;
-        state.isAnimating = true;
-        document.body.classList.add('no-scroll');
-
-        animateScrollToCenter(section, SCROLL_DURATION, () => {
-          state.isAnimating = false;
-          document.body.classList.remove('no-scroll');
-        });
-      }
+    // Reset para volver a disparar una vez se “oculte” por debajo del umbral
+    if (visibilityRatio < 0.1) {
+      triggered = false;
     }
+  };
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [SCROLL_DURATION, TRIGGER_PERCENT]);
-
-  /**
-   * Función auxiliar para animar el scroll y centrar la sección en pantalla.
-   * Usa una función de easing para suavizar el movimiento.
-   */
-  function animateScrollToCenter(el, duration, callback) {
-    const rect = el.getBoundingClientRect();
-    const startY = window.scrollY;
-    const absoluteTop = startY + rect.top;
-    const targetY = absoluteTop - (window.innerHeight - rect.height) / 2 - 50;
-    const diff = targetY - startY;
-    let startTime = null;
-
-    function step(timestamp) {
-      if (!startTime) startTime = timestamp;
-      const elapsed = timestamp - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      // Easing cuadrático para suavidad
-      const ease =
-        progress < 0.5
-          ? 2 * progress * progress
-          : -1 + (4 - 2 * progress) * progress;
-      window.scrollTo(0, startY + diff * ease);
-      if (elapsed < duration) {
-        window.requestAnimationFrame(step);
-      } else {
-        callback && callback();
-      }
-    }
-
-    window.requestAnimationFrame(step);
-  }
+  loco.on('scroll', onScroll);
+  return () => {
+    loco.off('scroll', onScroll);
+    container.removeEventListener('wheel',    preventScroll, blockOpts);
+    container.removeEventListener('touchmove', preventScroll, blockOpts);
+  };
+}, [hideNavbar]);
 
   return (
     <section ref={sectionRef} className="contact-form">
