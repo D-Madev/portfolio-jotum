@@ -1,6 +1,6 @@
 // Importaciones de React y librerías externas
 import { useState, useEffect, useRef } from 'react';
-import { AnimatePresence, motion, LayoutGroup } from 'framer-motion';
+import { AnimatePresence, motion, LayoutGroup, useInView } from 'framer-motion';
 import useNavbarStore from '../store/navbarStore';
 import ServiceCard from '../components/Service-card';
 import './Services.css';
@@ -32,10 +32,9 @@ import card7 from '../assets/servicios/card-logo7.webp';
 
 export default function Servicios() {
   // Constantes que forman parte de la animacion del Scroll
-  const sectionRef = useRef(null);
-  const state = useRef({ hasAnimated: false, isAnimating: false, }).current;
-  const SCROLL_DURATION = 1200;
-  const TRIGGER_PERCENT = 0.6;
+  const sectionRef = useRef(null)
+  const [animating, setAnimating] = useState(false)
+  const hideNavbar = useNavbarStore((s) => s.hideNavbar)
   
   // Array de imágenes de fondo para el slider
   const images = [img1, img2, img3, img4, img5];
@@ -51,7 +50,6 @@ export default function Servicios() {
   const phoneNumber = '5491121747565';
   const message = 'Hola, estoy interesado en el servicio de Jötum.';
   const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
-  const hideNavbar = useNavbarStore((s) => s.hideNavbar)
 
   /**
    * Definición de las tarjetas de servicios.
@@ -158,76 +156,72 @@ export default function Servicios() {
    * Efecto para animar el scroll cuando la sección entra en el viewport.
    * Solo se dispara una vez hasta que la sección sale completamente de pantalla.
    */
-   useEffect(() => {
-    const section = sectionRef.current;
-    const THRESH_Y = window.innerHeight * TRIGGER_PERCENT;
+useEffect(() => {
+  const loco = window.locoScroll; if (!loco) return;
+  const container = document.querySelector('[data-scroll-container]'); if (!container) return;
 
-    // Reinicia el trigger si la sección sale del umbral
-    function resetIfNeeded(rect) {
-      if (
-        state.hasAnimated &&
-        (rect.top > THRESH_Y || rect.bottom < 0)
-      ) {
-        state.hasAnimated = false;
-      }
-    }
+  const blockOpts    = { passive: false };
+  const preventScroll = e => e.preventDefault();
 
-    // Handler de scroll: dispara la animación si corresponde
-    function onScroll() {
-      if (state.isAnimating) return;
+  // flag para no re-disparar mientras dure la animación
+  let animating = false;
+  // flag para saber si ya hemos cruzado el umbral
+  let triggered = false;
 
-      const rect = section.getBoundingClientRect();
-      resetIfNeeded(rect);
+  const onScroll = (args) => {
+    const rect = sectionRef.current.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
 
-      // Si no animamos y el top cruza el umbral, disparamos:
-      if (!state.hasAnimated && rect.top <= THRESH_Y && rect.bottom > 0) {
-        state.hasAnimated = true;
-        state.isAnimating = true;
-        document.body.classList.add('no-scroll');
+    // Calcula cuánto del componente está visible:
+    const topVisible    = Math.max(rect.top, 0);
+    const bottomVisible = Math.min(rect.bottom, viewportHeight);
+    const visibleHeight = bottomVisible - topVisible;
 
-        animateScrollToCenter(section, SCROLL_DURATION, () => {
-          state.isAnimating = false;
-          document.body.classList.remove('no-scroll');
-        });
-      }
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [SCROLL_DURATION, TRIGGER_PERCENT]);
-
-  /**
-   * Función auxiliar para animar el scroll y centrar la sección en pantalla.
-   * Usa una función de easing para suavizar el movimiento.
-   */
-  function animateScrollToCenter(el, duration, callback) {
-    const rect = el.getBoundingClientRect();
-    const startY = window.scrollY;
-    const absoluteTop = startY + rect.top;
-    const targetY = absoluteTop - (window.innerHeight - rect.height) / 2 - 50;
-    const diff = targetY - startY;
-    let startTime = null;
-
-    function step(timestamp) {
-      if (!startTime) startTime = timestamp;
-      const elapsed = timestamp - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      // Easing cuadrático para suavidad
-      const ease =
-        progress < 0.5
-          ? 2 * progress * progress
-          : -1 + (4 - 2 * progress) * progress;
-      window.scrollTo(0, startY + diff * ease);
-      if (elapsed < duration) {
-        window.requestAnimationFrame(step);
-      } else {
-        callback && callback();
-      }
-    }
+    // Ratio de visibilidad (0 = nada visible, 1 = todo visible)
+    const visibilityRatio = visibleHeight / rect.height;
     
-    hideNavbar();
-    window.requestAnimationFrame(step);
-  }
+    // Disparo cuando al menos el 60 % del componente está visible
+    if (visibilityRatio >= 0.5 && !triggered && !animating) {
+      triggered = true;
+      animating = true;
+      setAnimating(true);
+      hideNavbar()
+
+      // desplazamiento automático
+      const offset = -(window.innerHeight/2 - rect.height/2);
+      loco.scrollTo(sectionRef.current, {
+        offset,
+        duration: 1000,
+        disableLerp: true,
+      });
+
+      // bloqueo de scroll usuario
+      container.addEventListener('wheel',    preventScroll, blockOpts);
+      container.addEventListener('touchmove', preventScroll, blockOpts);
+
+      setTimeout(() => {
+        container.removeEventListener('wheel',    preventScroll, blockOpts);
+        container.removeEventListener('touchmove', preventScroll, blockOpts);
+        setAnimating(false);
+        animating = false;
+      }, 1000);
+    }
+
+    // Reset para volver a disparar una vez se “oculte” por debajo del umbral
+    if (visibilityRatio < 0.1) {
+      triggered = false;
+    }
+  };
+
+  loco.on('scroll', onScroll);
+  return () => {
+    loco.off('scroll', onScroll);
+    container.removeEventListener('wheel',    preventScroll, blockOpts);
+    container.removeEventListener('touchmove', preventScroll, blockOpts);
+  };
+}, [hideNavbar]);
+
+
 
   // Selecciona una card para mostrar el detalle
   const handleSelectCard = (index) => {

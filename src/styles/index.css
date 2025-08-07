@@ -18,7 +18,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: var(--font);
+  font-family: var(--font); 
+  scroll-behavior: smooth;
+}
+
+html, body, [data-scroll-container] {
   scroll-behavior: smooth;
 }
 
