@@ -52,7 +52,7 @@ function ProjectList() {
       <Project
         images={[ cua, cub, cuc, cud, cue, cuf, cug, cuh, cui, cuj ]}
         title="Casa Umlaut"
-        location="Del Viso"
+        location="Santa Barbara"
         baths="3"
         rooms="3"
         cars="1"
@@ -63,7 +63,7 @@ function ProjectList() {
      <Project
         images={[ ssa, ssb, ssc, ssd, sse, ssf, ssg ]}
         title="Sunken seatting"
-        location="Alumine"
+        location="Canning"
         state="Diseño y obra completada"
         description="La idea del sunken seating nació de una charla casual con los chicos, cuando nos contaron su deseo de tener un lugar al aire libre para compartir con amigos. Así diseñamos un espacio simple pero con carácter: un patio trasero con un living exterior en desnivel, construido en hormigón, donde la calidez surge del entorno natural y la compañía. Un rincón pensado para disfrutar charlas largas, fuegos nocturnos y momentos que quedan para siempre."
       />
@@ -82,7 +82,7 @@ function ProjectList() {
       <Project
         images={[ lma, lmb, lmc, lmd, lme ]}
         title="La Miradora"
-        location="Del Viso"
+        location="Patagonia-Alumine"
         baths="2"
         rooms="2"
         m2="124"
@@ -92,10 +92,12 @@ function ProjectList() {
       <Project
         images={[ mca, mcb, mcc, mcd, mce, mcf ]}
         title="Man Cave"
-        location="Del Viso"
+        location="Cañuelas"
         gameroom="1"
         rooms="1"
         gym="1"
+        baths="1"
+        m2="180"
         state="Diseño arquitectonico"
         description="Lo más lindo de este proyecto fue salir del enfoque habitual de pensar en viviendas, funciones básicas o dormitorios, para crear algo que entrega pura felicidad. El cliente quería un espacio en su patio trasero donde pudiera entrenar, trabajar y juntarse con amigos. Siempre soñó con tener un lugar apartado de su casa, y aprovechando el amplio terreno disponible, diseñamos una man cave al estilo americano un refugio pensado para disfrutar, desconectar y vivir sus pasiones."
       />
