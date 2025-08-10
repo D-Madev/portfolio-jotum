@@ -31,14 +31,9 @@
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: auto;
   gap: 1rem;
-
 }
 
 @media (max-width: 1960px) {
-  .resume-aboutus {
-    justify-content: space-between;
-    padding: 4rem 7%;
-  }
   .resume-aboutus-text {
     padding: 0 4rem 0 0;
   }
@@ -70,7 +65,7 @@
 
 @media (min-width: 1800px) {
   .resume-aboutus {
-    padding: 4rem 7%;
+    padding: 8rem 7%;
     justify-content: space-between;
   }
 
