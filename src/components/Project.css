@@ -78,6 +78,7 @@
 
 .project-title {
   font-size: 2rem;
+  white-space: pre-line;
 }
 
 .project-state {

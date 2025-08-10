@@ -72,7 +72,7 @@ function Project({ images = [], title, location, baths, rooms, cars, m2, desk, g
         tabIndex={0}
       >
         <header className="project-header">
-          <p className="project-title"><b>{title}</b> {location}</p>
+          <p className="project-title"><b>{title}</b> {'\n'+location}</p>
           <p className="project-state">{state}</p>
         </header>
 
