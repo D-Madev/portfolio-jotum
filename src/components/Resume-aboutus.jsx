@@ -22,7 +22,7 @@ export default function ResumeAboutUs() {
     { label: 'Presencia en provincias', value: 5, suffix: ''},
     { label: 'Espacios pensados desde cero para cada cliente', value: 20, suffix: '+'},
     { label: 'Desarrollos ejecutados con estándares de diseño Jötum', value: 15, suffix: '+'},
-    { label: 'Seguimos sumando gracias a clientes como vos que se interesan en la excelencia', value: Infinity, suffix: '+'},
+    { label: 'Seguimos sumando gracias a clientes como vos', value: Infinity, suffix: '+'},
   ];
 
   return (
