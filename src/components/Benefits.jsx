@@ -32,7 +32,7 @@ function Benefits() {
           className="benefit-card-3"
         />
       </div>
-      <div className='decor-line' />
+      <div className='decor-line' style={{ backgroundColor: 'white'}}/>
     </section>
   );
 }
