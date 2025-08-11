@@ -1,26 +1,51 @@
+.project-list-header {
+  background-color: var(--black-color);
+  color: white;
+  padding: 5rem 0 1.5rem 0;
+}
+
+.project-list-h1 {
+  font-size: 9rem;
+  padding-left: 7%;
+  padding-bottom: 1.5rem;
+}
+
+.project-list-h2-container {
+  background-color: white;
+}
+
+.project-list-h2 {
+  font-size: 7.5rem;
+  padding-left: 7%;
+  color: var(--black-color);
+}
+
+.project-list-p {
+  position: relative;
+  padding-left: 7%;
+  font-size: 2.5rem;
+  margin: 0 0 1rem 0;
+}
+
+.project-list-p::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -5rem;
+  top: calc(100% + 0.7rem);
+  width: 110%;
+  height: .7rem;
+  background-color: white;
+}
+
 .project-list {
   color: var(--text-color);
   background-color: white;
   position: relative;
-  padding: 3rem 7%;
+  padding: 1rem 7% 3rem 7%;
 }
 
-.project-list-h1 {
-  font-size: 2.5rem;
-  padding-bottom: 1.5rem;
-}
-
-.project-list-h1::after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 0.4rem;
-  background-color: var(--main-color);
-  margin: 1rem 0 0 0;
-}
-
-/*
-.project-list::before {
+/*.project-list::before {
   content: "";
   position: absolute;
   top: 0rem;
@@ -29,20 +54,19 @@
   width: 15px;
   border-radius: 0 0 20rem 20rem;
   background-color: var(--main-color);
-}
-*/
+}*/
 
 @media (max-width: 768px) {
   .project-list {
-    padding: 1rem;
+    padding: 0 1rem 1rem 1rem;
   }
   
   .project-list-h1 {
     text-align: center;
   }
 
-  /* Uncomment this if you want to keep the line on mobile devices */
- /* .project-list::before {
+ /* Uncomment this if you want to keep the line on mobile devices */
+ /*.project-list::before {
     left: 0rem;
     top: 0rem;
     bottom: 0rem;
