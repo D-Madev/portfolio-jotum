@@ -51,27 +51,27 @@ function ProjectList() {
   const controls = useAnimation();
   
   const variantsLeft = {
-    hidden: { x: -150, opacity: 0 },
+    hidden: { x: -300, opacity: 0 },
     visible: {
       x: 0,
       opacity: 1,
       transition: {
-        duration: 1.2,       
+        duration: .3,       
         ease: [0.25, 0.1, 0.25, 1], 
-        opacity: { duration: 1.4 }  
+        opacity: { duration: .3 }  
       }
     }
   };
 
   const variantsRight = {
-    hidden: { x: 150, opacity: 0 },
+    hidden: { x: 300, opacity: 0 },
     visible: {
       x: 0,
       opacity: 1,
       transition: {
-        duration: 1.2,
+        duration: .3,
         ease: [0.25, 0.1, 0.25, 1],
-        opacity: { duration: 1.4 }
+        opacity: { duration: .3 }
       }
     }
   };
@@ -86,7 +86,7 @@ useEffect(() => {
     if (!eRect) return;
 
     const viewportHeight = window.innerHeight;
-    const threshold = viewportHeight * 0.6;
+    const threshold = viewportHeight * 0.9;
 
     if (eRect.top <= threshold && eRect.bottom > 0) {
       controls.start('visible');
