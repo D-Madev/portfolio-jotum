@@ -15,17 +15,14 @@ import image8 from '../assets/nosotros/us-image-8.webp';
 import './Parallax-scroll.css'
 
 export default function ParallaxScroll() {
-  // Referencia a la sección principal para animaciones de scroll
+  // Constantes que forman parte de la animacion del Scroll
   const sectionRef = useRef(null);
-  // Estado interno para controlar animaciones de scroll
-  const state = useRef({
-    hasAnimated: false,
-    isAnimating: false,
-  }).current;
-  // Constantes para duración y porcentaje de trigger del scroll
-  const SCROLL_DURATION = 1200;
-  const TRIGGER_PERCENT = 0.6;
+  const state = useRef({ hasAnimated: false, isAnimating: false }).current;
+  const timeoutRef = useRef(null);
 
+  const SCROLL_DURATION = 1200; // ms - aumentá para más "cinemático"
+  const TRIGGER_PERCENT = 0.6;
+  const showNavbar = useNavbarStore((s) => s.showNavbar);
 
   const videos = [ video1, video2, video3, video4 ];
   const [currentIndex, setCurrentIndex]       = useState(Math.floor(Math.random() * videos.length));
@@ -162,64 +159,98 @@ export default function ParallaxScroll() {
    * Efecto para animar el scroll cuando la sección entra en el viewport.
    * Solo se dispara una vez hasta que la sección sale completamente de pantalla.
    */
-   useEffect(() => {
-    const section = sectionRef.current;
+useEffect(() => {
+    const loco = window.locoScroll;
+    const el = sectionRef.current;
+    if (!el) return;
+
     const THRESH_Y = window.innerHeight * TRIGGER_PERCENT;
 
-    // Reinicia el trigger si la sección sale del umbral
     function resetIfNeeded(rect) {
-      if (
-        state.hasAnimated &&
-        (rect.top > THRESH_Y || rect.bottom < 0)
-      ) {
+      if (state.hasAnimated && (rect.top > THRESH_Y || rect.bottom < 0)) {
         state.hasAnimated = false;
       }
     }
 
-    // Handler de scroll: dispara la animación si corresponde
-    function onScroll() {
+    function onLocoScroll(/* evt */) {
       if (state.isAnimating) return;
-
-      const rect = section.getBoundingClientRect();
+      // usamos getBoundingClientRect para decidir trigger (funciona con locomotive)
+      const rect = el.getBoundingClientRect();
       resetIfNeeded(rect);
 
-      // Si no animamos y el top cruza el umbral, disparamos:
       if (!state.hasAnimated && rect.top <= THRESH_Y && rect.bottom > 0) {
         state.hasAnimated = true;
         state.isAnimating = true;
-        document.body.classList.add('no-scroll');
-
-        // Oculta la navbar al entrar en vista
-        hideNavbar()
-
-        animateScrollToCenter(section, SCROLL_DURATION, () => {
+        animateScrollToCenterWithLoco(el, SCROLL_DURATION, () => {
           state.isAnimating = false;
-          document.body.classList.remove('no-scroll');
         });
       }
     }
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [SCROLL_DURATION, TRIGGER_PERCENT]);
+    // si existe instancia de loco, registramos. Si no, registramos window scroll (fallback)
+    if (loco && typeof loco.on === 'function') {
+      loco.on('scroll', onLocoScroll);
+    } else {
+      window.addEventListener('scroll', onLocoScroll, { passive: true });
+    }
 
-  /**
-   * Función auxiliar para animar el scroll y centrar la sección en pantalla.
-   * Usa una función de easing para suavizar el movimiento.
-   */
-  function animateScrollToCenter(el, duration, callback) {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      if (loco && typeof loco.off === 'function') {
+        loco.off('scroll', onLocoScroll);
+      } else {
+        window.removeEventListener('scroll', onLocoScroll);
+      }
+    };
+  }, [SCROLL_DURATION, TRIGGER_PERCENT, hideNavbar]);
+
+  function animateScrollToCenterWithLoco(el, duration = 1000, callback) {
+    const rect = el.getBoundingClientRect();
+    // calculamos offset para centrar verticalmente
+    const offset = -Math.round((window.innerHeight - rect.height) / 2);
+
+    const loco = window.locoScroll;
+
+    // Fallback a requestAnimationFrame si no hay locomotive
+    if (!loco || typeof loco.scrollTo !== 'function') {
+      return animateScrollToCenterFallback(el, duration, callback);
+    }
+
+    // Visuales / bloqueo ligero
+    document.body.classList.add('no-scroll');
+    hideNavbar();
+
+    // Ejecutamos scrollTo. locomotive maneja la animación internamente.
+    loco.scrollTo(el, {
+      offset,
+      duration,
+      disableLerp: false,
+    });
+
+    // Restauramos después de duration (scrollTo no siempre da callback)
+    timeoutRef.current = setTimeout(() => {
+      document.body.classList.remove('no-scroll');
+      callback && callback();
+    }, duration + 60);
+  }
+
+  function animateScrollToCenterFallback(el, duration, callback) {
     const rect = el.getBoundingClientRect();
     const startY = window.scrollY;
     const absoluteTop = startY + rect.top;
-    const targetY = absoluteTop - (window.innerHeight - rect.height) / 2 - 50;
+    const targetY = absoluteTop - (window.innerHeight - rect.height) / 2
     const diff = targetY - startY;
     let startTime = null;
+
+    document.body.classList.add('no-scroll');
+    hideNavbar();
 
     function step(timestamp) {
       if (!startTime) startTime = timestamp;
       const elapsed = timestamp - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      // Easing cuadrático para suavidad
       const ease =
         progress < 0.5
           ? 2 * progress * progress
@@ -228,11 +259,10 @@ export default function ParallaxScroll() {
       if (elapsed < duration) {
         window.requestAnimationFrame(step);
       } else {
+        document.body.classList.remove('no-scroll');
         callback && callback();
       }
     }
-
-    hideNavbar();
     window.requestAnimationFrame(step);
   }
 
