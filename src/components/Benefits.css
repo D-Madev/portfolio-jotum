@@ -12,7 +12,7 @@
 }
 
 .benefits-header h1 {
-  font-size: 2.5rem;
+  font-size: 2.1rem;
   margin-top: 2rem
 }
 
@@ -38,5 +38,15 @@
 
   .benefits-list {
     gap: 3rem;
+  }
+}
+
+@media (max-width: 1800px) {
+  .benefits-header h1 {
+    font-size: 2rem;
+  }
+
+  .benefits-header p {
+    font-size: 1.3rem;
   }
 }
