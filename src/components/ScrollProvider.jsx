@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom'
 import LocomotiveScroll from 'locomotive-scroll'
 import 'locomotive-scroll/dist/locomotive-scroll.css'
 
-export default function ScrollManager({ children }) {
+export default function ScrollProvider({ children }) {
   const containerRef = useRef(null)
   const locoRef = useRef(null)
   const { pathname } = useLocation()
