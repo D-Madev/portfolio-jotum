@@ -77,7 +77,7 @@ function Project({ images = [], title, location, baths, rooms, cars, m2, desk, g
         </header>
 
         {!m2 && !rooms && !baths && !cars ? null : 
-          <body className='project-resume-bar'>
+          <main className='project-resume-bar'>
             {m2? <div><i className="fas fa-ruler-combined"></i>{m2} m²</div> : null }
             {rooms? <div><i className="fas fa-bed"></i> {rooms}</div> : null }
             {desk? <div><i className="fas fa-book"></i>{desk}</div> : null }
@@ -85,7 +85,7 @@ function Project({ images = [], title, location, baths, rooms, cars, m2, desk, g
             {gameroom? <div><i className="fas fa-dice"></i>{gameroom}</div> : null }
             {baths? <div><i className="fas fa-bath"></i>{baths}</div> : null }
             {cars? <div><i className="fas fa-car"></i>{cars}</div> : null }
-          </body>
+          </main>
         }
 
         <i className='fas fa-angle-up show-up'></i>
