@@ -79,7 +79,7 @@ function ProjectList() {
 
 useEffect(() => {
   const loco = window.locoScroll;
-  if (!loco) console.log("[LOCOMOTIVE INSTANSE]: " + loco);
+  if (!loco) {console.log("[LOCOMOTIVE INSTANSE]: " + loco); return;};
 
   const handler = () => {
     const eRect = ref.current?.getBoundingClientRect();
