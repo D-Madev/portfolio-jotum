@@ -56,9 +56,9 @@ function ProjectList() {
       x: 0,
       opacity: 1,
       transition: {
-        duration: .3,       
+        duration: .9,       
         ease: [0.25, 0.1, 0.25, 1], 
-        opacity: { duration: .3 }  
+        opacity: { duration: .9 }  
       }
     }
   };
@@ -69,30 +69,36 @@ function ProjectList() {
       x: 0,
       opacity: 1,
       transition: {
-        duration: .3,
+        duration: .9,
         ease: [0.25, 0.1, 0.25, 1],
-        opacity: { duration: .3 }
+        opacity: { duration: .9 }
       }
     }
   };
 
 
+const hasPlayed = useRef(false);
+
 useEffect(() => {
   const loco = window.locoScroll;
-  if (!loco) {console.log("[LOCOMOTIVE INSTANSE]: " + loco); return;};
+  if (!loco) {
+    console.log("[LOCOMOTIVE INSTANCE]: " + loco);
+    return;
+  }
 
   const handler = () => {
+    if (hasPlayed.current) return; // Evita volver a ejecutar
+
     const eRect = ref.current?.getBoundingClientRect();
     if (!eRect) return;
 
     const viewportHeight = window.innerHeight;
-    const threshold = viewportHeight * 0.9;
+    const threshold = viewportHeight * 0.6;
 
     if (eRect.top <= threshold && eRect.bottom > 0) {
       controls.start('visible');
-    } else {
-      controls.start('hidden');
-    } 
+      hasPlayed.current = true; // Marca como ejecutado
+    }
   };
 
   loco.on('scroll', handler);
@@ -104,13 +110,14 @@ useEffect(() => {
 }, [controls]);
 
 
+
   return(
     <>
       <motion.header 
         className="project-list-header"
-      ref={ref}
-      data-scroll-call="projectHeader"
-      data-scroll-repeat="true">
+        ref={ref}
+        data-scroll-call="projectHeader"
+        data-scroll-repeat="true">
         <motion.h1 className='project-list-h1' initial="hidden" animate={controls} variants={variantsLeft}>
           + Arquitectura
         </motion.h1>
@@ -123,7 +130,7 @@ useEffect(() => {
           Proyectos que cumplen estandares los estandares que nos importan
         </motion.p>
       </motion.header>
-      <article className="project-list">
+      <motion.article className="project-list" initial="hidden" animate={controls} variants={variantsRight}>
         <Project
           images={[ cua, cub, cuc, cud, cue, cuf, cug, cuh, cui, cuj ]}
           title="Casa Umlaut"
@@ -176,7 +183,7 @@ useEffect(() => {
           state="Diseño arquitectonico"
           description="Lo más lindo de este proyecto fue salir del enfoque habitual de pensar en viviendas, funciones básicas o dormitorios, para crear algo que entrega pura felicidad. El cliente quería un espacio en su patio trasero donde pudiera entrenar, trabajar y juntarse con amigos. Siempre soñó con tener un lugar apartado de su casa, y aprovechando el amplio terreno disponible, diseñamos una man cave al estilo americano un refugio pensado para disfrutar, desconectar y vivir sus pasiones."
         />
-      </article>
+      </motion.article>
     </>
   );
 }
