@@ -1,15 +1,20 @@
-import { useRef, useEffect, useState } from 'react'
-import 'notyf'
-import 'notyf/notyf.min.css'
-import "./Contact-form.css"
+import { useRef, useEffect } from 'react'
 import useNavbarStore from '../store/navbarStore';
 import formImage from "../assets/logo/jotum-architekturburo-bauunternehmen.png"
+import 'notyf/notyf.min.css'
+import 'notyf'
+import "./Contact-form.css"
 
 export default function ContactForm() {
   // Scroll consts
-  const sectionRef = useRef(null)
-  const [animating, setAnimating] = useState(false)
-  const hideNavbar = useNavbarStore((s) => s.hideNavbar)
+  const sectionRef = useRef(null);
+  const state = useRef({ hasAnimated: false, isAnimating: false }).current;
+  const timeoutRef = useRef(null);
+
+  const SCROLL_DURATION = 1200; // ms - aumentá para más "cinemático"
+  const TRIGGER_PERCENT = 0.6;
+  const hideNavbar = useNavbarStore((s) => s.hideNavbar);
+  const showNavbar = useNavbarStore((s) => s.showNavbar);
 
   // Show the submit button when input is detected
   const handleInput = () => {
@@ -54,69 +59,111 @@ export default function ContactForm() {
    * Solo se dispara una vez hasta que la sección sale completamente de pantalla.
    */
 useEffect(() => {
-  const loco = window.locoScroll; if (!loco) return;
-  const container = document.querySelector('[data-scroll-container]'); if (!container) return;
+    const loco = window.locoScroll;
+    const el = sectionRef.current;
+    if (!el) return;
 
-  const blockOpts    = { passive: false };
-  const preventScroll = e => e.preventDefault();
+    const THRESH_Y = window.innerHeight * TRIGGER_PERCENT;
 
-  // flag para no re-disparar mientras dure la animación
-  let animating = false;
-  // flag para saber si ya hemos cruzado el umbral
-  let triggered = false;
-
-  const onScroll = (args) => {
-    const rect = sectionRef.current.getBoundingClientRect();
-    const viewportHeight = window.innerHeight;
-
-    // Calcula cuánto del componente está visible:
-    const topVisible    = Math.max(rect.top, 0);
-    const bottomVisible = Math.min(rect.bottom, viewportHeight);
-    const visibleHeight = bottomVisible - topVisible;
-
-    // Ratio de visibilidad (0 = nada visible, 1 = todo visible)
-    const visibilityRatio = visibleHeight / rect.height;
-    
-    // Disparo cuando al menos el 60 % del componente está visible
-    if (visibilityRatio >= 0.5 && !triggered && !animating) {
-      triggered = true;
-      animating = true;
-      setAnimating(true);
-      hideNavbar()
-
-      // desplazamiento automático
-      const offset = -(window.innerHeight/2 - rect.height/2);
-      loco.scrollTo(sectionRef.current, {
-        offset,
-        duration: 1000,
-        disableLerp: true,
-      });
-
-      // bloqueo de scroll usuario
-      container.addEventListener('wheel',    preventScroll, blockOpts);
-      container.addEventListener('touchmove', preventScroll, blockOpts);
-
-      setTimeout(() => {
-        container.removeEventListener('wheel',    preventScroll, blockOpts);
-        container.removeEventListener('touchmove', preventScroll, blockOpts);
-        setAnimating(false);
-        animating = false;
-      }, 1000);
+    function resetIfNeeded(rect) {
+      if (state.hasAnimated && (rect.top > THRESH_Y || rect.bottom < 0)) {
+        state.hasAnimated = false;
+      }
     }
 
-    // Reset para volver a disparar una vez se “oculte” por debajo del umbral
-    if (visibilityRatio < 0.1) {
-      triggered = false;
-    }
-  };
+    function onLocoScroll(/* evt */) {
+      if (state.isAnimating) return;
+      // usamos getBoundingClientRect para decidir trigger (funciona con locomotive)
+      const rect = el.getBoundingClientRect();
+      resetIfNeeded(rect);
 
-  loco.on('scroll', onScroll);
-  return () => {
-    loco.off('scroll', onScroll);
-    container.removeEventListener('wheel',    preventScroll, blockOpts);
-    container.removeEventListener('touchmove', preventScroll, blockOpts);
-  };
-}, [hideNavbar]);
+      if (!state.hasAnimated && rect.top <= THRESH_Y && rect.bottom > 0) {
+        state.hasAnimated = true;
+        state.isAnimating = true;
+        animateScrollToCenterWithLoco(el, SCROLL_DURATION, () => {
+          state.isAnimating = false;
+        });
+      }
+    }
+
+    // si existe instancia de loco, registramos. Si no, registramos window scroll (fallback)
+    if (loco && typeof loco.on === 'function') {
+      loco.on('scroll', onLocoScroll);
+    } else {
+      window.addEventListener('scroll', onLocoScroll, { passive: true });
+    }
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      if (loco && typeof loco.off === 'function') {
+        loco.off('scroll', onLocoScroll);
+      } else {
+        window.removeEventListener('scroll', onLocoScroll);
+      }
+    };
+  }, [SCROLL_DURATION, TRIGGER_PERCENT, hideNavbar]);
+
+  function animateScrollToCenterWithLoco(el, duration = 1000, callback) {
+    const rect = el.getBoundingClientRect();
+    // calculamos offset para centrar verticalmente
+    const offset = -Math.round((window.innerHeight - rect.height) / 2);
+
+    const loco = window.locoScroll;
+
+    // Fallback a requestAnimationFrame si no hay locomotive
+    if (!loco || typeof loco.scrollTo !== 'function') {
+      return animateScrollToCenterFallback(el, duration, callback);
+    }
+
+    // Visuales / bloqueo ligero
+    document.body.classList.add('no-scroll');
+    hideNavbar();
+
+    // Ejecutamos scrollTo. locomotive maneja la animación internamente.
+    loco.scrollTo(el, {
+      offset,
+      duration,
+      disableLerp: false,
+    });
+
+    // Restauramos después de duration (scrollTo no siempre da callback)
+    timeoutRef.current = setTimeout(() => {
+      document.body.classList.remove('no-scroll');
+      callback && callback();
+    }, duration + 60);
+  }
+
+  function animateScrollToCenterFallback(el, duration, callback) {
+    const rect = el.getBoundingClientRect();
+    const startY = window.scrollY;
+    const absoluteTop = startY + rect.top;
+    const targetY = absoluteTop - (window.innerHeight - rect.height) / 2
+    const diff = targetY - startY;
+    let startTime = null;
+
+    document.body.classList.add('no-scroll');
+    hideNavbar();
+
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease =
+        progress < 0.5
+          ? 2 * progress * progress
+          : -1 + (4 - 2 * progress) * progress;
+      window.scrollTo(0, startY + diff * ease);
+      if (elapsed < duration) {
+        window.requestAnimationFrame(step);
+      } else {
+        document.body.classList.remove('no-scroll');
+        callback && callback();
+      }
+    }
+    window.requestAnimationFrame(step);
+  }
 
   return (
     <section ref={sectionRef} className="contact-form">
