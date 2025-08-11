@@ -211,7 +211,7 @@ useEffect(() => {
   function animateScrollToCenterWithLoco(el, duration = 1000, callback) {
     const rect = el.getBoundingClientRect();
     // calculamos offset para centrar verticalmente
-    const offset = -Math.round((window.innerHeight - rect.height) / 2) + 50;
+    const offset = -Math.round((window.innerHeight - rect.height) / 2);
 
     const loco = window.locoScroll;
 
