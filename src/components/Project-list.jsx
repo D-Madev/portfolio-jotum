@@ -1,6 +1,5 @@
 import { useRef, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
-import { useLocomotiveScroll } from "react-locomotive-scroll";
 import Project from './Project'
 /* PROJECT Casa Umlaut */
 import cua from '../assets/inicio/cu/1.webp'
@@ -50,7 +49,7 @@ import './Project-list.css'
 function ProjectList() {
   const ref = useRef(null);
   const controls = useAnimation();
-
+  
   const variantsLeft = {
     hidden: { x: -150, opacity: 0 },
     visible: {
@@ -80,29 +79,27 @@ function ProjectList() {
 
 useEffect(() => {
   const loco = window.locoScroll;
-  if (!loco) return;
-
-  const container = document.querySelector('[data-scroll-container]') || 
-                    document.querySelector('#js-scroll') || 
-                    document.body;
+  if (!loco) console.log("[LOCOMOTIVE INSTANSE]: " + loco);
 
   const handler = () => {
     const eRect = ref.current?.getBoundingClientRect();
     if (!eRect) return;
 
     const viewportHeight = window.innerHeight;
-    const threshold = viewportHeight * 0.6; // 60% de la altura visible
+    const threshold = viewportHeight * 0.6;
 
-    // Cuando la parte superior del elemento está dentro del 60% inferior del viewport
-    if (eRect.top <= threshold) {
+    if (eRect.top <= threshold && eRect.bottom > 0) {
       controls.start('visible');
-      try { loco.off('scroll', handler); } catch(e){}
-    }
+    } else {
+      controls.start('hidden');
+    } 
   };
 
-  try { loco.on('scroll', handler); } catch(e) {}
+  loco.on('scroll', handler);
+  loco.update();
+
   return () => {
-    try { loco.off('scroll', handler); } catch(e) {}
+    loco.off('scroll', handler);
   };
 }, [controls]);
 
@@ -113,7 +110,7 @@ useEffect(() => {
         className="project-list-header"
       ref={ref}
       data-scroll-call="projectHeader"
-      data-scroll-repeat>
+      data-scroll-repeat="true">
         <motion.h1 className='project-list-h1' initial="hidden" animate={controls} variants={variantsLeft}>
           + Arquitectura
         </motion.h1>
