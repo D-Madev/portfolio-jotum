@@ -19,6 +19,16 @@ export default function LoadingScreen({
   minVisible = 600,
   fontName = null,
 }) {
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(reg => console.log('Service worker registrado', reg))
+      .catch(err => console.error('Error al registrar SW', err));
+  });
+}
+
+
   // precargar una imagen y esperar a decode (si está soportado)
   const preloadImage = (src) =>
     new Promise((res) => {
