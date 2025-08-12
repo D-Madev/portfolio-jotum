@@ -52,7 +52,6 @@ function Project({ images = [], title, location, baths, rooms, cars, m2, desk, g
             src={images[prev]}
             alt=""
             className="fade-image fade-out"
-            loading="lazy"
           />
         )}
         <img
@@ -60,7 +59,6 @@ function Project({ images = [], title, location, baths, rooms, cars, m2, desk, g
           src={images[current]}
           alt={`Imagen ${current + 1}`}
           className="fade-image fade-in"
-          loading="lazy"
         />
       </div> 
 

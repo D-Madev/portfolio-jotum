@@ -329,7 +329,7 @@ useEffect(() => {
             style={{ zIndex: 2 + i }}
           >
             <div className="parallax-image">
-              <img src={section.image} alt={section.title} loading="lazy" />
+              <img src={section.image} alt={section.title} />
             </div>
             <div className="parallax-content">
               <h1 className="section-number">{i + 1}</h1>
