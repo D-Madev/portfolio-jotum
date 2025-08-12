@@ -7,7 +7,6 @@ import ProjectList from '../components/Project-list.jsx'
 import Benefits from '../components/Benefits.jsx'
 import Testimonials from '../components/Testimonials.jsx'
 import SubFooter from '../components/Sub-footer.jsx'
-import WhatsAppButton from '../components/WhatsApp-buton.jsx'
 // IMPORT IMAGES
 import imageSubFooter from '../assets/inicio/sub-footer-inicio.webp'
 import video1 from '../assets/inicio1.mp4'
@@ -21,8 +20,6 @@ import video7 from '../assets/inicio7.mp4'
 function Inicio() {
   return (
     <>
-      
-      <WhatsAppButton />
       <WelcomeBanner 
         backgroundType="video"
         backgroundSrcList = {[video1, video2, video3, video4, video5, video6, video7]}

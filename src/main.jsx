@@ -9,6 +9,7 @@ import App from './App.jsx'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import Author from './components/Author.jsx'
+import WhatsAppButton from './components/WhatsApp-buton.jsx'
 import './styles/index.css';
 
 function Main() {
@@ -16,6 +17,7 @@ function Main() {
   return (
     <>
       <Navbar />
+      <WhatsAppButton />
       <ScrollProvider watch={location.pathname}>
         <App />
         <Footer />
