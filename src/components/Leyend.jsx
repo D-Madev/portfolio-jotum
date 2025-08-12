@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import useNavbarStore from '../store/navbarStore';
 import useWButtonStore from '../store/whatsappButtonStore';
 
-export default function Leyend({ title, text, style={} }) {
+export default function Leyend({ title, text, style={}, hideWB=true }) {
 
   const { ref, inView } = useInView({
     threshold: 0.2,   // cuando el 20% aparezca
@@ -14,7 +14,7 @@ export default function Leyend({ title, text, style={} }) {
 
   useEffect(() => {
     if (inView) showNavbar();
-    if (inView) showWButton();
+    if (inView && !hideWB) showWButton();
   }, [inView, showNavbar]);
 
 

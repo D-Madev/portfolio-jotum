@@ -2,11 +2,14 @@ import WelcomeBanner from "../components/Welcome-banner"
 import Leyend from "../components/Leyend"
 import Services from "../components/Services"
 import wbServicesImage from '../assets/servicios/welcome-banner.webp'
+import useWButtonStore from '../store/whatsappButtonStore';
 import useNavbarStore from '../store/navbarStore';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 export default function Servicios() {
+  const hideWButton = useWButtonStore((s) => s.hideWButton);
+  hideWButton();
   const { ref, inView } = useInView({
     threshold: 0.2,   // cuando el 20% aparezca
   });
@@ -16,6 +19,7 @@ export default function Servicios() {
     if (inView) showNavbar();
   }, [inView, showNavbar]);
 
+  
   return(
     <>
       <WelcomeBanner 

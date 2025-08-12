@@ -32,6 +32,7 @@ function Inicio() {
       <Leyend 
         title="Eficiencia y precisión alemana, diseño a tu medida."
         text="Con Jötum, la arquitectura, la tecnica y la vision trabajan para tu futuro"
+        hideWB={false}
       />
       <ResumeAboutUs />
       {/* <VisitUs/> */}

@@ -2,13 +2,17 @@ import WelcomeBanner from "../components/Welcome-banner.jsx";
 import SubFooter from "../components/Sub-footer.jsx";
 import ParagraphGeneric from "../components/Paragraph-generic.jsx";
 import ParallaxScroll from "../components/Parallax-scroll.jsx"
-
+import useWButtonStore from '../store/whatsappButtonStore';
 import wbUsImage from '../assets/nosotros/welcome-banner.webp'
 import logo from '../assets/logo/jotum-architekturburo-bauunternehmen.png'
 import subFooterImage from '../assets/nosotros/sub-footer.webp'
 
 function Nostros() {
   /*<h1>El verdadero valor está en lo que perdura. Jötum construye con excelencia para ese tipo de cliente.</h1>*/
+  const hideWButton = useWButtonStore((s) => s.hideWButton);
+
+  hideWButton();
+  
   return (
     <>
         <WelcomeBanner 

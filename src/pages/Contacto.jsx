@@ -1,9 +1,13 @@
 import WelcomeBanner from '../components/Welcome-banner'
+import useWButtonStore from '../store/whatsappButtonStore';
 import ContactForm from '../components/Contact-form'
-
 import wbContact from '../assets/contacto/wb-contact.webp'
 
 export default function Contacto() {
+  const hideWButton = useWButtonStore((s) => s.hideWButton);
+
+  hideWButton();
+
   return (
     <>
       <WelcomeBanner 
