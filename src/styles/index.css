@@ -20,6 +20,14 @@
   box-sizing: border-box;
   font-family: var(--font); 
   scroll-behavior: smooth;
+  outline: 0 !important; 
+  box-shadow: none !important;
+}
+
+html, body {
+  height: 100%; 
+  margin: 0; 
+  padding: 0;
 }
 
 html, body, [data-scroll-container] {
