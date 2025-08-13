@@ -248,7 +248,7 @@
 
 @media (max-height: 950px) {
   .section-services {
-    height: 140vh;
+    height: 220vh;
   }
 }
 
@@ -270,6 +270,10 @@
   .services-content {
       gap: 1rem;
   }
+
+  .section-services {
+    height: 250vh;
+  }
 }
 
 @media (max-width: 768px) {
@@ -282,8 +286,16 @@
     padding: 1rem;
     font-size: 0.7rem;
   }
+  
+  .section-services {
+    height: 250vh;
+  }
 }
 
-@media (max-width: 425px) {
-  .service-card-wrapper { flex: 1 1 50%; max-width: 100%; }
+@media (max-width: 562px) {
+  .service-card-wrapper { flex: 1 1 50%; max-width: 85%; }
+  
+  .section-services {
+    height: 300vh;
+  }
 }

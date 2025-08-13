@@ -50,8 +50,8 @@
    IMAGEN Y TEXTO DE LA CARD
    ========================= */
 .service-card img {
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
 }
 
 .service-card.is-selected h2 {
@@ -61,7 +61,7 @@
 
 .service-card h2 {
   font-size: 1.3rem;
-  margin: 25px 0 40px 0;
+  margin: 25px 0 25px 0;
 }
 
 .service-card.is-selected p {
@@ -127,15 +127,24 @@
 /* --- Ajustes para pantallas <= 1750px --- */
 @media (max-width: 1750px) {
   .service-card {
-    height: 420px;
+    height: 400px;
   }
 
   .service-card-wrapper {
-    height: 420px;
+    height: 400px;
   }
 
   .service-card.is-expanded {
-    height: 500px;
+    height: 430px;
+  }
+  
+  .service-card h2 {
+    font-size: 1.2rem;
+  }
+  
+  .service-card img {
+    width: 70px;
+    height: 70px;
   }
 }
 
