@@ -7,7 +7,7 @@
   max-width: 22%;
   position: relative;
   overflow: visible;
-  height: 430px;
+  height: 400px;
   transition: height .4s ease;
 }
 
@@ -17,12 +17,12 @@
    (service-card)
    ========================= */
 .service-card {
-  height: 430px;
+  height: 400px;
   overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 1.5rem;
+  padding: 1.3rem;
   background-color: #2E2D2D;
   color: white;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -32,7 +32,7 @@
 
 /* --- Card expandida al hacer hover (is-expanded) --- */
 .service-card.is-expanded {
-  height: 500px;
+  height: 450px;
   position: absolute;
   top: 0; left: 0;
   box-shadow: 0 8px 16px rgba(0,0,0,.3);
@@ -175,17 +175,35 @@
 /* --- Ajustes para pantallas <= 1500px --- */
 @media (max-width: 1500px) {
   .service-card {
-    height: 360px;
+    height: 300px;
+    padding: 1rem;
   }
 
   .service-card-wrapper {
-    height: 360px;
+    height: 300px;
   }
 
   .service-card.is-expanded {
-    height: 440px;
+    height: 350px;
   } 
   
+  .service-card img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .service-card h2 {
+    font-size: 1rem;
+  }
+
+  .service-card p {
+    font-size: 0.8rem;
+  }
+
+  .button-container a {
+    font-size: 1rem;
+    padding: 15px 70px;
+  }
 }
 
 /* --- Ajustes para pantallas <= 1300px --- */
