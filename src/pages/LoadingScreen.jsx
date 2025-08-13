@@ -20,14 +20,18 @@ export default function LoadingScreen({
   fontName = null,
 }) {
 
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(reg => console.log('Service worker registrado', reg))
-      .catch(err => console.error('Error al registrar SW', err));
+if (!('serviceWorker' in navigator)) return;
+  // EXACTO para tu repo:
+  const SW_URL = '/portfolio-jotum/service-worker.js';
+  const SCOPE = '/portfolio-jotum/';
+  window.addEventListener('load', async () => {
+    try {
+      const reg = await navigator.serviceWorker.register(SW_URL, { scope: SCOPE });
+      console.log('SW registrado en', reg.scope);
+    } catch (e) {
+      console.error('Error al registrar SW', e);
+    }
   });
-}
-
 
   // precargar una imagen y esperar a decode (si está soportado)
   const preloadImage = (src) =>
