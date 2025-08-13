@@ -80,33 +80,28 @@ function ProjectList() {
 const hasPlayed = useRef(false);
 
 useEffect(() => {
-  const loco = window.locoScroll;
-  if (!loco) {
-    console.log("[LOCOMOTIVE INSTANCE]: " + loco);
-    return;
-  }
+  const node = ref.current;
+  if (!node) return;
 
-  const handler = () => {
-    if (hasPlayed.current) return; // Evita volver a ejecutar
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const entry = entries[0];
+      if (!entry) return;
+      // threshold 0.4 = ~40% visible -> ajustá
+      if (entry.isIntersecting) {
+        if (!hasPlayed.current) {
+          controls.start('visible');
+          hasPlayed.current = true;
+          observer.disconnect(); // si querés que pase solo una vez
+        }
+      }
+    },
+    { threshold: 0.4 } // ajustá al 0.6 que querías (0.6 = 60%)
+  );
 
-    const eRect = ref.current?.getBoundingClientRect();
-    if (!eRect) return;
+  observer.observe(node);
 
-    const viewportHeight = window.innerHeight;
-    const threshold = viewportHeight * 0.6;
-
-    if (eRect.top <= threshold && eRect.bottom > 0) {
-      controls.start('visible');
-      hasPlayed.current = true; // Marca como ejecutado
-    }
-  };
-
-  loco.on('scroll', handler);
-  loco.update();
-
-  return () => {
-    loco.off('scroll', handler);
-  };
+  return () => observer.disconnect();
 }, [controls]);
 
 
