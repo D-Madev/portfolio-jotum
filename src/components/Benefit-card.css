@@ -1,7 +1,7 @@
 .benefit-card {
   position: relative;
-  height: 30vw;
-  width: 20vw;
+  height: 40vw;
+  width: 23vw;
   display: flex;
   flex-direction: column;
   color: var(--black-color);
