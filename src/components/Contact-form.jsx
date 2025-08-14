@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import useNavbarStore from '../store/navbarStore';
 import formImage from "../assets/logo/jotum-architekturburo-bauunternehmen.png"
 import 'notyf/notyf.min.css'
@@ -16,16 +16,31 @@ export default function ContactForm() {
   const hideNavbar = useNavbarStore((s) => s.hideNavbar);
   const showNavbar = useNavbarStore((s) => s.showNavbar);
 
+  const [selectedTag, setSelectedTag] = useState('');
+
   // Show the submit button when input is detected
-  const handleInput = () => {
-    // Prevent submission if any field is empty
-    if (document.getElementById("name").value.trim() !== "" && 
-        document.getElementById("city").value.trim() !== "" && 
-        document.getElementById("email").value.trim() !== "" && 
-        document.getElementById("phone").value.trim() !== "" && 
-        document.getElementById("msg").value.trim() !== "")
-      document.getElementById("contact-form-button").style.display = "";
-  }
+  const handleInput = (tagOverride) => {
+    const tag = typeof tagOverride !== 'undefined' ? tagOverride : selectedTag;
+    const name = document.getElementById('name')?.value.trim() || '';
+    const city = document.getElementById('city')?.value.trim() || '';
+    const email = document.getElementById('email')?.value.trim() || '';
+    const phone = document.getElementById('phone')?.value.trim() || '';
+    const msg = document.getElementById('msg')?.value.trim() || '';
+
+    if (name !== '' && city !== '' && email !== '' && phone !== '' && msg !== '' && tag !== '') {
+      document.getElementById('contact-form-button').style.display = '';
+    } else {
+      document.getElementById('contact-form-button').style.display = 'none';
+    }
+  };
+
+   // toggle para las etiquetas
+  const toggleTag = (tag) => {
+    const newSelected = (selectedTag === tag) ? '' : tag;
+    setSelectedTag(newSelected);
+    // Llamamos a handleInput con el valor nuevo para evitar efectos de setState asincrónico
+    handleInput(newSelected);
+  };
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -171,14 +186,40 @@ useEffect(() => {
       <article>
         <header>
           <h3 className="contact-form-subtitle">¿Qué estás buscando?</h3>
-          <div className="contact-form-tags">
-            <button>Proyecto</button>
-            <button>Llave en mano</button>
-            <button>Remodelacion</button>
+          {/* botones fuera del form, pero actualizan estado */}
+          <div className="contact-form-tags" role="tablist" aria-label="Tipos de proyecto">
+            <button
+              type="button"
+              className={selectedTag === 'Proyecto' ? 'active' : ''}
+              aria-pressed={selectedTag === 'Proyecto'}
+              onClick={() => toggleTag('Proyecto')}
+            >
+              Proyecto
+            </button>
+
+            <button
+              type="button"
+              className={selectedTag === 'Llave en mano' ? 'active' : ''}
+              aria-pressed={selectedTag === 'Llave en mano'}
+              onClick={() => toggleTag('Llave en mano')}
+            >
+              Llave en mano
+            </button>
+
+            <button
+              type="button"
+              className={selectedTag === 'Remodelacion' ? 'active' : ''}
+              aria-pressed={selectedTag === 'Remodelacion'}
+              onClick={() => toggleTag('Remodelacion')}
+            >
+              Remodelacion
+            </button>
           </div>
         </header>
         <main className="contact-form-main">
           <form id="contact-form-form" className="contact-form-form" onInput={handleInput} onSubmit={handleSubmit}>
+             {/* input oculto para que FormData incluya la tag */}
+            <input type="hidden" name="tag" value={selectedTag} />
             <div className="input-container">
               <input type="text" name="name" id="name" required pattern="^[A-Za-zÀ-ÿ\s]+$" onInput={e => {e.target.value = e.target.value.replace(/[^A-Za-zÀ-ÿ\s]/g,'')}}/>
               <label for="name">Nombre</label>

@@ -33,10 +33,11 @@ app.post('/send/mail', async (req, res) => {
   * user Email
   * user Phone
   * user Message
+  * user tag
   * */
-  const { name, city, email, phone, msg } = req.body
+  const { name, city, email, phone, msg, tag } = req.body
 
-  if (!name || !city || !email || !phone || !msg) {
+  if (!name || !city || !email || !phone || !msg || !tag) {
     console.error('All fields are required.')
     return res.status(400).json({ ok: false, message: 'All fields are required.' })
   }
@@ -51,6 +52,7 @@ app.post('/send/mail', async (req, res) => {
       Ciudad: ${city}
       Email: ${email}
       Teléfono: ${phone}
+      Modelo de trabajo: ${tag}
       Mensaje: ${msg}
     `
   }
