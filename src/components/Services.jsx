@@ -162,111 +162,115 @@ export default function Servicios() {
    * Solo se dispara una vez hasta que la sección sale completamente de pantalla.
    */
 useEffect(() => {
-    const loco = window.locoScroll;
-    const el = sectionRef.current;
-    if (!el) return;
+  const el = sectionRef.current;
+  if (!el) return;
 
-    const THRESH_Y = window.innerHeight * TRIGGER_PERCENT;
+  const loco = window.locoScroll;
+  const THRESHOLD = TRIGGER_PERCENT; // 0..1 para IntersectionObserver
 
-    function resetIfNeeded(rect) {
-      if (state.hasAnimated && (rect.top > THRESH_Y || rect.bottom < 0)) {
-        state.hasAnimated = false;
-      }
-    }
+  let observer = null;
+  const userInteractedRef = { current: false };
 
-    function onLocoScroll(/* evt */) {
+  // marcar interacción del usuario (rueda / touch / key)
+  const onUserInteract = () => { userInteractedRef.current = true; };
+
+  window.addEventListener('wheel', onUserInteract, { passive: true });
+  window.addEventListener('touchstart', onUserInteract, { passive: true });
+  window.addEventListener('keydown', onUserInteract, { passive: true });
+
+  const onIntersect = (entries) => {
+    for (const entry of entries) {
       if (state.isAnimating) return;
-      // usamos getBoundingClientRect para decidir trigger (funciona con locomotive)
-      const rect = el.getBoundingClientRect();
-      resetIfNeeded(rect);
 
-      if (!state.hasAnimated && rect.top <= THRESH_Y && rect.bottom > 0) {
+      // Requerimos interacción del usuario para evitar disparos en mount
+      if (!userInteractedRef.current) {
+        // si querés permitir disparo también por scroll inicial, comentá esta línea
+        return;
+      }
+
+      if (!state.hasAnimated && entry.isIntersecting && entry.intersectionRatio >= THRESHOLD) {
         state.hasAnimated = true;
         state.isAnimating = true;
+
+        if (loco && typeof loco.update === 'function') loco.update();
+
         animateScrollToCenterWithLoco(el, SCROLL_DURATION, () => {
           state.isAnimating = false;
         });
-      }
-    }
-
-    // si existe instancia de loco, registramos. Si no, registramos window scroll (fallback)
-    if (loco && typeof loco.on === 'function') {
-      loco.on('scroll', onLocoScroll);
-    } else {
-      window.addEventListener('scroll', onLocoScroll, { passive: true });
-    }
-
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-      if (loco && typeof loco.off === 'function') {
-        loco.off('scroll', onLocoScroll);
       } else {
-        window.removeEventListener('scroll', onLocoScroll);
+        if (state.hasAnimated && !entry.isIntersecting) {
+          state.hasAnimated = false;
+        }
       }
-    };
-  }, [SCROLL_DURATION, TRIGGER_PERCENT, hideNavbar]);
-
-  function animateScrollToCenterWithLoco(el, duration = 1000, callback) {
-    const rect = el.getBoundingClientRect();
-    // calculamos offset para centrar verticalmente
-    const offset = -Math.round((window.innerHeight - rect.height) / 2);
-
-    const loco = window.locoScroll;
-
-    // Fallback a requestAnimationFrame si no hay locomotive
-    if (!loco || typeof loco.scrollTo !== 'function') {
-      return animateScrollToCenterFallback(el, duration, callback);
     }
+  };
 
-    // Visuales / bloqueo ligero
+  observer = new IntersectionObserver(onIntersect, {
+    root: null,
+    threshold: buildThresholdArray(TRIGGER_PERCENT)
+  });
+
+  observer.observe(el);
+
+  function buildThresholdArray(t) {
+    const steps = 20;
+    const arr = [];
+    for (let i = 0; i <= steps; i++) arr.push(i / steps);
+    if (!arr.includes(t)) arr.push(t);
+    arr.sort((a,b)=>a-b);
+    return arr;
+  }
+
+  return () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    if (observer && el) observer.unobserve(el);
+    if (observer) observer.disconnect();
+    window.removeEventListener('wheel', onUserInteract);
+    window.removeEventListener('touchstart', onUserInteract);
+    window.removeEventListener('keydown', onUserInteract);
+  };
+}, [SCROLL_DURATION, TRIGGER_PERCENT]);
+
+function animateScrollToCenterWithLoco(el, duration = 1000, callback) {
+  const rect = el.getBoundingClientRect();
+  const offset = -Math.round((window.innerHeight - rect.height) / 2);
+  const loco = window.locoScroll;
+
+  // Si no hay locomotive, usamos el fallback con bloqueo body (no-scroll)
+  if (!loco || typeof loco.scrollTo !== 'function') {
     document.body.classList.add('no-scroll');
     hideNavbar();
+    return animateScrollToCenterFallback(el, duration, (/* innerCallback */) => {
+      document.body.classList.remove('no-scroll');
+      callback && callback();
+    });
+  }
 
-    // Ejecutamos scrollTo. locomotive maneja la animación internamente.
+  // Si hay locomotive, NO manipulamos overflow del body.
+  // Solo ocultamos la navbar y usamos loco.scrollTo para animar.
+  try {
+    hideNavbar();
+    // forzamos update antes de mover (sincroniza medidas)
+    if (typeof loco.update === 'function') loco.update();
+
     loco.scrollTo(el, {
       offset,
       duration,
-      disableLerp: false,
+      // disableLerp: false  // podés quitar/ajustar según versión si querés más "suave"
     });
 
-    // Restauramos después de duration (scrollTo no siempre da callback)
+    // Restauramos estado después de la duración proporcionada.
     timeoutRef.current = setTimeout(() => {
-      document.body.classList.remove('no-scroll');
+      showNavbar && showNavbar();
       callback && callback();
     }, duration + 60);
+  } catch (e) {
+    // En caso de error con loco, cae al fallback suave
+    console.warn('loco.scrollTo falló, usando fallback', e);
+    return animateScrollToCenterFallback(el, duration, callback);
   }
+}
 
-  function animateScrollToCenterFallback(el, duration, callback) {
-    const rect = el.getBoundingClientRect();
-    const startY = window.scrollY;
-    const absoluteTop = startY + rect.top;
-    const targetY = absoluteTop - (window.innerHeight - rect.height) / 2
-    const diff = targetY - startY;
-    let startTime = null;
-
-    document.body.classList.add('no-scroll');
-    hideNavbar();
-
-    function step(timestamp) {
-      if (!startTime) startTime = timestamp;
-      const elapsed = timestamp - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const ease =
-        progress < 0.5
-          ? 2 * progress * progress
-          : -1 + (4 - 2 * progress) * progress;
-      window.scrollTo(0, startY + diff * ease);
-      if (elapsed < duration) {
-        window.requestAnimationFrame(step);
-      } else {
-        document.body.classList.remove('no-scroll');
-        callback && callback();
-      }
-    }
-    window.requestAnimationFrame(step);
-  }
 
   // Selecciona una card para mostrar el detalle
   const handleSelectCard = (index) => {

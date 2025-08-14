@@ -13,5 +13,5 @@ import { generateSW } from 'workbox-build';
       { urlPattern: /\.(?:js|css)$/, handler: 'StaleWhileRevalidate', options: { cacheName: 'static-resources' } }
     ],
   });
-  console.log(`Service worker generado. Cacheando ${count} archivos (${size} bytes).`);
+  console.log(`\n[CACHEO] - Service worker generado. Cacheando ${count} archivos (${size} bytes).`);
 })();
