@@ -12,24 +12,62 @@
   background-size: cover;
   background-position: center;
   inset: 0;
-  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 0 1rem;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  background-attachment: scroll;
+  z-index: 1;
 }
 
 .sub-footer-background::before {
   content: '';
   position: absolute;
   inset: 0;
+
   background: inherit;
   filter: blur(5px) brightness(20%);
   transform: scale(1.05);
   transform-origin: center;
+  /* hereda la imagen del inline style, pero declaramos estas props por seguridad */
+  background-image: inherit;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+  transform-origin: center;
+  -webkit-transform: translate3d(0,0,0) scale(1.06);
+  transform: translate3d(0,0,0) scale(1.06);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform, filter;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(#000, #000);
+  
   z-index: 0;
+}
+
+.sub-footer-background::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35); /* ajustar opacidad a gusto */
+  z-index: 1; /* encima del blur, debajo del contenido */
+  pointer-events: none;
+}
+
+.sub-footer-title,
+.sub-footer-text,
+.sub-footer-button {
+  z-index: 3;
 }
 
 .sub-footer-title {
@@ -61,9 +99,4 @@
 
 .sub-footer-button:hover {
   background-color: var(--black-color);
-}
-
-.sub-footer-background > * {
-  position: relative;
-  z-index: 1;
 }
