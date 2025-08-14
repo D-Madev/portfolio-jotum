@@ -237,16 +237,34 @@
 }
 
 @media (max-width: 1024px) {
-  .service-card-wrapper { flex: 1 1 25%; max-width: 50%; }
+  .service-card-wrapper {
+    flex: 1 1 calc(33.333% - 1rem);
+    max-width: calc(33.333% - 1rem);
+    height: auto; 
+  }
+
+  .service-card {
+    height: auto;
+    min-height: 280px; 
+    padding: 1rem;
+  }
+
+  .service-card.is-expanded {
+    position: relative;
+    box-shadow: 0 8px 16px rgba(0,0,0,.18);
+    transform: none;
+    scale: 1;
+    z-index: 2;
+  }
 }
 
 @media (max-height: 1000px) {
   .section-services {
-    height: 130vh;
+    height: 160vh;
   }
 }
 
-@media (max-height: 950px) {
+@media (max-width: 950px) {
   .section-services {
     height: 220vh;
   }
@@ -312,5 +330,84 @@
 
   .back-button {
     padding: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-content {
+    gap: .9rem;
+  }
+
+  .service-card-wrapper {
+    flex: 1 1 calc(50% - .9rem);
+    max-width: calc(50% - .9rem);
+    height: auto;
+  }
+
+  .service-card {
+    min-height: 260px;
+    padding: 1rem;
+    text-align: left;
+  }
+
+  .service-card h2 {
+    font-size: clamp(1rem, 2.2vw, 1.15rem);
+    margin: .8rem 0;
+  }
+
+  .service-card p {
+    font-size: .95rem;
+    line-height: 1.35;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-content {
+    width: 100%;
+    max-width: 100%;
+    padding-inline: 0.6rem;
+    gap: .8rem;
+  }
+
+  .service-card-wrapper {
+    flex: 1 1 100%;
+    max-width: 100%;
+    width: 100%;
+    margin-inline: 0;
+    height: auto;
+  }
+
+  .service-card {
+    height: auto;
+    min-height: 220px;
+    padding: 0.9rem 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;
+  }
+
+  .service-card.is-expanded,
+  .service-card:hover {
+    position: static;
+    top: auto;
+    left: auto;
+    transform: none;
+    scale: 1;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+    z-index: 1;
+  }
+
+  .services-content-selected {
+    padding: 0 1rem;
+  }
+
+  .selected-card-wrapper { display: none !important; } 
+  .selected-card-detail {
+    width: 100% !important;
+    padding: 1rem !important;
+    clip-path: none !important;
+    transform-origin: center top !important;
+    overflow: visible !important;
   }
 }
