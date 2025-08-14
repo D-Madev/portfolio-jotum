@@ -41,28 +41,32 @@ export default function Navbar() {
             <li>
               <NavLink 
                 to="/inicio" 
-                className={({ isActive }) => isActive ? 'active' : ''}>Inicio
+                className={({ isActive }) => isActive ? 'active' : ''}
+                onClick={() => setMenuOpen(false)}>Inicio
               </NavLink>
             </li>
             
             <li>
               <NavLink 
                 to="/servicios"
-                className={({ isActive }) => isActive ? 'active' : ''}>Servicios
+                className={({ isActive }) => isActive ? 'active' : ''}
+                onClick={() => setMenuOpen(false)}>Servicios
               </NavLink>
             </li>
             
             <li>
               <NavLink 
                 to="/nosotros"
-                className={({ isActive }) => isActive ? 'active' : ''}>Nosotros
+                className={({ isActive }) => isActive ? 'active' : ''}
+                onClick={() => setMenuOpen(false)}>Nosotros
               </NavLink>
             </li>
 
             <li>
               <NavLink 
                 to="/contacto"
-                className={({ isActive }) => isActive ? 'active' : ''}>Contacto
+                className={({ isActive }) => isActive ? 'active' : ''}
+                onClick={() => setMenuOpen(false)}>Contacto
               </NavLink>
             </li>
           </ul>
