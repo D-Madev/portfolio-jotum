@@ -57,19 +57,76 @@
   background-color: var(--main-color);
 }*/
 
-@media (max-width: 768px) {
-  .project-list {
-    padding: 0 1rem 1rem 1rem;
+@media (max-width: 1460px) {
+  .project-list-header {
+    padding-top: 4rem;
   }
-  
+
   .project-list-h1 {
+    /* reducimos letter-spacing y tamaño un poco más agresivo */
+    font-size: clamp(3.8rem, 5.8vw, 8.5rem);
+    letter-spacing: clamp(4px, 1.2vw, 16px);
+  }
+
+  .project-list-h2 {
+    font-size: clamp(3rem, 4.9vw, 6.5rem);
+    letter-spacing: clamp(10px, 2.1vw, 22px);
+  }
+
+  .project-list-h2-container::after {
+    bottom: -0.3rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .project-list-header { padding-top: 3.2rem; padding-bottom: 1rem; }
+  .project-list-h1 { font-size: clamp(3rem, 5.2vw, 6.5rem); letter-spacing: 10px; text-align: left; }
+  .project-list-h2 { font-size: clamp(2.2rem, 4.2vw, 5rem); letter-spacing: 12px; }
+  .project-list-p { font-size: clamp(1rem, 2.1vw, 1.6rem); padding-inline-start: 4%; }
+  .project-list, .project-list-h2-container { padding-inline-start: 4%; padding-inline-end: 4%; }
+}
+
+/* --- Móviles: centro y stackeo --- */
+@media (max-width: 768px) {
+  .project-list-header {
+    padding: 2.2rem 1rem 1.2rem 1rem;
     text-align: center;
   }
 
- /* Uncomment this if you want to keep the line on mobile devices */
- /*.project-list::before {
-    left: 0rem;
-    top: 0rem;
-    bottom: 0rem;
-  }*/
+  .project-list-h1,
+  .project-list-h2,
+  .project-list-p {
+    padding-inline-start: 0;
+  }
+
+  .project-list-h1 {
+    font-size: clamp(2rem, 8.5vw, 4rem);
+    letter-spacing: clamp(2px, 2.8vw, 10px);
+    margin-bottom: 0.4rem;
+  }
+
+  .project-list-h2 {
+    font-size: clamp(1.6rem, 7.5vw, 3.2rem);
+    margin-bottom: .6rem;
+  }
+
+  .project-list-h2-container::after {
+    /* hacemos la barra proporcional y centrada para móviles */
+    left: 10%;
+    width: 80%;
+    bottom: -0.25rem;
+    height: .5rem;
+  }
+
+  .project-list-p {
+    font-size: 1rem;
+    margin-top: .6rem;
+  }
+}
+
+/* --- Pequeños ajustes extra para pantallas muy angostas --- */
+@media (max-width: 420px) {
+  .project-list-h1 { letter-spacing: 2px; line-height: 1; }
+  .project-list-h2 { letter-spacing: 3px; }
+  .project-list-h2-container::after { left: 8%; width: 84%; }
 }
