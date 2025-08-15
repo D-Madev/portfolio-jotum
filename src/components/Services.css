@@ -362,6 +362,10 @@
 }
 
 @media (max-width: 480px) {
+  .section-services {
+    height: 300vh;
+  }
+
   .services-content {
     width: 100%;
     max-width: 100%;
@@ -409,5 +413,11 @@
     clip-path: none !important;
     transform-origin: center top !important;
     overflow: visible !important;
+  }
+}
+
+@media (max-width: 350px) {
+  .section-services {
+    height: 350vh;
   }
 }
