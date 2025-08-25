@@ -118,4 +118,7 @@
     font-size: 140%;
   }
 
+  .navbar img {
+    height: 30px;
+  }
 }
