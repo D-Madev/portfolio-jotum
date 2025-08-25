@@ -157,10 +157,11 @@
 
   .project-description {
     font-size: 1.3rem;    
+    transition: color 1s ease; 
   }
 
   .project-content {
-    max-height: 15rem;
+    max-height: 17rem;
     overflow: hidden;
     transition: max-height 1s ease;
   }
@@ -171,6 +172,14 @@
     justify-content: center;
     align-items: center;
     transition: all 1s ease;
+  }
+
+  .project-description {
+    color: white;
+  }
+
+  .project.open .project-description {
+    color: var(--text-color);
   }
 
   .project.open .project-content {
@@ -222,5 +231,11 @@
 @media (max-width: 400px) {  
   .project-resume-bar i {
     margin: .3rem;
+  }
+}
+
+@media (max-width: 360px) {  
+  .project-resume-bar i {
+    margin: 0rem;
   }
 }
