@@ -100,3 +100,17 @@
 .sub-footer-button:hover {
   background-color: var(--black-color);
 }
+
+@media (max-width: 450px) {
+  .sub-footer-title {
+    font-size: 1.8rem;
+  }
+
+  .sub-footer-text {
+    font-size: .8rem;
+  }
+
+  .sub-footer-button {
+    font-size: .7rem;
+  }
+}
