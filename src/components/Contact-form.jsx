@@ -73,7 +73,10 @@ export default function ContactForm() {
    * Efecto para animar el scroll cuando la sección entra en el viewport.
    * Solo se dispara una vez hasta que la sección sale completamente de pantalla.
    */
-useEffect(() => {
+  useEffect(() => {
+    if (window.innerWidth <= 768) {
+      return; // no registramos scroll handlers
+    }
     const loco = window.locoScroll;
     const el = sectionRef.current;
     if (!el) return;
