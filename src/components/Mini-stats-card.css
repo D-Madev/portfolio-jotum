@@ -89,3 +89,19 @@
     font-size: 4.9rem;
   }
 }
+
+@media (max-width: 768px) {
+  .mini-stat-label {
+    font-size: .9rem;
+    margin-bottom: 1.3rem;
+  }
+
+  .mini-stat-number,
+  .mini-stat-suffix {
+    font-size: 2.5rem;
+  }
+
+  .mini-stat-number-infinity {
+    font-size: 4rem;
+  }
+}
