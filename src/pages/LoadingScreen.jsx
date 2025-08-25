@@ -164,7 +164,7 @@ if (!('serviceWorker' in navigator)) return;
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#FFFFFF", // podés cambiar
+          background: "#1a1919", // podés cambiar
           pointerEvents: "all",
         }}
       >
