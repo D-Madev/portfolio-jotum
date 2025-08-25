@@ -246,7 +246,9 @@ export default function ContactForm() {
           </form>
           <div className="contact-form-side">
             <p>"El futuro se construye una decisión valiente a la vez."</p>
-            <img src={formImage} alt="Logo" />
+            {window.innerWidth >= 768 && (
+              <img src={formImage} alt="Logo" />
+            )}
             <button type="submit" form="contact-form-form" className="contact-form-button" id="contact-form-button" style={{display: "none"}}>Enviar formulario</button>
           </div>
         </main>
