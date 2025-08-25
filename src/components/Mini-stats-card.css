@@ -98,10 +98,10 @@
 
   .mini-stat-number,
   .mini-stat-suffix {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   .mini-stat-number-infinity {
-    font-size: 4rem;
+    font-size: 3.2rem;
   }
 }
