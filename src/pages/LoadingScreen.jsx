@@ -1,7 +1,7 @@
 // src/pages/LoadingScreen.jsx
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import logoPath from "/jotum-blue.png";
+import logoPath from "/jotum.png";
 
 
 /**
