@@ -39,30 +39,6 @@
   }
 }
 
-@media (max-width: 700px) {
-  .resume-aboutus {
-    flex-direction: column;
-    padding: 1rem;
-  }
-
-  .resume-aboutus-title {
-    font-size: 1.8rem;
-    text-align: center;
-  }
-
-  .resume-aboutus-text {
-    width: 100%;
-    padding: 1rem;
-    height: auto;
-    text-align: center;
-  }
-
-  .resume-aboutus-stats {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 1rem;
-  }
-}
-
 @media (min-width: 1800px) {
   .resume-aboutus {
     padding: 8rem 7%;
@@ -81,5 +57,33 @@
   .resume-aboutus-text {
     font-size: 1.3rem;
     padding: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .resume-aboutus {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .resume-aboutus-title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .resume-aboutus-text {
+    width: 100%;
+    padding: 1rem;
+    height: auto;
+    text-align: center;
+  }
+
+  .resume-aboutus-stats {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1rem;
+  }
+
+  .resume-aboutus-paragraph {
+    font-size: .8rem;
   }
 }

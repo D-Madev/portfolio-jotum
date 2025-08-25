@@ -45,6 +45,15 @@
   margin-left: 2rem;
 }
 */
+@media (max-width: 1800px) {
+  .leyend-container h2 {
+    font-size: 2rem;
+  }
+
+  .leyend-container p {
+    font-size: 1.3rem;
+  }
+}
 
 @media (max-width: 768px) {
   .leyend {
@@ -57,20 +66,11 @@
   }
   
   .leyend-container h2 {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
   }
 
   .leyend-container p {
     margin: 0.5rem;
-  }
-}
-
-@media (max-width: 1800px) {
-  .leyend-container h2 {
-    font-size: 2rem;
-  }
-
-  .leyend-container p {
-    font-size: 1.3rem;
+    font-size: 1rem;
   }
 }
