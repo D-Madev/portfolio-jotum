@@ -2,7 +2,7 @@
   display: flex;
   align-items: stretch;
   gap: 0;
-  margin: 4.5rem 0;
+  margin: 2rem 0;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20);
   background-color: #fbfbfb;
 }
@@ -172,10 +172,17 @@
     justify-content: center;
     align-items: center;
     transition: all 1s ease;
+    margin-top: 5px;
+
   }
 
   .project-description {
-    color: white;
+    color: #fbfbfb;
+    -moz-user-select: none;    /* Firefox (antiguo) */
+    -ms-user-select: none;     /* IE/Edge (antiguo) */
+    user-select: none;         /* estándar */
+    -webkit-user-select: none; /* Safari/Chrome */
+    -webkit-touch-callout: none; /* iOS: desactiva el menú contextual al mantener pulsado */
   }
 
   .project.open .project-description {
@@ -197,6 +204,7 @@
     justify-content: center;
     align-items: center;
     transition: all 1s ease;
+    margin-top: 5px;
   }
 }
 
