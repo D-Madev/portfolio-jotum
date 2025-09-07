@@ -20,6 +20,10 @@ import video7 from '../assets/inicio7.mp4'
 function Inicio() {
   return (
     <>
+    <style>{`
+      .desktop-only { display: block; }
+      @media (max-width: 768px) { .desktop-only { display: none !important; } }
+    `}</style>
       <WelcomeBanner 
         backgroundType="video"
         backgroundSrcList = {[video1, video2, video3, video4, video5, video6, video7]}
@@ -29,11 +33,13 @@ function Inicio() {
         children={<h1>Jötum construye con un estándar de excelencia que el mercado reconoce y premia.</h1>}
         hideNavOnView={true}
         />
-      <Leyend 
-        title="Eficiencia y precisión alemana, diseño a tu medida."
-        text="Con Jötum, la arquitectura, la tecnica y la vision trabajan para tu futuro"
-        hideWB={false}
-      />
+      <div className="desktop-only">
+        <Leyend 
+          title="Eficiencia y precisión alemana, diseño a tu medida."
+          text="Con Jötum, la arquitectura, la tecnica y la vision trabajan para tu futuro"
+          hideWB={false}
+        />
+      </div>
       <ResumeAboutUs />
       {/* <VisitUs/> */}
       <ProjectList />
