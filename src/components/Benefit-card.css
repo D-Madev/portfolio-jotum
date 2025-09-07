@@ -85,7 +85,7 @@
   .benefit-title {
     font-size: 1.1rem;
     height: auto;
-    padding-bottom: 1.5rem;
+
   }
 }
 
@@ -103,7 +103,6 @@
 
   .benefit-title {
     font-size: 1.3rem;
-    padding-bottom: 1rem;
     height: auto;
   }
 
@@ -118,12 +117,19 @@
 }
 
 @media (max-width: 450px) {
+  .benefit-img-wrapper {
+    margin-bottom: 0;
+  }
+
   .benefit-title {
-    padding-bottom: .5rem;
+    min-height: 70px;
+    font-size: 1rem;
+    font-weight: lighter;
+    padding-bottom: 0rem;
   }
 
   .benefit-card {
-    max-height: 300px;
+    max-height: 250px;
     overflow: hidden;
     transition:  max-height 1s ease;
   }
@@ -132,6 +138,7 @@
     display: block;
     width: 100px;
     height: 2px;
+    margin: 0 0 5px 0;
   }
 
   .benefit-card.open {
@@ -139,7 +146,13 @@
   }
 
   .benefit-description {
+    margin: 5px 0 0 0 ;
     color: white;
+        -moz-user-select: none;    /* Firefox (antiguo) */
+    -ms-user-select: none;     /* IE/Edge (antiguo) */
+    user-select: none;         /* estándar */
+    -webkit-user-select: none; /* Safari/Chrome */
+    -webkit-touch-callout: none; /* iOS: desactiva el menú contextual al mantener pulsado */
     transition: color 1s ease;
   }
 
