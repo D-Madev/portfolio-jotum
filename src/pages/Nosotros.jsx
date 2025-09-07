@@ -9,28 +9,60 @@ import logo from '../assets/logo/jotum-architekturburo-bauunternehmen.png'
 import subFooterImage from '../assets/nosotros/sub-footer.webp'
 
 function Nostros() {
-
   const hideWButton = useWButtonStore((s) => s.hideWButton);
-  useEffect(() => {
-    hideWButton();
 
-    // forzamos el scroll arriba de forma defensiva:
-    //  - si existe locomotive, pedimos que haga scrollTo(0)
-    //  - si no, usamos el scroll nativo
-    // usamos requestAnimationFrame para intentar ejecutar justo después del commit
-    requestAnimationFrame(() => {
+  useEffect(() => {
+    // 1) ocultar el botón (NO en render)
+    try { hideWButton(); } catch (e) { console.warn('hideWButton falló:', e); }
+
+    // 2) helper robusto para forzar scroll al top en cualquier contexto
+    const forceTop = () => {
+      // desactivar temporalmente scroll-behavior CSS para que sea instant
+      const html = document.documentElement;
+      const prevSB = html.style.scrollBehavior;
+      html.style.scrollBehavior = 'auto';
+
+      // si loco está presente, intenta usarlo
       if (window?.locoScroll?.scrollTo) {
         try {
           window.locoScroll.scrollTo(0, { duration: 0, disableLerp: true });
         } catch (e) {
-          // si falla, fallback al nativo
-          window.scrollTo(0, 0);
+          console.warn('locoScroll.scrollTo falló:', e);
         }
-      } else {
-        window.scrollTo(0, 0);
       }
+
+      // garantizamos sobre todos los elementos posibles
+      try { document.documentElement.scrollTop = 0; } catch {}
+      try { document.body.scrollTop = 0; } catch {}
+      if (document.scrollingElement) try { document.scrollingElement.scrollTop = 0; } catch {}
+      const container = document.querySelector('[data-scroll-container]');
+      if (container) try { container.scrollTop = 0; } catch {}
+      const root = document.getElementById('root');
+      if (root) try { root.scrollTop = 0; } catch {}
+
+      // restaurar scroll-behavior original
+      html.style.scrollBehavior = prevSB;
+    };
+
+    // Ejecutar en varios ticks para vencer transforms / timing
+    requestAnimationFrame(() => {
+      forceTop();
+      // repetir un poco después por si hay restorations del router/locomotive
+      setTimeout(forceTop, 40);
+      setTimeout(forceTop, 120);
     });
-  }, [hideWButton]);
+
+    // DEBUG (opcional): exponer una función en window para inspeccionar
+    window.__debugForceTop = () => {
+      console.log('debugForceTop: calling forceTop');
+      forceTop();
+    };
+
+    // cleanup trivial
+    return () => {
+      try { delete window.__debugForceTop; } catch {}
+    };
+  }, []); // notá el [], para ejecutarlo 1 vez al montar
   
   return (
     <>

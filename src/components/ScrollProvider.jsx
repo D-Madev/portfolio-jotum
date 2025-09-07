@@ -18,30 +18,48 @@ export default function ScrollProvider({
     // helper: si la ruta actual está en la lista de exclusión
     const isExcluded = excludePaths.some(p => pathname.startsWith(p))
 
+    const forceTopAll = () => {
+      const html = document.documentElement
+      const prevSB = html.style.scrollBehavior
+      html.style.scrollBehavior = 'auto'
+
+      if (window?.locoScroll?.scrollTo) {
+        try { window.locoScroll.scrollTo(0, { duration: 0, disableLerp: true }) } catch (e) { console.warn(e) }
+      }
+      try { document.documentElement.scrollTop = 0 } catch {}
+      try { document.body.scrollTop = 0 } catch {}
+      if (document.scrollingElement) try { document.scrollingElement.scrollTop = 0 } catch {}
+      if (containerRef.current) try { containerRef.current.scrollTop = 0; containerRef.current.style.transform = 'none'; } catch {}
+
+      // restaurar
+      html.style.scrollBehavior = prevSB
+    }
+
     // Si está excluida y ya existe instancia, la destruyo
     if (isExcluded) {
       if (locoRef.current) {
-        try {
-          locoRef.current.destroy()
-        } catch (e) {
-          console.warn('Error al destruir locomotive:', e)
-        }
+        try { locoRef.current.destroy() } catch (e) { console.warn('Error al destruir locomotive:', e) }
         locoRef.current = null
         window.locoScroll = null
       }
 
-      // Forzamos el scroll nativo arriba para rutas excluidas
-      // usamos setTimeout 0 para asegurarnos de que el DOM haya sido actualizado
-      setTimeout(() => {
+       try { document.documentElement.style.removeProperty('overflow') } catch {}
+      try { document.body.style.removeProperty('overflow') } catch {}
+      if (containerRef.current) {
         try {
-          window.scrollTo(0, 0)
-        } catch (e) {
-          /* noop */
-        }
-      }, 0)
-      
-      return // no inicializamos nada en rutas excluidas
+          containerRef.current.style.transform = containerRef.current.style.transform || 'none'
+          containerRef.current.style.position = containerRef.current.style.position || ''
+        } catch {}
+      }
+      requestAnimationFrame(() => {
+        forceTopAll()
+        setTimeout(forceTopAll, 30)
+        setTimeout(forceTopAll, 120)
+      })
+
+      return
     }
+
 
     // Si ya está inicializado, solo actualizamos
     if (locoRef.current) {
@@ -66,11 +84,7 @@ export default function ScrollProvider({
     return () => {
       window.removeEventListener('resize', onResize)
       if (locoRef.current) {
-        try {
-          locoRef.current.destroy()
-        } catch (e) {
-          console.warn('Error al destruir locomotive en cleanup:', e)
-        }
+        try { locoRef.current.destroy() } catch (e) { console.warn('Error al destruir locomotive en cleanup:', e) }
         locoRef.current = null
         window.locoScroll = null
       }
