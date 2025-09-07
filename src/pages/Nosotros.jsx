@@ -1,3 +1,4 @@
+import { useEffect } from 'react' 
 import WelcomeBanner from "../components/Welcome-banner.jsx";
 import SubFooter from "../components/Sub-footer.jsx";
 import ParagraphGeneric from "../components/Paragraph-generic.jsx";
@@ -8,20 +9,38 @@ import logo from '../assets/logo/jotum-architekturburo-bauunternehmen.png'
 import subFooterImage from '../assets/nosotros/sub-footer.webp'
 
 function Nostros() {
-  /*<h1>El verdadero valor está en lo que perdura. Jötum construye con excelencia para ese tipo de cliente.</h1>*/
-  const hideWButton = useWButtonStore((s) => s.hideWButton);
 
-  hideWButton();
+  const hideWButton = useWButtonStore((s) => s.hideWButton);
+  useEffect(() => {
+    hideWButton();
+
+    // forzamos el scroll arriba de forma defensiva:
+    //  - si existe locomotive, pedimos que haga scrollTo(0)
+    //  - si no, usamos el scroll nativo
+    // usamos requestAnimationFrame para intentar ejecutar justo después del commit
+    requestAnimationFrame(() => {
+      if (window?.locoScroll?.scrollTo) {
+        try {
+          window.locoScroll.scrollTo(0, { duration: 0, disableLerp: true });
+        } catch (e) {
+          // si falla, fallback al nativo
+          window.scrollTo(0, 0);
+        }
+      } else {
+        window.scrollTo(0, 0);
+      }
+    });
+  }, [hideWButton]);
   
   return (
     <>
-        <WelcomeBanner 
-          backgroundType="image"
-          backgroundSrc={wbUsImage}
-          showText={false}
-          logo={logo}
-          style={{ height: '70vh'}}
-        />
+      <WelcomeBanner 
+        backgroundType="image"
+        backgroundSrc={wbUsImage}
+        showText={false}
+        logo={logo}
+        style={{ height: '70vh'}}
+      />
       <ParagraphGeneric 
         title="NUESTRA VISION"
         text1={`En Jötum, concebimos la arquitectura como la unión perfecta entre eficiencia, diseño y precisión. Inspirados en la filosofía de la Bauhaus, creemos que cada espacio debe ser funcional sin perder su identidad estética. No construimos casas comunes, sino obras de arte habitables, diseñadas para quienes buscan más que una simple vivienda: un espacio exclusivo que refleje su estilo de vida y visión.`}

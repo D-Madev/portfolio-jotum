@@ -299,9 +299,9 @@ useEffect(() => {
                 points="6,5 12,11 18,5"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 style={{
                   animation: 'bounce 1.2s infinite ease-in-out'
                 }}
@@ -310,9 +310,9 @@ useEffect(() => {
                 points="6,17 12,23 18,17"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 style={{
                   animation: 'bounce 1.2s infinite ease-in-out',
                   animationDelay: '0.3s'

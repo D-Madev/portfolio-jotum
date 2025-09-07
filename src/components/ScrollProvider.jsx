@@ -29,6 +29,17 @@ export default function ScrollProvider({
         locoRef.current = null
         window.locoScroll = null
       }
+
+      // Forzamos el scroll nativo arriba para rutas excluidas
+      // usamos setTimeout 0 para asegurarnos de que el DOM haya sido actualizado
+      setTimeout(() => {
+        try {
+          window.scrollTo(0, 0)
+        } catch (e) {
+          /* noop */
+        }
+      }, 0)
+      
       return // no inicializamos nada en rutas excluidas
     }
 
