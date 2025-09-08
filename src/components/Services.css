@@ -363,7 +363,7 @@
 
 @media (max-width: 480px) {
   .section-services {
-    height: 300vh;
+    height: 150vh;
   }
 
   .services-content {
@@ -382,8 +382,8 @@
   }
 
   .service-card {
-    height: auto;
-    min-height: 220px;
+    height: 100px;
+    min-height: 100px;
     padding: 0.9rem 0.9rem;
     display: flex;
     flex-direction: column;
