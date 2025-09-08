@@ -371,11 +371,6 @@
     height: 350px;
   }
 
-  .service-card img {
-    width: 80px;
-    height: 80px;
-  }
-
   .service-card h2 {
     font-size: 1.2rem;
     margin: 10px 0 15px 0;
