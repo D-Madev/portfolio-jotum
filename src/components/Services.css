@@ -362,6 +362,11 @@
 }
 
 @media (max-width: 480px) {
+  .title-logo-section {
+    display: flex;
+    margin: 15px 0;
+  }
+
   .section-services {
     height: 150vh;
   }

@@ -51,20 +51,25 @@ export default function ServiceCard({
         exit={exit}
         transition={transition}
       >
-        <img src={logo} alt={title} />
-        <h2>{title}</h2>
+        <div className='title-logo-section'>
+          <img src={logo} alt={title} />
+          <h2>{title}</h2>
+        </div>
         <p>{description}</p>
         <div className="button-container">    
-          {(isSelected ?
-            <>
-              <button className="back-button" onClick={handleDeselect}>
-                <i class="fas fa-solid fa-chevron-left"></i> 
-              </button>
-              <a href={whatsappLink} target='_blank' rel="noopener noreferrer" className='service-button'>Contactar</a>
-            </>
-          :
-            <button className="service-button" onClick={onSelect}>Ver más</button>
-          )}
+          {window.width <= 480 ?
+              <a href={whatsappLink} target='_blank' rel="noopener noreferrer" className='service-button'>Contactar</a> :
+            (isSelected ?
+              <>
+                <button className="back-button" onClick={handleDeselect}>
+                  <i class="fas fa-solid fa-chevron-left"></i> 
+                </button>
+                <a href={whatsappLink} target='_blank' rel="noopener noreferrer" className='service-button'>Contactar</a>
+              </>
+            :
+              <button className="service-button" onClick={onSelect}>Ver más</button>
+            )
+          }
         </div>
       </motion.div>
     </motion.article>
