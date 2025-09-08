@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import './Service-card.css'
 
@@ -12,7 +12,18 @@ export default function ServiceCard({
   if (isHidden) {
     return null;
   }
-  
+
+    const isClient = typeof window !== "undefined";
+  const [width, setWidth] = useState(isClient ? window.innerWidth : 1024);
+
+  useEffect(() => {
+    if (!isClient) return;
+    const onResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [isClient]);
+  const isMobile = width <= 480;
+
   const [expanded, setExpanded] = useState(false);
   
   function handleMouseEnter() {
@@ -57,19 +68,21 @@ export default function ServiceCard({
         </div>
         <p>{description}</p>
         <div className="button-container">    
-          {window.width <= 480 ?
-              <a href={whatsappLink} target='_blank' rel="noopener noreferrer" className='service-button'>Contactar</a> :
-            (isSelected ?
-              <>
-                <button className="back-button" onClick={handleDeselect}>
-                  <i class="fas fa-solid fa-chevron-left"></i> 
-                </button>
-                <a href={whatsappLink} target='_blank' rel="noopener noreferrer" className='service-button'>Contactar</a>
-              </>
-            :
-              <button className="service-button" onClick={onSelect}>Ver más</button>
-            )
-          }
+        {isMobile ? (
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="service-button"> Contactar </a>
+        ) : isSelected ? (
+          <>
+            <button type="button" className="back-button" onClick={handleDeselect} aria-label="Volver" >
+              <i className="fas fa-chevron-left" aria-hidden="true" />
+            </button>
+
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="service-button"> Contactar </a>
+          </>
+        ) : (
+          <button type="button" className="service-button" onClick={onSelect}>
+            Ver más
+          </button>
+        )}
         </div>
       </motion.div>
     </motion.article>
