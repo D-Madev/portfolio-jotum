@@ -1,13 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { NavLink, Link } from 'react-router-dom';
 import useNavbarStore from '../store/navbarStore';
 import logo from '../assets/logo/jotum-architekturburo-bauunternehmen.png';
+import mobileLogo from '/jotum.png';
 import './navbar.css';
 
 export default function Navbar() {
   const isVisible = useNavbarStore((state) => state.isVisible);
   const [menuOpen, setMenuOpen] = useState(false);
+  const isClient = typeof window !== "undefined";
+  const [width, setWidth] = useState(isClient ? window.innerWidth : 1024);
+  useEffect(() => {
+    if (!isClient) return;
+    const onResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [isClient]);
+  const isMobile = width <= 480;
 
   return(
     <AnimatePresence>
@@ -19,7 +29,11 @@ export default function Navbar() {
           transition={{ duration: 0.5 }}
         >
           <Link to="/inicio">
-              <img src={logo} alt="logo-jotum"/>
+              {isMobile ? 
+                <img src={mobileLogo} alt='logo-jotum' /> 
+                : 
+                <img src={logo} alt="logo-jotum"/>
+              }
           </Link>
 
           <span 
