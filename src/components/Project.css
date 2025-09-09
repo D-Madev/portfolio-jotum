@@ -173,7 +173,7 @@
   }
 
   .project-content {
-    max-height: 250px;
+    max-height: 300px;
     overflow: hidden;
     transition: max-height 1s ease;
   }
@@ -257,9 +257,5 @@
 @media (max-width: 360px) {  
   .project-resume-bar i {
     margin: 0rem;
-  }
-
-  .project-content {
-    max-height: 270px;
   }
 }
