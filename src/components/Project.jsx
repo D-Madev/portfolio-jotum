@@ -92,7 +92,6 @@ function Project({ images = [], title, location, baths, rooms, cars, m2, desk, g
         <img
           key={`curr-${current}`}
           src={images[current]}
-          alt={`Imagen ${current + 1}`}
           className={`fade-image ${loaded[current] ? 'fade-in' : 'hidden-image'}`}
           decoding="async"
           loading={current === 0 ? "eager" : "lazy"} // la primera imagen puede pedirse eager
