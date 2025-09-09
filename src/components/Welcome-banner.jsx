@@ -13,13 +13,24 @@ export default function WelcomeBanner({
   logo,
   children,
   style = {},
-  hideNavOnView = false
+  hideNavOnView = false,
+  mobileMode = false
 }) {
   const isVideo = backgroundType === 'video';
   const [queue, setQueue] = useState([]);
   const [idx, setIdx] = useState(0);
   const [isFading, setIsFading] = useState(false);
   const videoRef = useRef(null);
+  const isClient = typeof window !== "undefined";
+  const [width, setWidth] = useState(isClient ? window.innerWidth : 1024);
+
+  useEffect(() => {
+    if (!isClient) return;
+    const onResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [isClient]);
+  const isMobile = width <= 480;
 
   // Usamos useInView para ocultar la navbar cuando el banner está visible
   const { ref: ref, inView } = useInView({
@@ -82,14 +93,18 @@ export default function WelcomeBanner({
           muted
           playsInline
           onEnded={handleEnded}
-          // autocontrolamos el bucle
           autoPlay
         />
       )}
 
       <div className="banner-overlay">
-        {logo && <img src={logo} className="banner-logo" alt="Logo" />}
-        {children}
+        {mobileMode ? 
+          (isMobile ? (logo ? <img src={logo} className="banner-logo" alt="Logo" /> : null ) : (children)) :
+          (<>
+            {logo && <img src={logo} className="banner-logo" alt="Logo" />}
+            {children}
+          </>)
+        }
         {showText && <p className="banner-text">{text}</p>}
       </div>
     </section>

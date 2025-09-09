@@ -7,6 +7,7 @@ import ProjectList from '../components/Project-list.jsx'
 import Benefits from '../components/Benefits.jsx'
 import Testimonials from '../components/Testimonials.jsx'
 import SubFooter from '../components/Sub-footer.jsx'
+import logo from '../assets/logo/jotum-architekturburo-bauunternehmen.png'
 // IMPORT IMAGES
 import imageSubFooter from '../assets/inicio/sub-footer-inicio.webp'
 import video1 from '../assets/inicio1.mp4'
@@ -29,9 +30,11 @@ function Inicio() {
         backgroundSrcList = {[video1, video2, video3, video4, video5, video6, video7]}
         showText={false}
         text=""
-        logo=""
+        logo={logo}
         children={<h1>Jötum construye con un estándar de excelencia que el mercado reconoce y premia.</h1>}
         hideNavOnView={true}
+        showChildren={false}
+        mobileMode={true}
         />
       <div className="desktop-only">
         <Leyend 
