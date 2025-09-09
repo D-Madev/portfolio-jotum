@@ -7,6 +7,21 @@
   background-color: #fbfbfb;
 }
 
+.project-img-container { aspect-ratio: 16 / 9; }
+.project-img-container { background-color: #f3f3f3; }
+/* placeholder */
+.image-placeholder {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: linear-gradient(90deg, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0.02) 50%, rgba(255,255,255,0.02) 100%);
+  /* opcional: añadir un SVG blur o spinner */
+}
+
+
 .project-img-container {
   position: relative;
   flex: 0 0 60%;
