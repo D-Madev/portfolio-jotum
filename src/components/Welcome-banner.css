@@ -126,6 +126,7 @@
 
   .banner-text {
     font-size: .8rem;
+    max-width: 90%;
   }
 
   .banner-logo {
