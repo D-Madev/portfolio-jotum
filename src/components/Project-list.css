@@ -89,7 +89,7 @@
 /* --- Móviles: centro y stackeo --- */
 @media (max-width: 768px) {
   .project-list-header {
-    padding: 2.2rem 1rem 1.2rem 1rem;
+    padding: 2.2rem 0 1.2rem 0;
     text-align: center;
   }
 
@@ -102,7 +102,7 @@
   .project-list-h1 {
     font-size: clamp(2rem, 8.5vw, 4rem);
     letter-spacing: clamp(2px, 2.8vw, 10px);
-    margin-bottom: 0.4rem;
+    margin: 0 1rem 0.4rem 1rem;
   }
 
   .project-list-h2 {
