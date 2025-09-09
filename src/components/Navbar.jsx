@@ -30,7 +30,7 @@ export default function Navbar() {
         >
           <Link to="/inicio">
               {isMobile ? 
-                <img src={mobileLogo} alt='logo-jotum' /> 
+                <img src={mobileLogo} alt='logo-jotum' style={{paddingLeft: '10px'}}/> 
                 : 
                 <img src={logo} alt="logo-jotum"/>
               }
