@@ -126,7 +126,7 @@
 
 /* --- Pequeños ajustes extra para pantallas muy angostas --- */
 @media (max-width: 420px) {
-  .project-list-h1 { letter-spacing: 2px; line-height: 1; }
+  .project-list-h1 { letter-spacing: 2px; line-height: 1;}
   .project-list-h2 { letter-spacing: 3px; }
   .project-list-h2-container::after { left: 8%; width: 84%; }
 }
