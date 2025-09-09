@@ -34,6 +34,7 @@ export default function Servicios() {
         title="Servicios con sello de excelencia"
         text="Cada servicio que ofrecemos en Jötum está respaldado por los mejores profesionales y una visión clara: construir con precisión, estética y compromiso. Nuestro legado, inspirado en la excelencia que nos prescede, guía cada detalle y nos permite mantener un estándar que se ve y se siente en cada proyecto."
         style={{padding: '0'}}
+        mobileMode={true}
       />
       <Services />
     </>
