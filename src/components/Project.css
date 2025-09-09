@@ -69,6 +69,8 @@
   justify-content: flex-start;
   padding: 2rem;
   box-sizing: border-box;
+  max-height: none;
+  overflow: visible;
 }
 
 .project-header {            
@@ -104,11 +106,6 @@
   margin-top: 2rem;
   color: var(--secondary-color);
   font-size: .97rem;
-}
-
-.project-content {
-  max-height: none;
-  overflow: visible;
 }
 
 .show-up, .show-down {
@@ -161,7 +158,7 @@
   }
 
   .project-content {
-    max-height: 17rem;
+    max-height: 250px;
     overflow: hidden;
     transition: max-height 1s ease;
   }
@@ -245,5 +242,9 @@
 @media (max-width: 360px) {  
   .project-resume-bar i {
     margin: 0rem;
+  }
+
+  .project-content {
+    max-height: 270px;
   }
 }
