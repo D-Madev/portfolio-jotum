@@ -24,6 +24,31 @@ function Inicio() {
     <style>{`
       .desktop-only { display: block; }
       @media (max-width: 768px) { .desktop-only { display: none !important; } }
+      /* global.css */
+      .section-backdrop {
+        position: relative;
+        overflow: visible;
+        margin: 0;
+        padding: 0;
+      }
+
+      .section-backdrop::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -5px;    /* offset arriba */
+        bottom: -5px; /* offset abajo */
+        background: #1a1919;
+        z-index: 0;
+        pointer-events: none;
+        will-change: transform;
+      }
+
+      .section-backdrop > .section-backdrop-inner {
+        position: relative;
+        z-index: 1;
+      }
     `}</style>
       <WelcomeBanner 
         backgroundType="video"
@@ -43,7 +68,11 @@ function Inicio() {
           hideWB={false}
         />
       </div>
-      <ResumeAboutUs />
+      <section className="section-backdrop">
+        <div className="section-backdrop-inner">
+          <ResumeAboutUs />
+        </div>
+      </section>
       {/* <VisitUs/> */}
       <ProjectList />
       <Benefits />
