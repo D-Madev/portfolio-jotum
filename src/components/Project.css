@@ -173,7 +173,7 @@
   }
 
   .project-content {
-    max-height: 300px;
+    max-height: 250px;
     overflow: hidden;
     transition: max-height 1s ease;
   }
