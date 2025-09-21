@@ -57,6 +57,32 @@ function Main() {
   
   return (
     <>
+    <style>{`
+      .section-backdrop-author {
+        position: relative;
+        overflow: visible;
+        margin: 0;
+        padding: 0;
+      }
+
+      . ::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -10px;    /* offset arriba */
+        bottom: -10px; /* offset abajo */
+        background: #637eb9;
+        z-index: 0;
+        pointer-events: none;
+        will-change: transform;
+      }
+
+      .section-backdrop-author > .section-backdrop-inner-author {
+        position: relative;
+        z-index: 1;
+      }
+    `}</style>
       {loading ? (
         <LoadingScreen
           criticalAssets={[img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, bg2, bg17]} // Estas bloquean el arranque
@@ -74,7 +100,11 @@ function Main() {
           <ScrollProvider watch={location.pathname}>
             <App />
             <Footer />
-            <Author />
+            <section className="section-backdrop-author">
+              <div className="section-backdrop-inner-author">
+                <Author />
+              </div>
+            </section>
           </ScrollProvider>
         </>
       )}
