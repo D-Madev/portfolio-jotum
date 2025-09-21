@@ -66,6 +66,32 @@ function Nostros() {
   
   return (
     <>
+      <style>{`
+        .section-backdrop-us {
+          position: relative;
+          overflow: visible;
+          margin: 0;
+          padding: 0;
+        }
+
+        .section-backdrop-us::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: -5px;    /* offset arriba */
+          bottom: -5px; /* offset abajo */
+          background: #1a1919;
+          z-index: 0;
+          pointer-events: none;
+          will-change: transform;
+        }
+
+        .section-backdrop-us > .section-backdrop-inner-us {
+          position: relative;
+          z-index: 1;
+        }
+      `}</style>
       <WelcomeBanner 
         backgroundType="image"
         backgroundSrc={wbUsImage}
@@ -73,14 +99,18 @@ function Nostros() {
         logo={logo}
         style={{ height: '70vh'}}
       />
-      <ParagraphGeneric 
-        title="NUESTRA VISION"
-        text1={`En Jötum, concebimos la arquitectura como la unión perfecta entre eficiencia, diseño y precisión. Inspirados en la filosofía de la Bauhaus, creemos que cada espacio debe ser funcional sin perder su identidad estética. No construimos casas comunes, sino obras de arte habitables, diseñadas para quienes buscan más que una simple vivienda: un espacio exclusivo que refleje su estilo de vida y visión.`}
-        text2={`Nuestro proceso comienza con la idea del cliente, que perfeccionamos con un enfoque técnico meticuloso y una atención al detalle digna de la más alta arquitectura. Nos especializamos en espacios privados y complejos, optimizando cada metro cuadrado con un diseño inteligente que combine confort, sofisticación y solidez estructural. Cada material, cada linea y cada proporción se estudian cuidadosamente para lograr un equilibrio entre modernidad, funcionalidad y distinción.`}
-        text3={`En Jötum, no solo construimos, sino que damos vida a proyectos únicos que elevan el estándar de la arquitectura, creando ambientes que trascienden lo convencional y perduran en el tiempo.`}
-        minSize={300}
-        maxSize={1000}  
-      /> 
+      <section className="section-backdrop">
+        <div className="section-backdrop-inner">
+          <ParagraphGeneric 
+            title="NUESTRA VISION"
+            text1={`En Jötum, concebimos la arquitectura como la unión perfecta entre eficiencia, diseño y precisión. Inspirados en la filosofía de la Bauhaus, creemos que cada espacio debe ser funcional sin perder su identidad estética. No construimos casas comunes, sino obras de arte habitables, diseñadas para quienes buscan más que una simple vivienda: un espacio exclusivo que refleje su estilo de vida y visión.`}
+            text2={`Nuestro proceso comienza con la idea del cliente, que perfeccionamos con un enfoque técnico meticuloso y una atención al detalle digna de la más alta arquitectura. Nos especializamos en espacios privados y complejos, optimizando cada metro cuadrado con un diseño inteligente que combine confort, sofisticación y solidez estructural. Cada material, cada linea y cada proporción se estudian cuidadosamente para lograr un equilibrio entre modernidad, funcionalidad y distinción.`}
+            text3={`En Jötum, no solo construimos, sino que damos vida a proyectos únicos que elevan el estándar de la arquitectura, creando ambientes que trascienden lo convencional y perduran en el tiempo.`}
+            minSize={300}
+            maxSize={1000}  
+          />
+        </div>
+      </section> 
       <ParagraphGeneric 
         title="NUESTRA MISION"
         text1="En Jötum, nuestra misión es transformar la experiencia de la construcción, creando viviendas unifamiliares y desarrollos exclusivos que combinen eficiencia, precisión y un diseño a medida. Nos comprometemos a entregar resultados que no solo satisfacen las necesidades funcionales de nuestros clientes, sino que también elevan sus expectativas, proporcionando espacios que trascienden lo común y dejan una huella duradera en el tiempo. Cada obra es pensada y ejecutada con un enfoque detallado, para ofrecer un hogar único que refleje el carácter y la visión de quienes lo habitan."
