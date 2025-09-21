@@ -147,4 +147,29 @@ PERFORMANCE OF THIS SOFTWARE.
                 rgba(99,126,185,0.85) 0%,
                 rgba(99,126,185,0.45) 20%,
                 rgba(99,126,185,0.12) 40%,
-                rgba(99,126,185,0) 70%)`,filter:"blur(80px)",willChange:"opacity, transform",zIndex:0},animate:{scale:[1,1,.92,1],opacity:[.65,.65,.12,.65]},transition:{duration:w,times:x,repeat:1/0,ease:"easeInOut",repeatType:"loop"}}),S.jsx(Ge.img,{src:Yu,alt:"logo",style:{width:200,height:"auto",display:"block",userSelect:"none",pointerEvents:"none",filter:"drop-shadow(0 8px 24px rgba(0,0,0,0.35))",zIndex:1},animate:{scale:[1,1,.92,1],opacity:[1,1,.6,1]},transition:{duration:w,times:x,repeat:1/0,repeatType:"loop",scale:{duration:w,ease:"easeInOut",times:x},opacity:{duration:w,ease:"linear",times:x}}})]})},"loader-overlay")})}function Nb(){const t=wn(),[r,i]=k.useState(!0);return S.jsx(S.Fragment,{children:r?S.jsx(Ib,{criticalAssets:[ti,Ty,Ey,ky,by,wy,yy,xy,vy,Sy,Ny,$y],backgroundAssets:[Ky,Ay,Ry,Py,jy,Ly,My,Dy,Iy,Uu,Uu,Oy,Fy,_y,Vy,By,zy,Wy,Hy,Uy,Yy,qy,Jy],concurrency:5,minVisible:700,onFinished:()=>i(!1),fontName:'"Open Sans", sans-serif'}):S.jsxs(S.Fragment,{children:[S.jsx(Eb,{}),S.jsx(Db,{}),S.jsxs(cS,{watch:t.pathname,children:[S.jsx(Sb,{}),S.jsx(Rb,{}),S.jsx(Pb,{})]})]})})}nw.createRoot(document.getElementById("root")).render(S.jsx(k.StrictMode,{children:S.jsx(yx,{children:S.jsx(Nb,{})})}));
+                rgba(99,126,185,0) 70%)`,filter:"blur(80px)",willChange:"opacity, transform",zIndex:0},animate:{scale:[1,1,.92,1],opacity:[.65,.65,.12,.65]},transition:{duration:w,times:x,repeat:1/0,ease:"easeInOut",repeatType:"loop"}}),S.jsx(Ge.img,{src:Yu,alt:"logo",style:{width:200,height:"auto",display:"block",userSelect:"none",pointerEvents:"none",filter:"drop-shadow(0 8px 24px rgba(0,0,0,0.35))",zIndex:1},animate:{scale:[1,1,.92,1],opacity:[1,1,.6,1]},transition:{duration:w,times:x,repeat:1/0,repeatType:"loop",scale:{duration:w,ease:"easeInOut",times:x},opacity:{duration:w,ease:"linear",times:x}}})]})},"loader-overlay")})}function Nb(){const t=wn(),[r,i]=k.useState(!0);return S.jsxs(S.Fragment,{children:[S.jsx("style",{children:`
+      .section-backdrop-author {
+        position: relative;
+        overflow: visible;
+        margin: 0;
+        padding: 0;
+      }
+
+      . ::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -10px;    /* offset arriba */
+        bottom: -10px; /* offset abajo */
+        background: #637eb9;
+        z-index: 0;
+        pointer-events: none;
+        will-change: transform;
+      }
+
+      .section-backdrop-author > .section-backdrop-inner-author {
+        position: relative;
+        z-index: 1;
+      }
+    `}),r?S.jsx(Ib,{criticalAssets:[ti,Ty,Ey,ky,by,wy,yy,xy,vy,Sy,Ny,$y],backgroundAssets:[Ky,Ay,Ry,Py,jy,Ly,My,Dy,Iy,Uu,Uu,Oy,Fy,_y,Vy,By,zy,Wy,Hy,Uy,Yy,qy,Jy],concurrency:5,minVisible:700,onFinished:()=>i(!1),fontName:'"Open Sans", sans-serif'}):S.jsxs(S.Fragment,{children:[S.jsx(Eb,{}),S.jsx(Db,{}),S.jsxs(cS,{watch:t.pathname,children:[S.jsx(Sb,{}),S.jsx(Rb,{}),S.jsx("section",{className:"section-backdrop-author",children:S.jsx("div",{className:"section-backdrop-inner-author",children:S.jsx(Pb,{})})})]})]})]})}nw.createRoot(document.getElementById("root")).render(S.jsx(k.StrictMode,{children:S.jsx(yx,{children:S.jsx(Nb,{})})}));
